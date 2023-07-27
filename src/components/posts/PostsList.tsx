@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { PostStateType, selectAllPosts, fetchPosts } from "../../features/posts/postsSlice";
 import { RootStateType } from "../../app/store";
 import { Spinner } from "../common/Spinner";
-import PostAuthor from "./PostAuthor";
-import { TimeAgo } from "./TimeAgo";
-import { ReactionButtons } from "./ReactionButtons";
+import PostAuthor from "../common/PostAuthor";
+import { TimeAgo } from "../common/TimeAgo";
+import { ReactionButtons } from "../common/ReactionButtons";
 import { useAppDispatch } from "../../app/store";
 import { fetchUsers } from "../../features/users/usersSlice";
 
@@ -22,8 +22,8 @@ const PostExcerpt = React.memo(({post} : {post: PostStateType}) => {
         <p className="post-content">{post.content.substring(0, 100)}</p>
 
         <ReactionButtons post={post} />
-        <Link to={`/posts/${post.id}`} className="button muted-button">
-          View Post
+        <Link to={`/posts/${post.id}`} className="button feed-button">
+        View Palette
         </Link>
     </article>
   )

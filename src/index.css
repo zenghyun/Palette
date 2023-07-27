@@ -180,6 +180,16 @@ button.reaction-button {
   white-space: nowrap;
 }
 
+.feed-button {
+  background-color: rgb(183, 137, 235);
+  text-decoration: none;
+  color: rgb(30, 30, 30);
+}
+
+.feed-button:hover {
+  background-color: rgba(183, 137, 235, 0.527);
+}
+
 .spinner {
   display: flex;
   flex-direction: column;
@@ -303,3 +313,19 @@ button.reaction-button {
 .notification.new {
   background-color: rgba(29, 161, 242, 0.1);
 }
+
+
+/* User list & Post list */
+.userList, .postList {
+  list-style: none;
+  font-size: 1.5rem;
+}
+.userList a, .postList a{
+  text-decoration: none;
+  color: black;
+}
+
+.userList a:hover, .postList a:hover {
+  color: #926bcf;
+}
+

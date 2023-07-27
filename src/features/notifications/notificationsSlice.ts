@@ -8,14 +8,12 @@ export type NotificationType = {
   user: string;
   notifications: string;
   read: boolean;
-  isNew : boolean;
+  isNew: boolean;
 };
 
 export type NotificationListType = {
   notifications: Array<NotificationType>;
 };
-
-
 
 export const fetchNotifications = createAsyncThunk(
   "notifications/fetchNotifications",
@@ -38,17 +36,17 @@ const notificationsSlice = createSlice({
   initialState,
   reducers: {
     allNotificationsRead(state) {
-      state.forEach(notification => {
+      state.forEach((notification) => {
         notification.read = true;
-      })
-    }
+      });
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchNotifications.fulfilled, (state, action) => {
       state.push(...action.payload);
-      state.forEach(notification => {
+      state.forEach((notification) => {
         notification.isNew = !notification.read;
-      })
+      });
       state.sort((a: NotificationType, b: NotificationType) =>
         b.date.localeCompare(a.date)
       );
@@ -60,5 +58,5 @@ export const { allNotificationsRead } = notificationsSlice.actions;
 
 export default notificationsSlice.reducer;
 
-export const selectAllNotifications = (state:NotificationListType) => state.notifications;
-
+export const selectAllNotifications = (state: NotificationListType) =>
+  state.notifications;

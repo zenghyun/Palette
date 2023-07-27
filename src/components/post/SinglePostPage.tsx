@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import PostAuthor from "./PostAuthor";
-import { TimeAgo } from "./TimeAgo";
+import PostAuthor from "../common/PostAuthor";
+import { TimeAgo } from "../common/TimeAgo";
 import { selectPostById } from "../../features/posts/postsSlice";
-import { ReactionButtons } from "./ReactionButtons";
+import { ReactionButtons } from "../common/ReactionButtons";
 import { RootStateType } from "../../app/store";
 
 const SinglePostPage = () => {
@@ -12,7 +12,7 @@ const SinglePostPage = () => {
   const post = useSelector((state: RootStateType) =>
   selectPostById(state, params.postId)
   );
-
+  
   if (!post) {
     return (
       <section>

@@ -22,13 +22,13 @@ export const Navbar = () => {
   return (
     <nav>
       <section>
-        <h1>Palette</h1>
+        <h1>🎨 Palette</h1>
 
         <div className="navContent">
           <div className="navLinks">
-            <Link to="/">Home</Link>
-            <Link to="/posts">Add Posts</Link>
-            <Link to="/users">Users</Link>
+            <Link to="/">Feed</Link>
+            <Link to="/posts">Add Post</Link>
+            <Link to="/users">Paletter</Link>
             <Link to="/notifications">Notifications</Link>
           </div>
           <button className='button' onClick={fetchNewNotifications}>

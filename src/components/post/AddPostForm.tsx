@@ -32,8 +32,8 @@ export const AddPostForm = () => {
     setContent("");
     navigate('/');
   };
+  
   const canSave = [title, content, userId].every(Boolean);
-
 
   // 실제 Backend API에 data 추가 가능할 시 logic 
 
@@ -68,7 +68,7 @@ export const AddPostForm = () => {
     <section>
       <h2>Add a New Post</h2>
       <form>
-        <label htmlFor="postTitle">Post Title:</label>
+        <label htmlFor="postTitle">제목</label>
         <input
           type="text"
           id="postTitle"
@@ -76,12 +76,12 @@ export const AddPostForm = () => {
           value={title}
           onChange={onTitleChanged}
         />
-           <label htmlFor="postAuthor">Author:</label>
+           <label htmlFor="postAuthor">작성자</label>
            <select id="postAuthor" value={userId} onChange={onAuthorChanged}>
             <option value=""></option>
             {usersOptions}
            </select>
-        <label htmlFor="postContent">Content:</label>
+        <label htmlFor="postContent">내용</label>
         <textarea
           id="postContent"
           name="postContent"

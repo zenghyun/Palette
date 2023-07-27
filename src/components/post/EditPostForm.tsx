@@ -51,7 +51,7 @@ import { useAppDispatch } from "../../app/store";
         />
       </form>
       <button type="button" className="button saveButton" onClick={onSavePostClicked}>
-        Save Post
+        Posting
       </button>
     </section>
   );
