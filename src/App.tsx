@@ -2,15 +2,15 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import PostsList from "./components/posts/PostsList";
 import RootLayout from "./components/common/RootLayout";
-import SinglePostPage from "./components/posts/SinglePostPage";
+import SinglePostPage from "./components/post/SinglePostPage";
 import PostRootLayout from "./components/posts/PostRootLayout";
-import EditPostLayout from "./components/posts/EditPostLayout";
-import EditPostForm  from "./components/posts/EditPostForm";
+import EditPostLayout from "./components/post/EditPostLayout";
+import EditPostForm  from "./components/post/EditPostForm";
 import UserRootLayout from "./components/users/UserRootLayout";
 import UsersList from "./components/users/UserList";
 import UserPage from "./components/users/UserPage";
 import NotificationsList from "./components/notifications/NotificationsList";
-import { AddPostForm } from "./components/posts/AddPostForm";
+import { AddPostForm } from "./components/post/AddPostForm";
 
 const router = createBrowserRouter([
   {
