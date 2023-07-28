@@ -10,7 +10,8 @@ import UserRootLayout from "./components/users/UserRootLayout";
 import UsersList from "./components/users/UserList";
 import UserPage from "./components/users/UserPage";
 import NotificationsList from "./components/notifications/NotificationsList";
-import { AddPostForm } from "./components/post/AddPostForm";
+import AddPostForm  from "./components/post/AddPostForm";
+import { Helmet } from "react-helmet-async";
 
 const router = createBrowserRouter([
   {
@@ -65,7 +66,14 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+    <Helmet>
+      <title>Palette</title>
+    </Helmet>
+    <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;
