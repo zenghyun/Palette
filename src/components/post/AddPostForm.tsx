@@ -7,7 +7,7 @@ import { useAppDispatch } from "../../app/store";
 import { selectAllUsers } from "../../features/users/usersSlice";
 import { useNavigate } from "react-router-dom";
 
-export const AddPostForm = () => {
+ const AddPostForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [userId, setUserId] = useState("");
@@ -100,3 +100,5 @@ export const AddPostForm = () => {
     </section>
   );
 };
+
+export default AddPostForm;
