@@ -7,7 +7,7 @@ import sessionStorage from "redux-persist/es/storage/session";
 import notificationReducer from "../features/notifications/notificationsSlice";
 import { PostListsType } from "../type/postType";
 import { UserListType } from "../type/userType";
-import { NotificationListType } from "../type/NotificationsType";
+import { NotificationListType } from "../type/notificationsType";
 import { useDispatch } from "react-redux";
 
 export type RootStateType = {
