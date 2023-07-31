@@ -26,8 +26,8 @@ const UserPage = () => {
 
   return (
     <section>
-      <h2>{user.name} </h2>
-      <h3>🎨 palette: {postTitles.length}</h3>
+      <h2>{user.name} 님의 palette </h2>
+      <h3>🎨 post: {postTitles.length}</h3>
       <ul>{postTitles}</ul>
     </section>
   );

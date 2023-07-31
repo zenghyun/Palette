@@ -335,3 +335,6 @@ button.reaction-button {
   color: #926bcf;
 }
 
+.hide {
+  display: none;
+}
