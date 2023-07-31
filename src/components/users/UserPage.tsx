@@ -18,7 +18,7 @@ const UserPage = () => {
     selectPostsByUser(state, param.userId)
   );
 
-  const postTitles = postsForUser.map((post : PostStateType) => (
+  const postTitles = postsForUser.map((post: PostStateType) => (
     <li key={post.id} className="postList">
       <Link to={`/posts/${post.id}`}>{post.title}</Link>
     </li>
