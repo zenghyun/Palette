@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import { formatDistanceToNow, parseISO } from "date-fns";
 import { selectAllUsers } from "../../features/users/usersSlice";
-import { NotificationType, selectAllNotifications, allNotificationsRead } from "../../features/notifications/notificationsSlice";
+import { selectAllNotifications, allNotificationsRead } from "../../features/notifications/notificationsSlice";
 import { useAppDispatch } from "../../app/store";
 import { useLayoutEffect } from "react";
+import { NotificationType } from "../../type/NotificationsType";
 import classnames from 'classnames'
 
 const NotificationsList = () => {

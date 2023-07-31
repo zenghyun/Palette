@@ -1,7 +1,8 @@
 import { ChangeEvent, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { selectPostById, postUpdated, PostStateType } from "../../features/posts/postsSlice";
+import { selectPostById, postUpdated } from "../../features/posts/postsSlice";
+import { PostStateType } from "../../type/postType";
 import { RootStateType } from "../../app/store";
 import { useAppDispatch } from "../../app/store";
 

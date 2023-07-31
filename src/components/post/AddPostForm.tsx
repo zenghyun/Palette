@@ -6,6 +6,7 @@ import { postAdded } from "../../features/posts/postsSlice";
 import { useAppDispatch } from "../../app/store";
 import { selectAllUsers } from "../../features/users/usersSlice";
 import { useNavigate } from "react-router-dom";
+import { fetchNotifications } from "../../features/notifications/notificationsSlice";
 
  const AddPostForm = () => {
   const [title, setTitle] = useState("");
@@ -27,6 +28,7 @@ import { useNavigate } from "react-router-dom";
   const onSavePostClicked = () => {
     if (title && content) {
       dispatch(postAdded(title, content, userId));
+      dispatch(fetchNotifications())
     }
     setTitle("");
     setContent("");

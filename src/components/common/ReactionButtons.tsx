@@ -1,6 +1,7 @@
-import { useDispatch } from "react-redux";
-import { PostStateType, reactionAdded } from "../../features/posts/postsSlice";
-
+import { reactionAdded } from "../../features/posts/postsSlice";
+import { PostStateType } from "../../type/postType";
+import { useAppDispatch } from "../../app/store";
+import { fetchNotifications } from "../../features/notifications/notificationsSlice";
 const reactionEmoji = {
   thumbsUp: "👍",
   hooray: "🎉",
@@ -10,7 +11,7 @@ const reactionEmoji = {
 };
 
 export const ReactionButtons = ({ post }: { post: PostStateType }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const reactionButtons = Object.entries(reactionEmoji).map(([name, emoji]) => {
     return (
@@ -18,9 +19,10 @@ export const ReactionButtons = ({ post }: { post: PostStateType }) => {
         key={name}
         type="button"
         className="muted-button reaction-button"
-        onClick={() =>
-          dispatch(reactionAdded({ postId: post.id, reaction: name }))
-        }
+        onClick={() => {
+          dispatch(reactionAdded({ postId: post.id, reaction: name }));
+          dispatch(fetchNotifications());
+        }}
       >
         {emoji} {post.reactions[name]}
       </button>

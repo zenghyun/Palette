@@ -11,7 +11,7 @@ import { parseISO } from 'date-fns'
 faker.locale = "ko";
 
 const NUM_USERS = 10
-// const POSTS_PER_USER = line 194
+const POSTS_PER_USER = 250
 const RECENT_NOTIFICATIONS_DAYS = 7
 
 // Add an extra delay to all endpoints, so loading spinners show up.
@@ -23,7 +23,7 @@ const ARTIFICIAL_DELAY_MS = 2000
 // a consistent set of users / entries each time the page loads.
 // This can be reset by deleting this localStorage value,
 // or turned off by setting `useSeededRNG` to false.
-let useSeededRNG = true
+const useSeededRNG = true
 let rng = seedrandom()
 
 if (useSeededRNG) {
@@ -191,7 +191,7 @@ const createPostData = (user) => {
 // Create an initial set of users and posts
 for (let i = 0; i < NUM_USERS; i++) {
   const author = db.user.create(createUserData())
-  const POSTS_PER_USER = Math.floor(Math.random() * 7) + 1;
+  // const POSTS_PER_USER = Math.floor(Math.random() * 7) + 1;
   for (let j = 0; j < POSTS_PER_USER; j++) {
     const newPost = createPostData(author)
     db.post.create(newPost)

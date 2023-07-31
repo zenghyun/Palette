@@ -1,13 +1,11 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  UserListType,
-  UserStateType,
-  selectUserById,
-} from "../../features/users/usersSlice";
+import { selectUserById } from "../../features/users/usersSlice";
+import { UserListType, UserStateType } from "../../type/userType";
 import { selectPostsByUser } from "../../features/posts/postsSlice";
 import { useParams } from "react-router-dom";
 import { RootStateType } from "../../app/store";
+import { PostStateType } from "../../type/postType";
 
 const UserPage = () => {
   const param = useParams();
@@ -20,7 +18,7 @@ const UserPage = () => {
     selectPostsByUser(state, param.userId)
   );
 
-  const postTitles = postsForUser.map((post) => (
+  const postTitles = postsForUser.map((post : PostStateType) => (
     <li key={post.id} className="postList">
       <Link to={`/posts/${post.id}`}>{post.title}</Link>
     </li>

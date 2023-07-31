@@ -4,7 +4,8 @@ import usersReducer, { UserListType } from "../features/users/usersSlice";
 import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import sessionStorage from "redux-persist/es/storage/session";
-import notificationReducer, { NotificationListType } from '../features/notifications/notificationsSlice';
+import notificationReducer from '../features/notifications/notificationsSlice';
+import { NotificationListType } from "../type/NotificationsType";
 import { useDispatch } from "react-redux";
 
 export type RootStateType = {
@@ -12,6 +13,7 @@ export type RootStateType = {
   users: UserListType;
   notifications: NotificationListType;
 };
+
 const reducers = combineReducers({
   posts: postsReducer,
   users: usersReducer,

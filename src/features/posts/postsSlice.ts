@@ -1,31 +1,7 @@
 import { PayloadAction, createSlice, nanoid, createAsyncThunk, createSelector} from "@reduxjs/toolkit";
 import { client } from "../../api/client";
 import { RootStateType } from "../../app/store";
-
-export type ReactionType = {
-  [key: string]: number;
-};
-
-export type PostStateType = {
-  id: string;
-  date: string;
-  title: string;
-  content: string;
-  reactions: ReactionType;
-  user: string;
-};
-
-export type InitialPostType = {
-  title: string;
-  content: string;
-  user: string;
-}
-
-export type PostListsType = {
-  posts: Array<PostStateType>;
-  status : string;
-  error : null | string | undefined;
-};
+import { PostListsType, PostStateType,  } from "../../type/postType";
 
 const initialState: PostListsType = {
   posts: [],
@@ -120,5 +96,5 @@ export const selectPostById = (state: RootStateType, postId: string | undefined)
 
 export const selectPostsByUser = createSelector(
   [selectAllPosts, (_state, userId) => userId],
-  (posts, userId) => posts.filter(post => post.user === userId)
+  (posts, userId) => posts.filter((post: PostStateType) => post.user === userId)
 );

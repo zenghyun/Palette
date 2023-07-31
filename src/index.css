@@ -139,7 +139,13 @@ label {
   padding: 0.25rem 0.25rem;
   border: 1px solid rgb(177, 174, 174);
   border-radius: 7px;
+  height: 220px;
 }
+
+/* .posts-list {
+  height: 800px;
+  overflow: hidden auto;
+} */
 
 .posts-list .post-excerpt + .post-excerpt {
   margin-top: 0.5rem;
