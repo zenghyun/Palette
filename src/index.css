@@ -22,6 +22,19 @@ p {
 
 /* Navbar */
 
+.banner {
+  cursor: pointer;
+}
+
+.notifiButton {
+  font-size: 18px;
+  background-color: inherit;
+}
+
+.notifiButton .notifiLogo {
+  font-size: 24px;
+}
+
 nav {
   display: flex;
   padding: 0;
@@ -86,7 +99,7 @@ nav a:hover {
   vertical-align: baseline;
   border-radius: 0.25rem;
   color: #212529;
-  background-color: #f8f9fa;
+  background-color: inherit;
 }
 
 .navLinks :first-child {
