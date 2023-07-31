@@ -10,9 +10,9 @@ import { RootStateType } from "../../app/store";
 const SinglePostPage = () => {
   const params = useParams();
   const post = useSelector((state: RootStateType) =>
-  selectPostById(state, params.postId)
+    selectPostById(state, params.postId)
   );
-  
+
   if (!post) {
     return (
       <section>

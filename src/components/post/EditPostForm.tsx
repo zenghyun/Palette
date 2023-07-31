@@ -6,13 +6,13 @@ import { PostStateType } from "../../type/postType";
 import { RootStateType } from "../../app/store";
 import { useAppDispatch } from "../../app/store";
 
- const EditPostForm = () => {
+const EditPostForm = () => {
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const post = useSelector((state: RootStateType) =>
-  selectPostById(state, params.postId)
+    selectPostById(state, params.postId)
   ) as PostStateType;
 
   const [title, setTitle] = useState(post.title);
@@ -51,7 +51,11 @@ import { useAppDispatch } from "../../app/store";
           onChange={onContentChanged}
         />
       </form>
-      <button type="button" className="button saveButton" onClick={onSavePostClicked}>
+      <button
+        type="button"
+        className="button saveButton"
+        onClick={onSavePostClicked}
+      >
         Posting
       </button>
     </section>
