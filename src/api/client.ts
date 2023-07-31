@@ -13,10 +13,13 @@ export interface ClientResponse {
   url: string;
 }
 
-export async function client(endpoint: string, { body, ...customConfig }: ClientConfig = {}): Promise<ClientResponse> {
-  const headers: HeadersInit = { 'Content-Type': 'application/json' };
+export async function client(
+  endpoint: string,
+  { body, ...customConfig }: ClientConfig = {}
+): Promise<ClientResponse> {
+  const headers: HeadersInit = { "Content-Type": "application/json" };
   const config: RequestInit = {
-    method: body ? 'POST' : 'GET',
+    method: body ? "POST" : "GET",
     ...customConfig,
     headers: {
       ...headers,
@@ -27,7 +30,7 @@ export async function client(endpoint: string, { body, ...customConfig }: Client
     config.body = JSON.stringify(body);
   }
 
-  let data : any;
+  let data: any;
   try {
     const response = await window.fetch(endpoint, config);
     data = response.json();
@@ -41,15 +44,22 @@ export async function client(endpoint: string, { body, ...customConfig }: Client
       };
     }
     throw new Error(response.statusText);
-  } catch (err : unknown) {
+  } catch (err: unknown) {
     return Promise.reject((err as Error).message ?? data);
   }
 }
 
-client.get = function (endpoint: string, customConfig: ClientConfig = {}): Promise<ClientResponse> {
-  return client(endpoint, { ...customConfig, method: 'GET' });
+client.get = function (
+  endpoint: string,
+  customConfig: ClientConfig = {}
+): Promise<ClientResponse> {
+  return client(endpoint, { ...customConfig, method: "GET" });
 };
 
-client.post = function (endpoint: string, body: any, customConfig: ClientConfig = {}): Promise<ClientResponse> {
+client.post = function (
+  endpoint: string,
+  body: any,
+  customConfig: ClientConfig = {}
+): Promise<ClientResponse> {
   return client(endpoint, { ...customConfig, body });
 };
