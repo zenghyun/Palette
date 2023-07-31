@@ -7,7 +7,7 @@ import {
 } from "../../features/notifications/notificationsSlice";
 import { useAppDispatch } from "../../app/store";
 import { useLayoutEffect } from "react";
-import { NotificationType } from "../../type/NotificationsType";
+import { NotificationType } from "../../type/notificationsType";
 import classnames from "classnames";
 
 const NotificationsList = () => {
