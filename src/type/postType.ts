@@ -15,10 +15,10 @@ export type InitialPostType = {
   title: string;
   content: string;
   user: string;
-}
+};
 
 export type PostListsType = {
   posts: Array<PostStateType>;
-  status : string;
-  error : null | string | undefined;
+  status: string;
+  error: null | string | undefined;
 };
