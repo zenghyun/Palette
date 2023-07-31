@@ -1,11 +1,13 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom'
 import { useAppDispatch } from '../../app/store';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { fetchNotifications, selectAllNotifications } from '../../features/notifications/notificationsSlice';
 
 export const Navbar = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const notifications = useSelector(selectAllNotifications);
   const numUnreadNotifications = useMemo(() => {
     return notifications.filter(n => !n.read).length;
@@ -22,7 +24,7 @@ export const Navbar = () => {
   return (
     <nav>
       <section>
-        <h1>🎨 Palette</h1>
+        <h1 className='banner' onClick={() => navigate('/')}>Palette</h1>
 
         <div className="navContent">
           <div className="navLinks">
@@ -31,8 +33,9 @@ export const Navbar = () => {
             <Link to="/users">Paletter</Link>
             <Link to="/notifications">Notifications</Link>
           </div>
-          <button className='button' onClick={fetchNewNotifications}>
-         Notifications {unreadNotificationsBadge}
+          <button className='notifiButton' onClick={fetchNewNotifications}>
+          <span className='notifiLogo'>❤️</span> 
+          {unreadNotificationsBadge}
           </button>
         </div>
       </section>
