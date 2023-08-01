@@ -135,6 +135,8 @@ label {
 
 #postContent {
   margin-bottom: 10px;
+  resize: none;
+  height: 400px;
 }
 
 .saveButton {

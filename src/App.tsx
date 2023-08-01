@@ -5,13 +5,16 @@ import RootLayout from "./components/common/RootLayout";
 import SinglePostPage from "./components/post/SinglePostPage";
 import PostRootLayout from "./components/posts/PostRootLayout";
 import EditPostLayout from "./components/post/EditPostLayout";
-import EditPostForm  from "./components/post/EditPostForm";
+import EditPostForm from "./components/post/EditPostForm";
 import UserRootLayout from "./components/users/UserRootLayout";
 import UsersList from "./components/users/UserList";
 import UserPage from "./components/users/UserPage";
 import NotificationsList from "./components/notifications/NotificationsList";
-import AddPostForm  from "./components/post/AddPostForm";
+import AddPostForm from "./components/post/AddPostForm";
 import { Helmet } from "react-helmet-async";
+import NewsRootLayout from "./components/news/NewsRootLayout";
+import NewsPage from "./components/news/NewsPage";
+import NewsList from "./components/news/NewsList";
 
 const router = createBrowserRouter([
   {
@@ -34,14 +37,14 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path:"editPost",
+        path: "editPost",
         element: <EditPostLayout />,
         children: [
           {
             path: ":postId",
-            element: <EditPostForm />
-          }
-        ]
+            element: <EditPostForm />,
+          },
+        ],
       },
       {
         path: "users",
@@ -50,17 +53,31 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <UsersList />,
-          }, 
+          },
           {
             path: ":userId",
-            element: <UserPage />
-          }
-        ]
+            element: <UserPage />,
+          },
+        ],
       },
       {
         path: "notifications",
-        element: <NotificationsList />
-      }
+        element: <NotificationsList />,
+      },
+      {
+        path: "news",
+        element: <NewsRootLayout />,
+        children: [
+          {
+           index:true,
+            element: <NewsPage />,
+          },
+          {
+            path:":category",
+            element:<NewsList />,
+          }
+        ],
+      },
     ],
   },
 ]);
@@ -68,10 +85,10 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-    <Helmet>
-      <title>Palette</title>
-    </Helmet>
-    <RouterProvider router={router} />
+      <Helmet>
+        <title>Palette</title>
+      </Helmet>
+      <RouterProvider router={router} />
     </>
   );
 }

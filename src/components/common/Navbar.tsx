@@ -38,6 +38,7 @@ export const Navbar = () => {
             <Link to="/">Feed</Link>
             <Link to="/posts">Add Post</Link>
             <Link to="/users">Paletter</Link>
+            <Link to="/news/all">News</Link>
             <Link to="/notifications">Notifications</Link>
           </div>
           <button className="notifiButton" onClick={fetchNewNotifications}>
