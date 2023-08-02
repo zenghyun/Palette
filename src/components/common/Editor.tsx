@@ -66,11 +66,7 @@ const Editor = ({
       });
     }
 
-    // postContent가 설정되어 있는 경우 content를 업데이트하지 않음
-    if (postContent !== undefined && postContent !== content) {
-      setContent(postContent);
-    }
-  }, [onContentChange, postContent, content]);
+  }, [onContentChange]);
 
   const modules = {
     toolbar: {

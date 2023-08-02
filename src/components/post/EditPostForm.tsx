@@ -40,7 +40,7 @@ const EditPostForm = () => {
       <h2>Edit Post</h2>
       <form>
         <Editor
-          title={post.title}
+          title={title}
           postContent={content}
           onTitleChange={onTitleChanged}
           onContentChange={onContentChanged}
