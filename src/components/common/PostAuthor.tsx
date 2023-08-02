@@ -7,7 +7,11 @@ export const PostAuthor = ({ userId }: { userId: string }) => {
     selectUserById(state, userId)
   ) as UserStateType;
 
-  return <span>작성자 : {author ? author.name : "Unknown author"}</span>;
+  return (
+    <span>
+      작성자 : <strong>{author ? author.name : "Unknown author"}</strong>
+    </span>
+  );
 };
 
 export default PostAuthor;

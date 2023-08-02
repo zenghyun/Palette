@@ -11,20 +11,27 @@ import { TimeAgo } from "../common/TimeAgo";
 import { ReactionButtons } from "../common/ReactionButtons";
 import { useAppDispatch } from "../../app/store";
 import { fetchUsers } from "../../features/users/usersSlice";
+import sanitizeHtml from "sanitize-html";
 
 const PostExcerpt = React.memo(({ post }: { post: PostStateType }) => {
+  const sanitizedContent = sanitizeHtml(post.content.substring(0, 100));
   return (
     <article className="post-excerpt">
       <h3>{post.title}</h3>
-      <div>
+      <section className="topSection">
         <PostAuthor userId={post.user} />
         <TimeAgo timestamp={post.date} />
-      </div>
-      <p className="post-content">{post.content.substring(0, 100)}</p>
-      <ReactionButtons post={post} />
-      <Link to={`/posts/${post.id}`} className="button feed-button">
-        View Palette
-      </Link>
+      </section>
+      <section
+        className="middleSection"
+        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+      />
+      <section className="bottomSection">
+        <ReactionButtons post={post} />
+        <Link to={`/posts/${post.id}`} className="button feed-button">
+          View Palette
+        </Link>
+      </section>
     </article>
   );
 });
@@ -76,7 +83,7 @@ const PostsList = () => {
         height={700} // 보여줄 전체 높이
         width={800} // 보여줄 넓이
         itemCount={orderedPosts.length} // post 개수
-        itemSize={240} // 개별적 post의 높이
+        itemSize={270} // 개별적 post의 높이
       >
         {renderItem}
       </FixedSizeList>

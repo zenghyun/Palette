@@ -6,6 +6,7 @@ import { TimeAgo } from "../common/TimeAgo";
 import { selectPostById } from "../../features/posts/postsSlice";
 import { ReactionButtons } from "../common/ReactionButtons";
 import { RootStateType } from "../../app/store";
+import sanitizeHtml from "sanitize-html";
 
 const SinglePostPage = () => {
   const params = useParams();
@@ -21,6 +22,8 @@ const SinglePostPage = () => {
     );
   }
 
+  const sanitizedContent = sanitizeHtml(post.content);
+
   return (
     <section>
       <article className="post">
@@ -29,7 +32,10 @@ const SinglePostPage = () => {
           <PostAuthor userId={post.user} />
           <TimeAgo timestamp={post.date} />
         </div>
-        <p className="post-content">{post.content}</p>
+        <p
+          className="post-content"
+          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+        />
         <ReactionButtons post={post} />
         <Link to={`/editPost/${post.id}`} className="button">
           Edit Post
