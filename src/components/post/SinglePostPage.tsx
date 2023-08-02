@@ -6,7 +6,7 @@ import { TimeAgo } from "../common/TimeAgo";
 import { selectPostById } from "../../features/posts/postsSlice";
 import { ReactionButtons } from "../common/ReactionButtons";
 import { RootStateType } from "../../app/store";
-import sanitizeHtml from "sanitize-html";
+import setSanitize from "../../container/common/setSanitize";
 
 const SinglePostPage = () => {
   const params = useParams();
@@ -22,7 +22,7 @@ const SinglePostPage = () => {
     );
   }
 
-  const sanitizedContent = sanitizeHtml(post.content);
+  const sanitizedContent = setSanitize(post.content);
 
   return (
     <section>

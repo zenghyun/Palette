@@ -11,10 +11,11 @@ import { TimeAgo } from "../common/TimeAgo";
 import { ReactionButtons } from "../common/ReactionButtons";
 import { useAppDispatch } from "../../app/store";
 import { fetchUsers } from "../../features/users/usersSlice";
-import sanitizeHtml from "sanitize-html";
+import setSanitize from "../../container/common/setSanitize";
 
 const PostExcerpt = React.memo(({ post }: { post: PostStateType }) => {
-  const sanitizedContent = sanitizeHtml(post.content.substring(0, 100));
+  const sanitizedContent = setSanitize(`${post.content.substring(0, 100)}`);
+
   return (
     <article className="post-excerpt">
       <h3>{post.title}</h3>
@@ -24,7 +25,7 @@ const PostExcerpt = React.memo(({ post }: { post: PostStateType }) => {
       </section>
       <section
         className="middleSection"
-        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+        dangerouslySetInnerHTML={{ __html: sanitizedContent}}
       />
       <section className="bottomSection">
         <ReactionButtons post={post} />

@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Snow 테마에 대한 CSS 파일을 임포트
 import { styled } from "styled-components";
@@ -68,20 +68,36 @@ const Editor = ({
 
   }, [onContentChange]);
 
-  const modules = {
+  const modules = useMemo(() => ({
     toolbar: {
       container: [
         [{ header: [3, 4, 5, 6, false] }],
         [{ font: [] }],
-        [{ align: [] }],
         ["bold", "italic", "underline", "strike", "blockquote", "code-block"],
         [{ list: "ordered" }, { list: "bullet" }],
         [{ color: [] }, { background: [] }],
         ["link", "image", "video"],
         ["clean"],
       ],
+      formats: [
+        "header",
+        "font",
+        "bold",
+        "italic",
+        "underline",
+        "strike",
+        "blockquote",
+        "code-block",
+        "list",
+        "bullet",
+        "color",
+        "background",
+        "link",
+        "image",
+        "video",
+      ],
     },
-  };
+  }),[]);
 
   return (
     <>
@@ -90,14 +106,16 @@ const Editor = ({
         value={title}
         onChange={onTitleChange}
       />
-      <label htmlFor="postAuthor">Paletter</label>
       {postContent ? (
         ""
-      ) : (
+        ) : (
+          <>
+        <label htmlFor="postAuthor">Paletter</label>
         <Userbox id="postAuthor" value={user} onChange={onAuthorChange}>
           <option value=""></option>
           {usersOptions}
         </Userbox>
+          </>
       )}
       <QuillWrapper>
         {/* 모듈과 포맷을 적절하게 설정하여 ReactQuill 컴포넌트를 사용하세요 */}
