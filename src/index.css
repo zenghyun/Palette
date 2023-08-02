@@ -144,6 +144,10 @@ label {
   width: 200px;
 }
 /* Posts list */
+.post {
+  width: 800px;
+  overflow: hidden;
+}
 
 .post h2 {
   font-size: 2.5rem;
@@ -161,6 +165,21 @@ label {
   height: 800px;
   overflow: hidden auto;
 } */
+
+.post-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-content iframe{
+  width: 600px;
+  height: 400px;
+}
+
+.post-content img {
+  width: 600px;
+  height: 600px;
+}
 
 .posts-list .post-excerpt + .post-excerpt {
   margin-top: 0.5rem;

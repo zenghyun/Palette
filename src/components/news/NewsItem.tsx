@@ -33,7 +33,7 @@ const NewsItemBlock = styled.div`
     margin-top: 3rem;
   }
 `;
-const NewsItem = ({ article }: { article: INewsApiArticle }) => {
+const NewsItem = ({ article } : { article : INewsApiArticle}) => {
   const { title, description, url, urlToImage } = article;
   return (
     <NewsItemBlock>
