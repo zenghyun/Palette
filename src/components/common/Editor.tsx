@@ -3,6 +3,8 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Snow 테마에 대한 CSS 파일을 임포트
 import { styled } from "styled-components";
 import { ChangeEvent } from "react";
+import { storage } from "../../container/common/firebase";
+import { uploadBytes, getDownloadURL, ref } from "firebase/storage";
 
 type EditorProps = {
   title: string;
@@ -13,6 +15,7 @@ type EditorProps = {
   onAuthorChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   usersOptions?: JSX.Element[];
 };
+
 
 const TitleInput = styled.input`
   font-size: 3rem;
@@ -65,39 +68,88 @@ const Editor = ({
         }
       });
     }
-
   }, [onContentChange]);
 
-  const modules = useMemo(() => ({
-    toolbar: {
-      container: [
-        [{ header: [3, 4, 5, 6, false] }],
-        [{ font: [] }],
-        ["bold", "italic", "underline", "strike", "blockquote", "code-block"],
-        [{ list: "ordered" }, { list: "bullet" }],
-        [{ color: [] }, { background: [] }],
-        ["link", "image", "video"],
-        ["clean"],
-      ],
-      formats: [
-        "header",
-        "font",
-        "bold",
-        "italic",
-        "underline",
-        "strike",
-        "blockquote",
-        "code-block",
-        "list",
-        "bullet",
-        "color",
-        "background",
-        "link",
-        "image",
-        "video",
-      ],
-    },
-  }),[]);
+  
+
+  const imageHandler = () => {
+    const input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.setAttribute("accept", "image/*");
+    input.click();
+    input.addEventListener("change", async () => {
+      const editor = quillRef?.current?.getEditor();
+      const file = input?.files?.[0];
+  
+      if (!editor || !file) {
+        // editor가 없거나 파일이 선택되지 않은 경우 처리
+        return;
+      }
+  
+      const range = editor.getSelection(true);
+      if (!range || typeof range.index !== "number") {
+        // range가 유효하지 않은 경우 처리
+        return;
+      }
+  
+      try {
+        // 파일명을 "image/Date.now()"로 저장
+        const storageRef = ref(storage, `image/${Date.now()}`);
+        // Firebase Method : uploadBytes, getDownloadURL
+        const snapshot = await uploadBytes(storageRef, file);
+        // 이미지 URL 에디터에 삽입
+        const url = await getDownloadURL(snapshot.ref);
+        editor.insertEmbed(range.index, "image", url, "user");
+        // URL 삽입 후 커서를 이미지 뒤로 이동
+        const length = editor.getLength() - 1;
+        editor.setSelection(range.index + 1, length, "user");
+      } catch (error) {
+        console.log(error);
+      }
+    });
+  };
+  
+  
+  
+
+
+  const modules = useMemo(
+    () => ({
+      toolbar: {
+        container: [
+          [{ header: [3, 4, 5, 6, false] }],
+          [{ font: [] }],
+          ["bold", "italic", "underline", "strike", "blockquote", "code-block"],
+          [{ list: "ordered" }, { list: "bullet" }],
+          [{ color: [] }, { background: [] }],
+          ["link", "image", "video"],
+          ["clean"],
+        ],
+        handlers: {
+          image: () => imageHandler(),
+        },
+        formats: [
+          "header",
+          "font",
+          "bold",
+          "italic",
+          "underline",
+          "strike",
+          "blockquote",
+          "code-block",
+          "list",
+          "bullet",
+          "color",
+          "background",
+          "link",
+          "image",
+          "video",
+        ],
+      },
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   return (
     <>
@@ -108,22 +160,21 @@ const Editor = ({
       />
       {postContent ? (
         ""
-        ) : (
-          <>
-        <label htmlFor="postAuthor">Paletter</label>
-        <Userbox id="postAuthor" value={user} onChange={onAuthorChange}>
-          <option value=""></option>
-          {usersOptions}
-        </Userbox>
-          </>
+      ) : (
+        <>
+          <label htmlFor="postAuthor">Paletter</label>
+          <Userbox id="postAuthor" value={user} onChange={onAuthorChange}>
+            <option value=""></option>
+            {usersOptions}
+          </Userbox>
+        </>
       )}
       <QuillWrapper>
-        {/* 모듈과 포맷을 적절하게 설정하여 ReactQuill 컴포넌트를 사용하세요 */}
         <ReactQuill
           ref={quillRef}
-          value={postContent ? postContent : content} // 필요에 따라 초기 내용을 여기에 전달할 수 있습니다
+          value={postContent !== undefined ? postContent : content}
           onChange={(value) => {
-            onContentChange(value); // ReactQuill의 onChange 이벤트를 사용하여 내용을 업데이트합니다.
+            onContentChange(value);
           }}
           modules={modules}
         />
