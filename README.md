@@ -5,3 +5,9 @@ sanitize-html은 입력된 HTML을 안전하게 정제하여 웹 애플리케이
 또한, React 컴포넌트에서 sanitize-html을 사용함으로써 사용자 입력이나 외부 데이터를 안전하게 렌더링하는 데 유용합니다. 보안 상태를 최적화하여 애플리케이션에 잠재적인 보안 취약점을 줄이는 데 도움이 됩니다.
 
 이러한 방식으로 sanitize-html을 사용하면 React 애플리케이션의 보안성을 높일 수 있으며, 웹 애플리케이션에 잠재적인 보안 문제를 최소화하는 데 도움이 됩니다.
+
+COR 해결
+https://i-ten.tistory.com/300
+
+Firebase setting
+https://yhuj79.github.io/React/230214/
