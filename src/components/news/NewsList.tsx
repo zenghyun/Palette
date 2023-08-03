@@ -11,6 +11,7 @@ const NewsListBlock = styled.div`
   width: 768px;
   margin: 0 auto;
   margin-top: 2rem;
+  overflow-y: auto;
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1rem;

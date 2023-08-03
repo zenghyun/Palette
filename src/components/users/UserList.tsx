@@ -2,22 +2,176 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectAllUsers } from "../../features/users/usersSlice";
 import SearchUser from "./SearchUser";
+import styled from "styled-components";
+import { FixedSizeList } from "react-window";
+import { CSSProperties, useState } from "react";
+import { selectAllPosts } from "../../features/posts/postsSlice";
+import { PostStateType } from "../../type/postType";
+import { UserStateType } from "../../type/userType";
+// 스타일드 컴포넌트로 UserList 스타일을 정의합니다.
+const UserListBlock = styled.section`
+  background-color: #d2e3fcb9;
+  border: 3px solid black;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 0;
+
+  h2 {
+    padding: 20px;
+    font-size: 2.15rem;
+  }
+
+  ul {
+    width: 100%;
+    padding: 0;
+    overflow: hidden auto;
+  }
+
+  /* 스크롤 가능한 사용자 리스트의 스타일을 정의합니다. */
+  .userList {
+    list-style: none;
+    font-weight: bold;
+    display: flex;
+    font-size: 2rem;
+    height: 200px;
+    align-items: center;
+    position: relative;
+    overflow: hidden auto;
+  }
+
+  .hide {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  /* 사용자 리스트에 그라데이션 효과를 적용합니다. */
+  .userList::before {
+    position: absolute;
+    top: 0;
+    left: -75%;
+    z-index: 2;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+    background: -webkit-linear-gradient(
+      left,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.795) 100%
+    );
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.795) 100%
+    );
+    transform: skewX(-25deg);
+  }
+
+  /* 마우스 오버 시 그라데이션 애니메이션 효과를 적용합니다. */
+  .userList:hover::before {
+    animation: shine 1s;
+  }
+
+  @keyframes shine {
+    100% {
+      left: 125%;
+    }
+  }
+
+  /* 프로필 이미지를 포함하는 박스 스타일을 정의합니다. */
+  .userList .profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 30%;
+    margin-left: 20px;
+    border: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+  }
+
+  .userList span {
+    margin-left: 30px;
+  }
+
+  .userList a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+  }
+
+  .userList a:hover {
+    color: #926bcf;
+  }
+`;
 
 const UsersList = () => {
+  const posts = useSelector(selectAllPosts);
   const users = useSelector(selectAllUsers);
+  const [filteredUsers, setFilteredUsers] = useState(users);
 
-  const renderedUsers = users.map((user) => (
-    <li key={user.id} className="userList" data-name={user.name}>
-      <Link to={`/users/${user.id}`}>{user.name}</Link>
-    </li>
-  ));
+  const handleSearch = (searchWord: string) => {
+    const filtered = users.filter((user) =>
+      user.name.toLowerCase().includes(searchWord.toLowerCase())
+    );
+    setFilteredUsers(filtered);
+  };
+
+  const postsByUser = (user: UserStateType) => {
+    if (user.id) {
+      const postList = posts.filter((post: PostStateType) => post.user === user.id);
+      return postList.length;
+    }
+    return;
+  };
+
+  const renderedUsers = ({
+    index,
+    style,
+  }: {
+    index: number;
+    style: CSSProperties;
+  }) => {
+    const user = filteredUsers[index];
+    return (
+      <li
+        key={user.id}
+        className="userList"
+        data-name={user.name}
+        style={style}
+      >
+        <Link to={`/users/${user.id}`} className="profile">
+          profile
+        </Link>
+        <span>
+          <Link to={`/users/${user.id}`}>{user.name}</Link>
+          <p className="nickName">안녕하세요 {user.name}입니다.</p>
+          {postsByUser(user) ? (
+            <p className="newPost"> 게시물 {postsByUser(user)}개 </p>
+          ) : (
+            <p className="newPost"></p>
+          )}
+        </span>
+      </li>
+    );
+  };
 
   return (
-    <section>
+    <UserListBlock>
       <h2>Paletter</h2>
-      <SearchUser />
-      <ul>{renderedUsers}</ul>
-    </section>
+      <SearchUser onSearch={handleSearch} />
+      <FixedSizeList
+        height={600}
+        width={800}
+        itemCount={filteredUsers.length}
+        itemSize={200}
+      >
+        {renderedUsers}
+      </FixedSizeList>
+    </UserListBlock>
   );
 };
 

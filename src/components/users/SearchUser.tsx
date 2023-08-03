@@ -1,36 +1,54 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
+import { styled } from "styled-components";
 
-const SearchUser = () => {
+const SearchUserBlock = styled.div`
+  display: flex;
+  background-color: #e1e3e752;
+  font-size: 1.25rem;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  
+  label {
+    height: 100%;
+    display: block;
+    margin: 0 10px;
+  }
+  #findUser {
+    width: 100%;
+    border: none;
+    background-color: inherit;
+    font-size: 1.5rem;
+  }  
+  #reset {
+    background-color: #d2e3fcb9;
+    border: none;
+    width: 50px;
+    cursor: pointer;
+  }
+`
+
+const SearchUser = ({ onSearch } : { onSearch: (e: string) => void}) => {
   const [searchWord, setSearchWord] = useState<string>("");
 
-  useEffect(() => {
-    const searchWordText = document.querySelector(
-      "#findUser"
-    ) as HTMLInputElement;
-    const prefectureList = document.querySelectorAll(".userList");
+  const handleSearchInputChange = (event : ChangeEvent<HTMLInputElement>) => {
+    const newSearchWord = event.target.value;
+    setSearchWord(newSearchWord);
+    onSearch(newSearchWord);
+  };
 
-    searchWordText.addEventListener("keyup", () => {
-      setSearchWord(searchWordText.value);
-    });
-
-    prefectureList.forEach((element) => {
-      const prefectureName = element.getAttribute("data-name") || "";
-
-      if (!searchWord || searchWord === "") {
-        element.classList.remove("hide");
-      } else {
-        const isMatch = prefectureName
-          .toLowerCase()
-          .includes(searchWord.toLowerCase());
-        element.classList.toggle("hide", !isMatch);
-      }
-    });
-  }, [searchWord]);
+  const InputReset = () => {
+    setSearchWord("");
+    onSearch("");
+  };
 
   return (
     <>
-      <label htmlFor="findUser"> 유저 검색 </label>
-      <input type="text" id="findUser" />
+    <SearchUserBlock>
+    <label htmlFor="findUser"> 🔍 </label>
+      <input type="text" id="findUser" value={searchWord} onChange={handleSearchInputChange} placeholder=" 검색" />
+      <button type="button" id="reset" onClick={InputReset}>취소</button>
+    </SearchUserBlock>
     </>
   );
 };
