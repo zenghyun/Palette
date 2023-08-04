@@ -4,6 +4,7 @@ import axios from "axios";
 import usePromise from "./usePromise";
 import { useParams } from "react-router-dom";
 import { Spinner } from "../common/Spinner";
+import { FixedSizeList } from "react-window";
 
 const NewsListBlock = styled.div`
   box-sizing: border-box;
@@ -11,7 +12,7 @@ const NewsListBlock = styled.div`
   width: 768px;
   margin: 0 auto;
   margin-top: 2rem;
-  overflow-y: auto;
+  overflow: hidden auto;
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1rem;
@@ -48,16 +49,26 @@ const NewsList = () => {
     return <NewsListBlock>에러 발생!</NewsListBlock>;
   }
 
-  //   response 값이 유효할 때
+  // response 값이 유효할 때
   const articles = response.data.articles;
   if (!articles || articles.length === 0) {
     return <NewsListBlock>뉴스가 없습니다.</NewsListBlock>;
   }
+
   return (
     <NewsListBlock>
-      {articles.map((article) => (
-        <NewsItem key={article.url} article={article} />
-      ))}
+      <FixedSizeList
+        height={680}
+        width={800}
+        itemSize={210} // 각 항목의 높이를 설정합니다.
+        itemCount={articles.length}
+      >
+        {({ index, style }) => (
+          <div style={style}>
+            <NewsItem article={articles[index]} />
+          </div>
+        )}
+      </FixedSizeList>
     </NewsListBlock>
   );
 };

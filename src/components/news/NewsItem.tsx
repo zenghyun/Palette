@@ -3,7 +3,6 @@ import { INewsApiArticle } from "../../type/apiTypes";
 
 const NewsItemBlock = styled.div`
   display: flex;
-
   .thumbnail {
     margin-right: 1rem;
     img {
@@ -17,6 +16,8 @@ const NewsItemBlock = styled.div`
   .contents {
     h2 {
       margin: 0;
+      font-size: 1.4rem;
+      width: 560px;
       a {
         color: black;
       }
@@ -26,6 +27,7 @@ const NewsItemBlock = styled.div`
       line-height: 1.5;
       margin-top: 0.5rem;
       white-space: normal;
+      width: 580px;
     }
   }
 
