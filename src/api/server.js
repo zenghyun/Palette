@@ -10,7 +10,7 @@ import { parseISO } from "date-fns";
 
 faker.locale = "ko";
 
-const NUM_USERS = 5;
+const NUM_USERS = 20;
 // const POSTS_PER_USER = line 194
 const RECENT_NOTIFICATIONS_DAYS = 7;
 
