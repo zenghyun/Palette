@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import PostsList from "./components/posts/PostsList";
+import Home from "./components/home/Home";
 import RootLayout from "./components/common/RootLayout";
 import SinglePostPage from "./components/post/SinglePostPage";
-import PostRootLayout from "./components/posts/PostRootLayout";
+import PostRootLayout from "./components/post/PostRootLayout";
 import EditPostLayout from "./components/post/EditPostLayout";
 import EditPostForm from "./components/post/EditPostForm";
 import UserRootLayout from "./components/users/UserRootLayout";
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <PostsList /> },
+      { index: true, element: <Home /> },
       {
         path: "posts",
         element: <PostRootLayout />,

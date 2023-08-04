@@ -1,13 +1,48 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "./Navbar";
+import { styled } from "styled-components";
+
+const RootBlock = styled.main`
+  
+section {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
+}
+
+.button {
+  display: inline-block;
+  background-color: rgb(183, 137, 235);
+  color: white;
+    color: rgb(30, 30, 30);
+  border-radius: 4px;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+
+}
+
+.button:disabled,
+.button:disabled:hover {
+  opacity: 0.5;
+}
+
+.button:hover {
+  background-color: rgba(183, 137, 235, 0.527);
+}
+`;
+
 
 const RootLayout = () => {
   return (
     <>
+      <RootBlock>
       <Navbar />
-      <main>
         <Outlet />
-      </main>
+      </RootBlock>
     </>
   );
 };

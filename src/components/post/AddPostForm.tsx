@@ -8,6 +8,17 @@ import { selectAllUsers } from "../../features/users/usersSlice";
 import { useNavigate } from "react-router-dom";
 import { fetchNotifications } from "../../features/notifications/notificationsSlice";
 import Editor from "../common/Editor";
+import { styled } from "styled-components";
+
+const AddPostFormBlock = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const SaveButton = styled.button`
+  margin-top: 10px;
+  width: 200px;
+`;
 
 const AddPostForm = () => {
   const [title, setTitle] = useState("");
@@ -75,7 +86,7 @@ const AddPostForm = () => {
   return (
     <section>
       <h2>Add a New Post</h2>
-      <form>
+      <AddPostFormBlock>
         <Editor
           title={title}
           onTitleChange={onTitleChanged}
@@ -84,15 +95,15 @@ const AddPostForm = () => {
           onAuthorChange={onAuthorChanged}
           usersOptions={usersOptions}
         />
-        <button
+        <SaveButton
+          className="button"
           type="button"
-          className="button saveButton"
           onClick={onSavePostClicked}
           disabled={!canSave}
         >
           Save Post
-        </button>
-      </form>
+        </SaveButton>
+      </AddPostFormBlock>
     </section>
   );
 };

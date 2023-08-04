@@ -6,6 +6,23 @@ import { selectPostsByUser } from "../../features/posts/postsSlice";
 import { useParams } from "react-router-dom";
 import { RootStateType } from "../../app/store";
 import { PostStateType } from "../../type/postType";
+import { styled } from "styled-components";
+
+const UserPageBlock = styled.section`
+  .postList {
+  list-style: none;
+  font-size: 1.5rem;
+}
+.postList a {
+  text-decoration: none;
+  color: black;
+}
+
+.postList a:hover {
+  color: #926bcf;
+}
+
+`
 
 const UserPage = () => {
   const param = useParams();
@@ -25,11 +42,11 @@ const UserPage = () => {
   ));
 
   return (
-    <section>
+    <UserPageBlock>
       <h2>{user.name} 님의 palette </h2>
       <h3>🎨 post: {postTitles.length}</h3>
       <ul>{postTitles}</ul>
-    </section>
+    </UserPageBlock>
   );
 };
 

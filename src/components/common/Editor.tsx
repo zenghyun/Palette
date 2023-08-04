@@ -16,7 +16,6 @@ type EditorProps = {
   usersOptions?: JSX.Element[];
 };
 
-
 const TitleInput = styled.input`
   font-size: 3rem;
   outline: none;
@@ -27,18 +26,32 @@ const TitleInput = styled.input`
   width: 100%;
 `;
 
-const Userbox = styled.select`
-  font-size: 1.125rem;
-  margin-bottom: 2rem;
+const Userbox = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  select {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const QuillWrapper = styled.div`
   /* 최소 크기 지정 및 padding 제거 */
+  .ql-container {
+    overflow: hidden auto;
+  }
   .ql-editor {
     padding: 0;
-    min-height: 320px;
+    height: 350px;
     font-size: 1.125rem;
     line-height: 1.5;
+    overflow-x: hidden;
   }
   .ql-editor .ql-blank::before {
     left: 0px;
@@ -70,8 +83,6 @@ const Editor = ({
     }
   }, [onContentChange]);
 
-  
-
   const imageHandler = () => {
     const input = document.createElement("input");
     input.setAttribute("type", "file");
@@ -80,18 +91,18 @@ const Editor = ({
     input.addEventListener("change", async () => {
       const editor = quillRef?.current?.getEditor();
       const file = input?.files?.[0];
-  
+
       if (!editor || !file) {
         // editor가 없거나 파일이 선택되지 않은 경우 처리
         return;
       }
-  
+
       const range = editor.getSelection(true);
       if (!range || typeof range.index !== "number") {
         // range가 유효하지 않은 경우 처리
         return;
       }
-  
+
       try {
         // 파일명을 "image/Date.now()"로 저장
         const storageRef = ref(storage, `image/${Date.now()}`);
@@ -108,10 +119,6 @@ const Editor = ({
       }
     });
   };
-  
-  
-  
-
 
   const modules = useMemo(
     () => ({
@@ -161,13 +168,13 @@ const Editor = ({
       {postContent ? (
         ""
       ) : (
-        <>
+        <Userbox>
           <label htmlFor="postAuthor">Paletter</label>
-          <Userbox id="postAuthor" value={user} onChange={onAuthorChange}>
+          <select id="postAuthor" value={user} onChange={onAuthorChange}>
             <option value=""></option>
             {usersOptions}
-          </Userbox>
-        </>
+          </select>
+        </Userbox>
       )}
       <QuillWrapper>
         <ReactQuill

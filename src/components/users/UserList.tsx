@@ -8,6 +8,7 @@ import { CSSProperties, useState } from "react";
 import { selectAllPosts } from "../../features/posts/postsSlice";
 import { PostStateType } from "../../type/postType";
 import { UserStateType } from "../../type/userType";
+
 // 스타일드 컴포넌트로 UserList 스타일을 정의합니다.
 const UserListBlock = styled.section`
   background-color: #d2e3fcb9;
@@ -27,14 +28,19 @@ const UserListBlock = styled.section`
     overflow: hidden auto;
   }
 
+  p {
+    font-size: 1.1rem;
+  }
+
   /* 스크롤 가능한 사용자 리스트의 스타일을 정의합니다. */
   .userList {
-    list-style: none;
     font-weight: bold;
     display: flex;
     font-size: 2rem;
     height: 200px;
     align-items: center;
+    text-decoration: none;
+    color: black;
     position: relative;
     overflow: hidden auto;
   }
@@ -65,14 +71,20 @@ const UserListBlock = styled.section`
       rgba(255, 255, 255, 0) 0%,
       rgba(255, 255, 255, 0.795) 100%
     );
+    -webkit-transform: skewX(-25deg);
     transform: skewX(-25deg);
   }
 
   /* 마우스 오버 시 그라데이션 애니메이션 효과를 적용합니다. */
   .userList:hover::before {
+    -webkit-animation: shine 0.75s;
     animation: shine 1s;
   }
 
+  @-webkit-keyframes shine {
+100% {
+left: 125%;
+}}
   @keyframes shine {
     100% {
       left: 125%;
@@ -96,14 +108,12 @@ const UserListBlock = styled.section`
     margin-left: 30px;
   }
 
-  .userList a {
-    text-decoration: none;
-    color: black;
-    display: flex;
-    align-items: center;
+  .userList .name {
+    font-size: 2rem;
+    margin: 0;
   }
 
-  .userList a:hover {
+  .userList:hover .name{
     color: #926bcf;
   }
 `;
@@ -113,16 +123,30 @@ const UsersList = () => {
   const users = useSelector(selectAllUsers);
   const [filteredUsers, setFilteredUsers] = useState(users);
 
+  let timeoutId: NodeJS.Timeout;
+
   const handleSearch = (searchWord: string) => {
-    const filtered = users.filter((user) =>
-      user.name.toLowerCase().includes(searchWord.toLowerCase())
-    );
-    setFilteredUsers(filtered);
+    // 딜레이 시간 (밀리초 단위)
+    const delayTime = 500; // 예시로 0.5초(500밀리초) 딜레이를 줍니다.
+
+    // 이전에 스케줄링된 딜레이 작업을 취소합니다.
+    clearTimeout(timeoutId);
+
+    // 새로운 딜레이 작업을 스케줄링합니다.
+    timeoutId = setTimeout(() => {
+      const filtered = users.filter((user) =>
+        user.name.toLowerCase().includes(searchWord.toLowerCase())
+      );
+
+      setFilteredUsers(filtered);
+    }, delayTime);
   };
 
   const postsByUser = (user: UserStateType) => {
     if (user.id) {
-      const postList = posts.filter((post: PostStateType) => post.user === user.id);
+      const postList = posts.filter(
+        (post: PostStateType) => post.user === user.id
+      );
       return postList.length;
     }
     return;
@@ -137,25 +161,26 @@ const UsersList = () => {
   }) => {
     const user = filteredUsers[index];
     return (
-      <li
+      <Link
         key={user.id}
         className="userList"
         data-name={user.name}
         style={style}
+        to={`/users/${user.id}`} 
       >
-        <Link to={`/users/${user.id}`} className="profile">
+        <div className="profile">
           profile
-        </Link>
+        </div>
         <span>
-          <Link to={`/users/${user.id}`}>{user.name}</Link>
-          <p className="nickName">안녕하세요 {user.name}입니다.</p>
+          <p className="name">{user.name}</p>
+          <p className="introduce">안녕하세요 {user.name}입니다.</p>
           {postsByUser(user) ? (
             <p className="newPost"> 게시물 {postsByUser(user)}개 </p>
           ) : (
             <p className="newPost"></p>
           )}
         </span>
-      </li>
+      </Link>
     );
   };
 
@@ -164,7 +189,7 @@ const UsersList = () => {
       <h2>Paletter</h2>
       <SearchUser onSearch={handleSearch} />
       <FixedSizeList
-        height={600}
+        height={580}
         width={800}
         itemCount={filteredUsers.length}
         itemSize={200}

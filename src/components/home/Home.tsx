@@ -1,43 +1,15 @@
-import React, { CSSProperties, useEffect } from "react";
+import { CSSProperties, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { FixedSizeList } from "react-window";
 import { selectAllPosts, fetchPosts } from "../../features/posts/postsSlice";
 import { PostStateType } from "../../type/postType";
 import { RootStateType } from "../../app/store";
 import { Spinner } from "../common/Spinner";
-import PostAuthor from "../common/PostAuthor";
-import { TimeAgo } from "../common/TimeAgo";
-import { ReactionButtons } from "../common/ReactionButtons";
 import { useAppDispatch } from "../../app/store";
 import { fetchUsers } from "../../features/users/usersSlice";
-import setSanitize from "../../container/common/setSanitize";
+import PostExcerpt from "./PostExcerpt";
 
-const PostExcerpt = React.memo(({ post }: { post: PostStateType }) => {
-  const sanitizedContent = setSanitize(`${post.content.substring(0, 100)}`);
-
-  return (
-    <article className="post-excerpt">
-      <h3>{post.title}</h3>
-      <section className="topSection">
-        <PostAuthor userId={post.user} />
-        <TimeAgo timestamp={post.date} />
-      </section>
-      <section
-        className="middleSection"
-        dangerouslySetInnerHTML={{ __html: sanitizedContent}}
-      />
-      <section className="bottomSection">
-        <ReactionButtons post={post} />
-        <Link to={`/posts/${post.id}`} className="button feed-button">
-          View Palette
-        </Link>
-      </section>
-    </article>
-  );
-});
-
-const PostsList = () => {
+const Home = () => {
   const dispatch = useAppDispatch();
   const posts = useSelector(selectAllPosts);
   const postStatus = useSelector((state: RootStateType) => state.posts.status);
@@ -101,4 +73,4 @@ const PostsList = () => {
   );
 };
 
-export default PostsList;
+export default Home;
