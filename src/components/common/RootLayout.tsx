@@ -4,6 +4,9 @@ import NavContainer from "../../container/common/NavContainer";
 
 const RootBlock = styled.main`
   font-family: "Gowun Batang", serif;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
   section {
     max-width: 800px;
     margin-left: auto;

@@ -27,7 +27,7 @@ const HomeContainer = () => {
   let content;
 
   if (postStatus === "loading") {
-    content = <Spinner text="Loading..." />;
+    content = <Spinner />;
   } else if (postStatus === "succeeded") {
     // Sort posts in reverse chronological order by dateTime string
     const orderedPosts = posts
@@ -55,7 +55,7 @@ const HomeContainer = () => {
 
     content = (
       <FixedSizeList
-        height={700} // 보여줄 전체 높이
+        height={1000} // 보여줄 전체 높이
         width={800} // 보여줄 넓이
         itemCount={orderedPosts.length} // post 개수
         itemSize={270} // 개별적 post의 높이
