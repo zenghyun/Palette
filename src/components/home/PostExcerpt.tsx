@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { TimeAgo } from "../common/TimeAgo";
-import PostAuthor from "../common/PostAuthor";
-import { ReactionButtons } from "../common/ReactionButtons";
-import setSanitize from "../../container/common/setSanitize";
+import TimeAgo from "../common/TimeAgo";
+import ReactionButtonContainer from "../../container/common/ReactionButtonContainer";
+import setSanitize from "../../container/post/setSanitize";
 import { PostStateType } from "../../type/postType";
 import { styled } from "styled-components";
+import PostAuthorContainer from "../../container/common/PostAuthorContainer";
 
 const PostExcerptBlock = styled.article`
   padding: 0.25rem 0.25rem;
@@ -30,13 +30,13 @@ const PostExcerptBlock = styled.article`
 `;
 
 const PostExcerpt = React.memo(({ post }: { post: PostStateType }) => {
-  const sanitizedContent = setSanitize(`${post.content.substring(0, 100)}`);
+  const sanitizedContent = setSanitize(`${post.content.substring(0, 100)}...`);
 
   return (
     <PostExcerptBlock className="post-excerpt">
       <h3>{post.title}</h3>
       <section className="topSection">
-        <PostAuthor userId={post.user} />
+        <PostAuthorContainer userId={post.user} />
         <TimeAgo timestamp={post.date} />
       </section>
       <section
@@ -44,7 +44,7 @@ const PostExcerpt = React.memo(({ post }: { post: PostStateType }) => {
         dangerouslySetInnerHTML={{ __html: sanitizedContent }}
       />
       <section className="bottomSection">
-        <ReactionButtons post={post} />
+        <ReactionButtonContainer post={post} />
         <Link to={`/posts/${post.id}`} className="button feed-button">
           View Palette
         </Link>

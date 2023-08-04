@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ResponseData } from "../../type/apiTypes";
+import { ResponseData } from "../../type/apiType";
 
 type PromiseCreatorType = () => Promise<ResponseData>;
 type DependencyType = string | undefined;

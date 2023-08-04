@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice, nanoid, createAsyncThunk, createSelector} from "@reduxjs/toolkit";
-import { client } from "../../api/client";
-import { RootStateType } from "../../app/store";
-import { PostListsType, PostStateType,  } from "../../type/postType";
+import { client } from "../api/client";
+import { RootStateType } from "../app/store";
+import { PostListsType, PostStateType,  } from "../type/postType";
 
 const initialState: PostListsType = {
   posts: [],

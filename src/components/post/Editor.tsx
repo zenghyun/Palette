@@ -2,19 +2,11 @@ import { useRef, useEffect, useState, useMemo } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Snow 테마에 대한 CSS 파일을 임포트
 import { styled } from "styled-components";
-import { ChangeEvent } from "react";
-import { storage } from "../../container/common/firebase";
+import { PostFormType } from "../../type/postType";
+import { storage } from "../../api/firebase";
 import { uploadBytes, getDownloadURL, ref } from "firebase/storage";
 
-type EditorProps = {
-  title: string;
-  onTitleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  postContent?: string;
-  onContentChange: (content: string) => void;
-  user?: string;
-  onAuthorChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
-  usersOptions?: JSX.Element[];
-};
+
 
 const TitleInput = styled.input`
   font-size: 3rem;
@@ -60,13 +52,13 @@ const QuillWrapper = styled.div`
 
 const Editor = ({
   title,
-  onTitleChange,
-  onContentChange,
+  onTitleChanged,
+  onContentChanged,
   postContent,
   user,
-  onAuthorChange,
+  onAuthorChanged,
   usersOptions,
-}: EditorProps) => {
+}: PostFormType) => {
   const [content, setContent] = useState<string>("");
   const quillRef = useRef<ReactQuill>(null); // ReactQuill 컴포넌트에 대한 Ref
 
@@ -76,12 +68,12 @@ const Editor = ({
 
       quill.on("text-change", (_delta, _oldDelta, source) => {
         if (source === "user") {
-          onContentChange(quill.root.innerHTML);
+          onContentChanged(quill.root.innerHTML);
           setContent(quill.root.innerHTML);
         }
       });
     }
-  }, [onContentChange]);
+  }, [onContentChanged]);
 
   const imageHandler = () => {
     const input = document.createElement("input");
@@ -163,14 +155,14 @@ const Editor = ({
       <TitleInput
         placeholder="Please enter the Title"
         value={title}
-        onChange={onTitleChange}
+        onChange={onTitleChanged}
       />
       {postContent ? (
         ""
       ) : (
         <Userbox>
           <label htmlFor="postAuthor">Paletter</label>
-          <select id="postAuthor" value={user} onChange={onAuthorChange}>
+          <select id="postAuthor" value={user} onChange={onAuthorChanged}>
             <option value=""></option>
             {usersOptions}
           </select>
@@ -181,7 +173,7 @@ const Editor = ({
           ref={quillRef}
           value={postContent !== undefined ? postContent : content}
           onChange={(value) => {
-            onContentChange(value);
+            onContentChanged(value);
           }}
           modules={modules}
         />

@@ -1,9 +1,9 @@
-import NewsList from "./NewsList";
+import NewsListContainer from "../../container/news/NewsListContainer";
 
 const NewsPage = () => {
   return (
     <>
-      <NewsList />
+      <NewsListContainer />
     </>
   );
 };

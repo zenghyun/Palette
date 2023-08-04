@@ -1,12 +1,6 @@
-import { useSelector } from "react-redux";
-import { UserListType, UserStateType } from "../../type/userType";
-import { selectUserById } from "../../features/users/usersSlice";
+import { UserStateType } from "../../type/userType";
 
-export const PostAuthor = ({ userId }: { userId: string }) => {
-  const author = useSelector((state: UserListType) =>
-    selectUserById(state, userId)
-  ) as UserStateType;
-
+const PostAuthor = ({ author }: { author: UserStateType }) => {
   return (
     <span>
       작성자 : <strong>{author ? author.name : "Unknown author"}</strong>

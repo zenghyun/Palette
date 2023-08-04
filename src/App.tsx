@@ -1,38 +1,39 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
-import Home from "./components/home/Home";
 import RootLayout from "./components/common/RootLayout";
-import SinglePostPage from "./components/post/SinglePostPage";
 import PostRootLayout from "./components/post/PostRootLayout";
 import EditPostLayout from "./components/post/EditPostLayout";
-import EditPostForm from "./components/post/EditPostForm";
 import UserRootLayout from "./components/users/UserRootLayout";
-import UsersList from "./components/users/UserList";
-import UserPage from "./components/users/UserPage";
-import NotificationsList from "./components/notifications/NotificationsList";
-import AddPostForm from "./components/post/AddPostForm";
-import { Helmet } from "react-helmet-async";
+import NotificationsRootLayout from "./components/notifications/NotificationsRootLayout";
+import SinglePostPageContainer from "./container/post/SinglePostPageContainer";
+import UsersListContainer from "./container/users/UsersListContainer";
+import UserPageContainer from "./container/users/UserPageContainer";
 import NewsRootLayout from "./components/news/NewsRootLayout";
 import NewsPage from "./components/news/NewsPage";
-import NewsList from "./components/news/NewsList";
+import HomeContainer from "./container/home/HomeContainer";
+import NewsListContainer from "./container/news/NewsListContainer";
+import NotificationsListContainer from "./container/notifications/NotificationsListContainer";
+import AddPostFormContainer from "./container/post/AddPostFormContainer";
+import EditPostFormContainer from "./container/post/EditPostFormContainer";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <HomeContainer /> },
       {
         path: "posts",
         element: <PostRootLayout />,
         children: [
           {
             index: true,
-            element: <AddPostForm />,
+            element: <AddPostFormContainer />,
           },
           {
             path: ":postId",
-            element: <SinglePostPage />,
+            element: <SinglePostPageContainer />,
           },
         ],
       },
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: ":postId",
-            element: <EditPostForm />,
+            element: <EditPostFormContainer />,
           },
         ],
       },
@@ -52,30 +53,36 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <UsersList />,
+            element: <UsersListContainer />,
           },
           {
             path: ":userId",
-            element: <UserPage />,
+            element: <UserPageContainer />,
           },
         ],
       },
       {
         path: "notifications",
-        element: <NotificationsList />,
+        element: <NotificationsRootLayout />,
+        children: [
+          {
+            index: true,
+            element: <NotificationsListContainer />,
+          },
+        ],
       },
       {
         path: "news",
         element: <NewsRootLayout />,
         children: [
           {
-           index:true,
+            index: true,
             element: <NewsPage />,
           },
           {
-            path:":category",
-            element:<NewsList />,
-          }
+            path: ":category",
+            element: <NewsListContainer />,
+          },
         ],
       },
     ],

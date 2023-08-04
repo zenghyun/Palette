@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import { Navbar } from "./Navbar";
 import { styled } from "styled-components";
+import NavContainer from "../../container/common/NavContainer";
 
 const RootBlock = styled.main`
   font-family: "Gowun Batang", serif;
@@ -38,7 +38,7 @@ const RootLayout = () => {
   return (
     <>
       <RootBlock>
-        <Navbar />
+        <NavContainer />
         <Outlet />
       </RootBlock>
     </>

@@ -1,13 +1,9 @@
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import PostAuthor from "../common/PostAuthor";
-import { TimeAgo } from "../common/TimeAgo";
-import { selectPostById } from "../../features/posts/postsSlice";
-import { ReactionButtons } from "../common/ReactionButtons";
-import { RootStateType } from "../../app/store";
-import setSanitize from "../../container/common/setSanitize";
+import TimeAgo from "../common/TimeAgo";
+import ReactionButtonContainer from "../../container/common/ReactionButtonContainer";
 import { styled } from "styled-components";
+import PostAuthorContainer from "../../container/common/PostAuthorContainer";
+import { PostStateType } from "../../type/postType";
 
 const SinglePostPageBlock = styled.article`
   width: 800px;
@@ -56,35 +52,26 @@ const SinglePostPageBlock = styled.article`
   }
 `;
 
-const SinglePostPage = () => {
-  const params = useParams();
-  const post = useSelector((state: RootStateType) =>
-    selectPostById(state, params.postId)
-  );
-
-  if (!post) {
-    return (
-      <section>
-        <h2>Page not found!</h2>
-      </section>
-    );
-  }
-
-  const sanitizedContent = setSanitize(post.content);
-
+const SinglePostPage = ({
+  post,
+  sanitizedContent,
+}: {
+  post: PostStateType;
+  sanitizedContent: string;
+}) => {
   return (
     <section>
       <SinglePostPageBlock className="post">
         <h2>{post.title}</h2>
         <div>
-          <PostAuthor userId={post.user} />
+          <PostAuthorContainer userId={post.user} />
           <TimeAgo timestamp={post.date} />
         </div>
         <p
           className="post-content"
           dangerouslySetInnerHTML={{ __html: sanitizedContent }}
         />
-        <ReactionButtons post={post} />
+        <ReactionButtonContainer post={post} />
         <Link to={`/editPost/${post.id}`} className="button">
           Edit Post
         </Link>

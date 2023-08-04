@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { INewsApiArticle } from "../../type/apiTypes";
+import { INewsApiArticle } from "../../type/apiType";
 
 const NewsItemBlock = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ const NewsItemBlock = styled.div`
     margin-top: 3rem;
   }
 `;
-const NewsItem = ({ article } : { article : INewsApiArticle}) => {
+const NewsItem = ({ article }: { article: INewsApiArticle }) => {
   const { title, description, url, urlToImage } = article;
   return (
     <NewsItemBlock>

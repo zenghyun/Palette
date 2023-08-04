@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import postsReducer from "../features/posts/postsSlice";
-import usersReducer from "../features/users/usersSlice";
+import postsReducer from "../features/postsSlice";
+import usersReducer from "../features/usersSlice";
 import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import sessionStorage from "redux-persist/es/storage/session";
-import notificationReducer from "../features/notifications/notificationsSlice";
+import notificationReducer from "../features/notificationsSlice";
 import { PostListsType } from "../type/postType";
 import { UserListType } from "../type/userType";
 import { NotificationListType } from "../type/notificationsType";
