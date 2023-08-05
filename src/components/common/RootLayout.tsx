@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 import NavContainer from "../../container/common/NavContainer";
 
 const RootBlock = styled.main`
-  font-family: "Gowun Batang", serif;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 6fr;
