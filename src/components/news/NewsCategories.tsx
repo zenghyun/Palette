@@ -34,22 +34,27 @@ const categories = [
 
 const CategoriesBlock = styled.div`
   display: flex;
-  padding: 1rem;
-  width: 768px;
+  width: 800px;
   margin: 0 auto;
+  height: min-content;
+  padding: 1rem;
+
   @media screen and (max-width: 768px) {
     width: 100%;
-    overflow-x: auto;
+    overflow-x: hidden;
   }
 `;
 
 const Category = styled(NavLink)`
   font-size: 1.125rem;
+  width: 100%;
   cursor: pointer;
   white-space: pre;
   text-decoration: none;
   color: inherit;
   padding-bottom: 0.25rem;
+  display: flex;
+  justify-content: center;
 
   &:hover {
     color: #495057;
@@ -57,7 +62,6 @@ const Category = styled(NavLink)`
 
   &.active {
     font-weight: 600;
-    border-bottom: 2px solid #22b8cf;
     color: #22b8cf;
     &:hover {
       color: #3bc9db;
