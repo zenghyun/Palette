@@ -6,9 +6,8 @@ import { PostFormType } from "../../type/postType";
 import { storage } from "../../api/firebase";
 import { uploadBytes, getDownloadURL, ref } from "firebase/storage";
 
-
-
 const TitleInput = styled.input`
+  font-family: "Gowun Batang", serif;
   font-size: 3rem;
   outline: none;
   padding-bottom: 0.5rem;
@@ -27,9 +26,12 @@ const Userbox = styled.div`
     font-weight: bold;
     margin-bottom: 10px;
   }
-  select {
-    font-size: 1.125rem;
+  #postAuthor {
+    font-family: "Gowun Batang", serif;
+    font-size: 1.5rem;
     margin-bottom: 2rem;
+  }
+  #postAuthor option {
   }
 `;
 
@@ -39,8 +41,9 @@ const QuillWrapper = styled.div`
     overflow: hidden auto;
   }
   .ql-editor {
+    font-family: "Gowun Batang", serif;
     padding: 0;
-    height: 350px;
+    height: 450px;
     font-size: 1.125rem;
     line-height: 1.5;
     overflow-x: hidden;

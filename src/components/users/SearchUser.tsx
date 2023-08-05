@@ -6,7 +6,6 @@ const SearchUserBlock = styled.div`
   background-color: #e1e3e752;
   font-size: 1.25rem;
   width: 100%;
-  height: 100%;
   border-radius: 20px;
 
   label {
@@ -15,12 +14,15 @@ const SearchUserBlock = styled.div`
     margin: 0 10px;
   }
   #findUser {
+    font-family: "Gowun Batang", serif;
     width: 100%;
     border: none;
     background-color: inherit;
     font-size: 1.5rem;
   }
   #reset {
+    font-family: "Gowun Batang", serif;
+    font-weight: bold;
     background-color: #d2e3fcb9;
     border: none;
     width: 50px;
