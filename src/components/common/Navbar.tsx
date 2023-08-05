@@ -3,6 +3,11 @@ import { styled } from "styled-components";
 
 const NavbarBlock = styled.nav`
   width: 350px;
+  height: 100vh;
+  display: flex;
+  padding: 0;
+  background: var(--redux-color);
+
   .banner {
     cursor: pointer;
     margin: 30px;
@@ -16,10 +21,6 @@ const NavbarBlock = styled.nav`
   .notifiButton .notifiLogo {
     font-size: 24px;
   }
-
-  display: flex;
-  padding: 0;
-  background: var(--redux-color);
 
   & section {
     width: 100%;
@@ -44,13 +45,10 @@ const NavbarBlock = styled.nav`
     background: inherit;
   }
 
-  & a:first-of-type {
-    margin-left: -1.5rem;
-  }
-
   & a:hover {
-    color: white;
-    background: #926bcf;
+    background-color: #926bcf;
+    scale: 1.1;
+    transition: all 0.5s;
   }
 
   .navContent {
@@ -68,7 +66,7 @@ const NavbarBlock = styled.nav`
     margin-left: 3px;
     font-size: 1.25rem;
     display: block;
-    height: 100px;
+    line-height: 40px;
   }
 
   .navLinks a .badge {
@@ -76,22 +74,6 @@ const NavbarBlock = styled.nav`
     position: relative;
     color: white;
   }
-
-  .badge {
-    display: inline-block;
-    padding: 0.25em 0.4em;
-    margin-left: 1rem;
-    font-size: 110%;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0.25rem;
-    color: #212529;
-    background-color: inherit;
-  }
- 
 `;
 
 const Navbar = ({
@@ -109,12 +91,12 @@ const Navbar = ({
         </h1>
         <div className="navContent">
           <div className="navLinks">
-            <Link to="/">Feed</Link>
-            <Link to="/posts">Add Post</Link>
-            <Link to="/users">Paletter</Link>
-            <Link to="/news/all">News</Link>
-            <Link to="/notifications">Notifications {badge}</Link>
-          </div> 
+            <Link to="/">📌 Feed</Link>
+            <Link to="/posts">📚 Add Post</Link>
+            <Link to="/users">🎨 Paletter</Link>
+            <Link to="/news/all">📰 News</Link>
+            <Link to="/notifications">💜 Notifications {badge}</Link>
+          </div>
         </div>
       </section>
     </NavbarBlock>
