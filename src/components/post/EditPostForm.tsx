@@ -1,5 +1,8 @@
 import { PostFormType } from "../../type/postType";
+import { SaveButton } from "./AddPostForm";
 import Editor from "./Editor";
+
+
 const EditPostForm = ({
   title,
   content,
@@ -18,13 +21,13 @@ const EditPostForm = ({
           onContentChanged={onContentChanged}
         />
       </form>
-      <button
+      <SaveButton
         type="button"
         className="button saveButton"
         onClick={onSavePostClicked}
       >
         Posting
-      </button>
+      </SaveButton>
     </section>
   );
 };

@@ -7,7 +7,8 @@ const AddPostFormBlock = styled.form`
   flex-direction: column;
 `;
 
-const SaveButton = styled.button`
+export const SaveButton = styled.button`
+  font-family: "Gowun Batang", serif;
   margin-top: 10px;
   width: 200px;
 `;
