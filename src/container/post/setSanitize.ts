@@ -20,6 +20,7 @@ const setSanitize = (post: string) => {
     "p",
     "br",
     "u",
+    "input"
   ];
   const allowedAttributes = {
     img: ["src"],
@@ -35,6 +36,7 @@ const setSanitize = (post: string) => {
     li: ["style", "color", "background-color"],
     ul: ["style", "color", "background-color"],
     p: ["style", "color", "background-color"],
+    input: ["style", "color", "background-color"],
     a: ["style", "color", "background-color", "rel", "target", "href"],
   };
   const sanitizedContent = sanitizeHtml(post, {
