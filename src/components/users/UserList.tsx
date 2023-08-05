@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { FixedSizeList } from "react-window";
 import SearchUserContainer from "../../container/users/SearchUserContainer";
 import { UserListComponentType } from "../../type/userType";
+import FixedWindow from "../../container/common/FixedWindow";
 
 // 스타일드 컴포넌트로 UserList 스타일을 정의합니다.
 const UserListBlock = styled.section`
@@ -118,14 +118,13 @@ const UsersList = ({handleSearch, filteredUsers, renderedUsers} : UserListCompon
     <UserListBlock>
       <h2>Paletter</h2>
       <SearchUserContainer onSearch={handleSearch} />
-      <FixedSizeList
-        height={580}
-        width={800}
-        itemCount={filteredUsers.length}
-        itemSize={200}
-      >
-        {renderedUsers}
-      </FixedSizeList>
+      <FixedWindow
+       height={700}
+       width={800}
+       itemCount={filteredUsers}
+       itemSize={200}
+       renderedItem={renderedUsers}
+      />
     </UserListBlock>
   );
 };

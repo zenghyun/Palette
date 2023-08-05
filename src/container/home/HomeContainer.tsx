@@ -1,6 +1,5 @@
 import { CSSProperties, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { FixedSizeList } from "react-window";
 import { PostStateType } from "../../type/postType";
 import { RootStateType } from "../../app/store";
 import Spinner from "../../components/common/Spinner";
@@ -10,6 +9,7 @@ import { fetchUsers } from "../../features/usersSlice";
 import PostExcerpt from "../../components/home/PostExcerpt";
 
 import Home from "../../components/home/Home";
+import FixedWindow from "../common/FixedWindow";
 
 const HomeContainer = () => {
   const dispatch = useAppDispatch();
@@ -54,14 +54,13 @@ const HomeContainer = () => {
     };
 
     content = (
-      <FixedSizeList
+      <FixedWindow
         height={1000} // 보여줄 전체 높이
         width={800} // 보여줄 넓이
-        itemCount={orderedPosts.length} // post 개수
-        itemSize={270} // 개별적 post의 높이
-      >
-        {renderItem}
-      </FixedSizeList>
+        itemCount={orderedPosts} // post 개수
+        itemSize={350} // 개별적 post의 높이
+        renderedItem={renderItem}
+      />
     );
   } else if (postStatus === "failed") {
     content = <div>{error}</div>;

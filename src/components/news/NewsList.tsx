@@ -1,15 +1,15 @@
 import styled from "styled-components";
-import { FixedSizeList } from "react-window";
 import NewsItem from "./NewsItem";
-import { NewsListComponentType } from "../../container/news/NewsListContainer";
+import { CSSProperties } from "react";
+import { NewsListComponentType } from "../../type/newsType";
+import FixedWindow from "../../container/common/FixedWindow";
 
 const NewsListBlock = styled.div`
   box-sizing: border-box;
   padding-bottom: 3rem;
-  width: 768px;
+  width: 800px;
   margin: 0 auto;
   margin-top: 2rem;
-  overflow: hidden auto;
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1rem;
@@ -37,20 +37,26 @@ const NewsList = ({ articles, error, noNews }: NewsListComponentType) => {
     return <NoNewsMessage>{noNews}</NoNewsMessage>;
   }
 
+  const renderedNews = ({
+    index,
+    style,
+  }: {
+    index: number;
+    style: CSSProperties;
+  }) => (
+    <div style={style}>
+      <NewsItem article={articles[index]} />
+    </div>
+  );
   return (
     <NewsListBlock>
-      <FixedSizeList
-        height={620}
-        width={830}
-        itemSize={210} // 각 항목의 높이를 설정합니다.
-        itemCount={articles.length}
-      >
-        {({ index, style }) => (
-          <div style={style}>
-            <NewsItem article={articles[index]} />
-          </div>
-        )}
-      </FixedSizeList>
+      <FixedWindow
+        height={820}
+        width={800}
+        itemCount={articles}
+        itemSize={230}
+        renderedItem={renderedNews}
+      />
     </NewsListBlock>
   );
 };
