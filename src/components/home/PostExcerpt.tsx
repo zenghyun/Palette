@@ -11,7 +11,7 @@ const PostExcerptBlock = styled.article`
   padding: 0.25rem 0.25rem;
   border: 1px solid rgb(177, 174, 174);
   border-radius: 7px;
-  height: 250px;
+  height: 330px;
   margin-bottom: 10px;
 
   h3 {
@@ -24,13 +24,13 @@ const PostExcerptBlock = styled.article`
 
   .middleSection {
     margin-bottom: 20px;
-    height: 50px;
+    height: 120px;
     overflow: hidden;
   }
 `;
 
 const PostExcerpt = React.memo(({ post }: { post: PostStateType }) => {
-  const sanitizedContent = setSanitize(`${post.content.substring(0, 100)}...`);
+  const sanitizedContent = setSanitize(`${post.content.substring(0, 200)}...`);
 
   return (
     <PostExcerptBlock className="post-excerpt">
