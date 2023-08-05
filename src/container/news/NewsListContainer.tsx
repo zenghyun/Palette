@@ -3,13 +3,6 @@ import axios from "axios";
 import usePromise from "../../container/news/usePromise";
 import NewsList from "../../components/news/NewsList";
 import Spinner from "../../components/common/Spinner";
-import { INewsApiArticle } from "../../type/apiType";
-
-export type NewsListComponentType = {
-  articles: INewsApiArticle[];
-  error?: unknown;
-  noNews?: string;
-};
 
 const NewsListContainer = () => {
   const params = useParams();
@@ -27,7 +20,7 @@ const NewsListContainer = () => {
 
   // 대기 중일 때
   if (loading) {
-    return <Spinner text="Loading..." />;
+    return <Spinner />;
   }
 
   // 아직 response 값이 설정되지 않았을 때
