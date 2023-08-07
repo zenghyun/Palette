@@ -111,7 +111,7 @@ const UserListBlock = styled.section`
 
   /* 화면 너비 0 ~ 1200px */
   @media (max-width: 1200px) {
-    width: 510px;
+    width: 480px;
     .userList {
       font-size: 1rem;
       & .profile {

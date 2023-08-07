@@ -47,11 +47,11 @@ const NewsItemBlock = styled.div`
     }
     .contents {
       h2 {
-        width: 390px;
+        width: 370px;
         font-size: 1rem;
       }
       p {
-        width: 390px;
+        width: 370px;
       }
     }
   }

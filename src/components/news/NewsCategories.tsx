@@ -10,7 +10,7 @@ const CategoriesBlock = styled.div`
   transition: all 0.3s ease;
 
   @media screen and (max-width: 1200px) {
-    width: 570px;
+    width: 550px;
   }
 
   @media screen and (max-width: 768px) {

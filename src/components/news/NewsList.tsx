@@ -10,11 +10,11 @@ const NewsListBlock = styled.div`
   width: 800px;
   margin: 0 auto;
   margin-top: 2rem;
-  transition: all 0.3s ease;
+  transition:  all 0.3s ease;
 
   @media screen and (max-width: 1200px) {
-    width: 570px;
-  }
+    width: 550px;
+}
 
   @media screen and (max-width: 768px) {
     width: 530px;
@@ -29,6 +29,7 @@ const NewsListBlock = styled.div`
     padding: 0;
     width: 320px;
   }
+
 `;
 
 const ErrorMessage = styled.div`
@@ -42,12 +43,7 @@ const NoNewsMessage = styled.div`
   margin-top: 1rem;
 `;
 
-const NewsList = ({
-  articles,
-  error,
-  noNews,
-  width,
-}: NewsListComponentType) => {
+const NewsList = ({ articles, error, noNews, width }: NewsListComponentType) => {
   if (error) {
     return <ErrorMessage>에러 발생!</ErrorMessage>;
   }

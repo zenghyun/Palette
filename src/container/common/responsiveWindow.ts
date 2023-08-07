@@ -32,14 +32,14 @@ export const setWidth = (
     },
     USER: {
       desktop: 795,
-      tablet: 550,
+      tablet: 520,
       phone: 550,
       smallPhone: 350,
       default: 310,
     },
     NEWS: {
       desktop: 800,
-      tablet: 560,
+      tablet: 540,
       phone: 530,
       smallPhone: 340,
       default: 320,

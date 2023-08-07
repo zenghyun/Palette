@@ -79,7 +79,7 @@ const NavbarBlock = styled.nav`
 
   /* 화면 너비 0 ~ 930px */
   @media (max-width: 930px) {
-    width: 230px;
+    width: 220px;
     .banner {
       margin: 30px 0;
     }
@@ -106,7 +106,7 @@ const NavbarBlock = styled.nav`
       align-items: center; /* 수직 가운데 정렬 */
 
       & a {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
   }
