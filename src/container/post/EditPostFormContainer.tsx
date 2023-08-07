@@ -18,10 +18,16 @@ const EditPostFormContainer = () => {
   const [title, setTitle] = useState<string>(post.title);
   const [content, setContent] = useState<string>(post.content);
 
-  const onTitleChanged = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value),
-    []
-  );
+  const onTitleChanged = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+  
+    if (inputValue.length >= 20) {
+      alert("글의 제목은 20글자를 넘길 수 없습니다.");
+    } else {
+      setTitle(inputValue);
+    }
+  }, []);
+  
   const onContentChanged = useCallback(
     (content: string) => setContent(content),
     []
@@ -34,13 +40,14 @@ const EditPostFormContainer = () => {
     }
   };
   return (
-    <EditPostForm title={title}
-        content={content}
-        onTitleChanged={onTitleChanged}
-        onContentChanged={onContentChanged}
-        onSavePostClicked={onSavePostClicked}
+    <EditPostForm
+      title={title}
+      content={content}
+      onTitleChanged={onTitleChanged}
+      onContentChanged={onContentChanged}
+      onSavePostClicked={onSavePostClicked}
     />
-  )
-}
+  );
+};
 
-export default EditPostFormContainer
+export default EditPostFormContainer;

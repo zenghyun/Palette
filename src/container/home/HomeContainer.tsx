@@ -7,7 +7,7 @@ import { useAppDispatch } from "../../app/store";
 import { selectAllPosts, fetchPosts } from "../../features/postsSlice";
 import { fetchUsers } from "../../features/usersSlice";
 import PostExcerpt from "../../components/home/PostExcerpt";
-import { debounce, setWidth } from "../common/ResponsiveWindow";
+import { debounce, setWidth } from "../common/responsiveWindow";
 import Home from "../../components/home/Home";
 import FixedWindow from "../common/FixedWindow";
 

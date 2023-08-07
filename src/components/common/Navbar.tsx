@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 
 const NavbarBlock = styled.nav`
   width: 350px;
-  height: 100vh;
+  height: 200vh;
   display: flex;
   padding: 0;
   background: var(--redux-color);
@@ -72,73 +72,78 @@ const NavbarBlock = styled.nav`
     .banner {
       font-size: 36px;
     }
-    .navLinks a{
+    .navLinks a {
       font-size: 18px;
     }
   }
 
   /* 화면 너비 0 ~ 930px */
   @media (max-width: 930px) {
-    width: 200px;
+    width: 230px;
     .banner {
       margin: 30px 0;
     }
-    .navLinks a{
+    .navLinks a {
       font-size: 14px;
-      padding-left: 0px;
       margin: 0;
     }
-
   }
 
   /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {
-    height: 15vh;
+    height: 16vh;
     width: 100%;
     .banner {
       font-size: 2rem;
-      margin-bottom: 15px;
+      margin: 0;
+      padding: 16px 0 0 0;
     }
     .navLinks {
+      padding-top: 5px;
       width: 100%;
       flex-direction: row;
       justify-content: space-around; /* 수평 가운데 정렬 해제 */
       align-items: center; /* 수직 가운데 정렬 */
+
+      & a {
+        font-size: 16px;
+      }
     }
   }
 
-
-  /* 화면 너비 0 ~ 576px */
-  @media (max-width: 576px) {
+  /* 화면 너비 0 ~ 660px */
+  @media (max-width: 660px) {
     section {
       padding: 0 1rem;
     }
-   .navLInk {
-    text-align: center;
-   }
+    .navLInk {
+      text-align: center;
+    }
 
-   & a {
-    width: 60px;
-    text-align: center;
-    font-size: 100px;
-   }
+    & a {
+      width: 60px;
+      text-align: center;
+      font-size: 100px;
+    }
 
-   & a,
-  & a:active  {
-    padding: 0;
-  }
-  & a:hover {
-    scale: 1.2;
-  }
+    & a,
+    & a:active {
+      padding: 0;
+    }
+    & a:hover {
+      scale: 1.2;
+    }
     .navLinks a {
       font-size: 20px;
     }
-    .navLinks a .logoName{
+    .navLinks a .logoName {
       display: none;
     }
-
   }
+ 
 `;
+
+
 
 const Navbar = ({
   navigate,
@@ -155,11 +160,21 @@ const Navbar = ({
         </h1>
         <div className="navContent">
           <div className="navLinks">
-            <Link to="/">📌 <span className="logoName">Feed</span></Link>
-            <Link to="/posts">📚 <span className="logoName">Add Post</span></Link>
-            <Link to="/users">🎨 <span className="logoName">Paletter</span></Link>
-            <Link to="/news/all">📰 <span className="logoName">News</span></Link>
-            <Link to="/notifications">💜 <span className="logoName">Notifications</span> {badge}</Link>
+            <Link to="/">
+              📌 <span className="logoName">Feed</span>
+            </Link>
+            <Link to="/posts">
+              📚 <span className="logoName">Add Post</span>
+            </Link>
+            <Link to="/users">
+              🎨 <span className="logoName">Paletter</span>
+            </Link>
+            <Link to="/news/all">
+              📰 <span className="logoName">News</span>
+            </Link>
+            <Link to="/notifications">
+              💜 <span className="logoName">Notifications</span> {badge}
+            </Link>
           </div>
         </div>
       </section>

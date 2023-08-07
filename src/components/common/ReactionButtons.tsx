@@ -8,25 +8,25 @@ const ReactionButton = styled.button`
   margin: 5px 6px 10px;
   border-radius: 4px;
   white-space: nowrap;
-  transition:  all 0.3s ease;
+  transition: all 0.3s ease;
   &:hover {
     background-color: rgb(211, 208, 208);
   }
 
- /* 화면 너비 0 ~ 768px */
- @media (max-width:768px) {
+  /* 화면 너비 0 ~ 768px */
+  @media (max-width: 768px) {
     padding: 5px 0px;
-    }
+  }
 
-   /* 화면 너비 0 ~ 576px */
-   @media (max-width:576px) {
+  /* 화면 너비 0 ~ 576px */
+  @media (max-width: 576px) {
     padding: 5px 3px;
-    }
+  }
 
-   /* 화면 너비 0 ~ 390px */
-   @media (max-width:576px) {
+  /* 화면 너비 0 ~ 390px */
+  @media (max-width: 576px) {
     padding: 5px 0px;
-    }
+  }
 `;
 
 const ReactionButtons = ({

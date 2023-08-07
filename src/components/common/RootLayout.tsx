@@ -6,6 +6,7 @@ const RootBlock = styled.main`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 6fr;
+  transition: all 0.3s ease;
   section {
     margin-left: auto;
     margin-right: auto;

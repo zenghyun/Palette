@@ -9,7 +9,6 @@ import { useAppDispatch } from "../../app/store";
 import { useLayoutEffect } from "react";
 import { NotificationType } from "../../type/notificationsType";
 import classnames from "classnames";
-
 import NotificationsList from "../../components/notifications/NotificationsList";
 
 const NotificationsListContainer = () => {
@@ -45,6 +44,9 @@ const NotificationsListContainer = () => {
       );
     }
   );
+
+
+
   return <NotificationsList renderedNotifications={renderedNotifications} />;
 };
 

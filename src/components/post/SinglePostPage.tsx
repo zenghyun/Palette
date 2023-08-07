@@ -8,6 +8,7 @@ import { PostStateType } from "../../type/postType";
 const SinglePostPageBlock = styled.article`
   width: 800px;
   overflow: hidden;
+  transition: all 0.3s ease;
   h2 {
     font-size: 2.5rem;
     margin-bottom: 5px;
@@ -30,7 +31,7 @@ const SinglePostPageBlock = styled.article`
   }
 
   .post-content iframe {
-    width: 600px;
+    width: 400px;
     height: 400px;
   }
 
@@ -50,6 +51,41 @@ const SinglePostPageBlock = styled.article`
     width: 600px;
     height: 600px;
   }
+
+  /* 화면 너비 0 ~ 768px */
+  @media (max-width: 768px) {
+    width: 500px;
+
+ h2 {
+    font-size: 2rem;
+  }
+    .post-content {
+      max-height: 420px;
+      & img {
+        width: 450px;
+        height: 450px;
+      }
+    }
+  }
+
+  /* 화면 너비 0 ~ 576px */
+  @media (max-width: 576px) {
+    width: 300px;
+    h2 {
+    font-size: 1.5rem;
+  }
+    .post-content {
+      max-height: 420px;
+      & iframe {
+        width: 200px;
+      }
+      & img {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  }
+
 `;
 
 const SinglePostPage = ({

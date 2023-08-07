@@ -5,7 +5,7 @@ import { CSSProperties, useEffect, useState } from "react";
 import { selectAllPosts } from "../../features/postsSlice";
 import { PostStateType } from "../../type/postType";
 import { UserStateType } from "../../type/userType";
-import { debounce, setWidth } from "../common/ResponsiveWindow";
+import { debounce, setWidth } from "../common/responsiveWindow";
 import UsersList from "../../components/users/UserList";
 
 const UsersListContainer = () => {

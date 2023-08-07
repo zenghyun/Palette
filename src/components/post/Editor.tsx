@@ -19,6 +19,7 @@ const TitleInput = styled.input`
 
   /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {
+    width: 90%;
     font-size: 2rem;
   }
 `;
@@ -43,7 +44,7 @@ const Userbox = styled.div`
   /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {
     #postAuthor {
-      font-size: 1rem;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -56,7 +57,7 @@ const QuillWrapper = styled.div`
   .ql-editor {
     font-family: "Gowun Batang", serif;
     padding: 0;
-    height: 450px;
+    height: 380px;
     font-size: 1.125rem;
     line-height: 1.5;
     overflow-x: hidden;
@@ -65,10 +66,21 @@ const QuillWrapper = styled.div`
     left: 0px;
   }
 
+  .ql-tooltip {
+    margin-left: 150px;
+  }
+
   /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {
     .ql-editor {
-      height: 350px;
+      height: 300px;
+    }
+  }
+
+  /* 화면 너비 0 ~ 576px */
+  @media (max-width: 768px) {
+    .ql-editor {
+      height: 200px;
     }
   }
 `;

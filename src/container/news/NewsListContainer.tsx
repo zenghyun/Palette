@@ -4,8 +4,7 @@ import axios from "axios";
 import usePromise from "../../container/news/usePromise";
 import NewsList from "../../components/news/NewsList";
 import Spinner from "../../components/common/Spinner";
-import { debounce, setWidth } from "../common/ResponsiveWindow";
-
+import { debounce, setWidth } from "../common/responsiveWindow";
 const NewsListContainer = () => {
   const params = useParams();
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
