@@ -20,14 +20,14 @@ const EditPostFormContainer = () => {
 
   const onTitleChanged = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-  
+
     if (inputValue.length >= 20) {
       alert("글의 제목은 20글자를 넘길 수 없습니다.");
     } else {
       setTitle(inputValue);
     }
   }, []);
-  
+
   const onContentChanged = useCallback(
     (content: string) => setContent(content),
     []

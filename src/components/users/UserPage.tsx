@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { UserPageType } from "../../type/userType";
 
 const UserPageBlock = styled.section`
- transition: all 0.3s ease;
+  transition: all 0.3s ease;
   .postList {
     list-style: none;
     font-size: 1.5rem;
@@ -25,7 +25,6 @@ const UserPageBlock = styled.section`
       }
     }
   }
-
 `;
 
 const UserPage = ({ user, postTitles }: UserPageType) => {

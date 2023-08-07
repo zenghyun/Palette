@@ -7,7 +7,11 @@ import { CSSProperties } from "react";
 export type FixedWindowType = {
   height: number;
   width: number;
-  itemCount: PostStateType[] | UserStateType[] | INewsApiArticle[] | NotificationType[];
+  itemCount:
+    | PostStateType[]
+    | UserStateType[]
+    | INewsApiArticle[]
+    | NotificationType[];
   itemSize: number;
   renderedItem: ({
     index,

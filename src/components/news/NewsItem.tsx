@@ -4,7 +4,7 @@ import { INewsApiArticle } from "../../type/apiType";
 const NewsItemBlock = styled.div`
   display: flex;
   overflow-x: hidden;
-  transition:  all 0.3s ease;
+  transition: all 0.3s ease;
 
   .thumbnail {
     margin-right: 1rem;
@@ -82,7 +82,6 @@ const NewsItemBlock = styled.div`
       }
     }
   }
-
 `;
 const NewsItem = ({ article }: { article: INewsApiArticle }) => {
   const { title, description, url, urlToImage } = article;
@@ -90,9 +89,6 @@ const NewsItem = ({ article }: { article: INewsApiArticle }) => {
     <NewsItemBlock>
       {urlToImage && (
         <div className="thumbnail">
-          {/* target은 연결 문서 여는 방법 */}
-          {/* 기본 값은 _self(현재 창에서 열기) */}
-          {/* _blank는 새 창에서 열기 */}
           <a href={url} target="_blank" rel="noopener noreferrer">
             <img src={urlToImage} alt="thumbnail" />
           </a>

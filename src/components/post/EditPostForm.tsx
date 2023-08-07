@@ -2,7 +2,6 @@ import { PostFormType } from "../../type/postType";
 import { SaveButton } from "./AddPostForm";
 import Editor from "./Editor";
 
-
 const EditPostForm = ({
   title,
   content,

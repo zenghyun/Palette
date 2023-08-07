@@ -15,7 +15,7 @@ const TitleInput = styled.input`
   border-bottom: 1px solid black;
   margin-bottom: 2rem;
   width: 100%;
-  transition:  all 0.3s ease;
+  transition: all 0.3s ease;
 
   /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {

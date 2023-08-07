@@ -140,10 +140,7 @@ const NavbarBlock = styled.nav`
       display: none;
     }
   }
- 
 `;
-
-
 
 const Navbar = ({
   navigate,

@@ -1,9 +1,7 @@
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import {
-  selectAllNotifications,
-} from "../../features/notificationsSlice";
+import { selectAllNotifications } from "../../features/notificationsSlice";
 
 import Navbar from "../../components/common/Navbar";
 
@@ -23,12 +21,7 @@ const NavContainer = () => {
     );
   }
 
-  return (
-    <Navbar
-      navigate={navigate}
-      badge={unreadNotificationsBadge}
-    />
-  );
+  return <Navbar navigate={navigate} badge={unreadNotificationsBadge} />;
 };
 
 export default NavContainer;

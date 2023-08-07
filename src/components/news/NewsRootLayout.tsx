@@ -5,7 +5,7 @@ import { styled } from "styled-components";
 const NewsRootBlock = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const NewsRootLayout = () => {
   return (

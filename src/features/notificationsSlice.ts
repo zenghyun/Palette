@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { client } from "../api/client";
-import { NotificationListType, NotificationType } from "../type/notificationsType";
+import {
+  NotificationListType,
+  NotificationType,
+} from "../type/notificationsType";
 
 export const fetchNotifications = createAsyncThunk(
   "notifications/fetchNotifications",

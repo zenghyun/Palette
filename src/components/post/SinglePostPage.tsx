@@ -56,9 +56,9 @@ const SinglePostPageBlock = styled.article`
   @media (max-width: 768px) {
     width: 500px;
 
- h2 {
-    font-size: 2rem;
-  }
+    h2 {
+      font-size: 2rem;
+    }
     .post-content {
       max-height: 420px;
       & img {
@@ -72,8 +72,8 @@ const SinglePostPageBlock = styled.article`
   @media (max-width: 576px) {
     width: 300px;
     h2 {
-    font-size: 1.5rem;
-  }
+      font-size: 1.5rem;
+    }
     .post-content {
       max-height: 420px;
       & iframe {
@@ -85,7 +85,6 @@ const SinglePostPageBlock = styled.article`
       }
     }
   }
-
 `;
 
 const SinglePostPage = ({

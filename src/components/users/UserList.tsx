@@ -12,7 +12,7 @@ const UserListBlock = styled.section`
   padding: 0;
   width: 750px;
   height: 870px;
-  transition:  all 0.3s ease;
+  transition: all 0.3s ease;
 
   h2 {
     padding: 20px;
@@ -140,7 +140,6 @@ const UserListBlock = styled.section`
       & .profile {
         width: 70px;
         height: 70px;
-
       }
       & .introduce {
         font-size: 14px;

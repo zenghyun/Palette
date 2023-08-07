@@ -25,12 +25,11 @@ export type PostListsType = {
   error: null | string | undefined;
 };
 
-
 export type PostFormType = {
   title: string;
   onTitleChanged: (e: ChangeEvent<HTMLInputElement>) => void;
   postContent?: string;
-  content? : string
+  content?: string;
   onContentChanged: (content: string) => void;
   user?: string;
   onAuthorChanged?: (e: ChangeEvent<HTMLSelectElement>) => void;

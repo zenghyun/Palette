@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
+import { PromiseCreatorType, DependencyType } from "../../type/newsType";
 import { ResponseData } from "../../type/apiType";
 
-type PromiseCreatorType = () => Promise<ResponseData>;
-type DependencyType = string | undefined;
-
-export default function usePromise({
+export const usePromise = ({
   promiseCreator,
   deps,
 }: {
   promiseCreator: PromiseCreatorType;
   deps: DependencyType[];
-}) {
+}) => {
   // 대기 중/완료/실패에 대한 상태 관리
   const [loading, setLoading] = useState(false);
   const [resolved, setResolved] = useState<ResponseData | null>(null);
@@ -32,4 +30,4 @@ export default function usePromise({
   }, deps);
 
   return [loading, resolved, error] as const;
-}
+};

@@ -20,7 +20,7 @@ const setSanitize = (post: string) => {
     "p",
     "br",
     "u",
-    "input"
+    "input",
   ];
   const allowedAttributes = {
     img: ["src"],
