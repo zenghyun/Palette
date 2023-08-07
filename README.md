@@ -13,9 +13,8 @@
 **News API의 development 버전의 배포 이슈로 인해 News 카테고리는 영상으로 대체하였습니다.**
 <br>
 
-<p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/d1e57ea2-6175-4e3e-8c48-5276d8627b7e
-" width="300px" height="300px"></p>
-<br>
+![화면 기록 2023-08-08 오전 1 08 09](https://github.com/zenghyun/Palette/assets/114131063/ad28d171-68bc-4295-bddf-f0b0a3c100ee)
+
 
 ## 💻 프로젝트 소개
 
