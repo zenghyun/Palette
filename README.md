@@ -5,6 +5,12 @@
 <br>
 <br>
 
+## 💻 프로젝트 소개
+
+**Palette**는 MSW(Mock Service Worker)를 통해 서비스 워커를 사용하여 mock API를 기반으로 한 백엔드 개발과 리액트와 타입스크립트를 사용하여 만든 SNS 웹 애플리케이션으로, Redux를 기반으로 하여 프론트엔드 UI 상에서 데이터 교류에 초점을 맞춰서 진행된 프로젝트 입니다.  
+<br>
+<br>
+
 ## 배포 주소 
 - <a href="https://pa1ette.netlify.app/" target="_blank" rel="noopener noreferrer">Palette</a>
   
@@ -14,11 +20,6 @@
 <br>
 
 ![화면 기록 2023-08-08 오전 1 08 09](https://github.com/zenghyun/Palette/assets/114131063/ad28d171-68bc-4295-bddf-f0b0a3c100ee)
-
-
-## 💻 프로젝트 소개
-
-**Palette**는 MSW(Mock Service Worker)를 통해 서비스 워커를 사용하여 mock API를 기반으로 한 백엔드 개발과 리액트와 타입스크립트를 사용하여 만든 SNS 웹 애플리케이션으로, Redux를 기반으로 하여 프론트엔드 UI 상에서 데이터 교류에 초점을 맞춰서 진행된 프로젝트 입니다.  
 <br>
 <br>
 
