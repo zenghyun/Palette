@@ -8,7 +8,7 @@ import { UserStateType } from "../../type/userType";
 import { debounce, setWidth } from "../common/responsiveWindow";
 import UsersList from "../../components/users/UserList";
 
-const UsersListContainer = () => {
+const UserListContainer = () => {
   const posts = useSelector(selectAllPosts);
   const users = useSelector(selectAllUsers);
   const [filteredUsers, setFilteredUsers] = useState<UserStateType[]>(users);
@@ -99,4 +99,4 @@ const UsersListContainer = () => {
   );
 };
 
-export default UsersListContainer;
+export default UserListContainer;

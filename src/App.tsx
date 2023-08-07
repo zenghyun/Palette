@@ -7,7 +7,7 @@ import EditPostLayout from "./components/post/EditPostLayout";
 import UserRootLayout from "./components/users/UserRootLayout";
 import NotificationsRootLayout from "./components/notifications/NotificationsRootLayout";
 import SinglePostPageContainer from "./container/post/SinglePostPageContainer";
-import UsersListContainer from "./container/users/UsersListContainer";
+import UserListContainer from "./container/users/UserListContainer";
 import UserPageContainer from "./container/users/UserPageContainer";
 import NewsRootLayout from "./components/news/NewsRootLayout";
 import NewsPage from "./components/news/NewsPage";
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <UsersListContainer />,
+            element: <UserListContainer />,
           },
           {
             path: ":userId",
