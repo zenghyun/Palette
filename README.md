@@ -5,6 +5,14 @@
 <br>
 <br>
 
+## 배포 주소 
+- <a href="https://pa1ette.netlify.app/" target="_blank" rel="noopener noreferrer">Palette</a>
+  
+<br>
+<mark>News API의 development 버전의 배포 이슈로 인해 News 카테고리는 영상으로 대체하였습니다.</mark>
+<p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/08098f0b-b779-45a4-b4d0-eeb29f95c58c
+" width="300px" height="300px"></p>
+<br>
 
 ## 💻 프로젝트 소개
 
@@ -66,6 +74,8 @@ $ npm install firebase firebase-tools react-firebase-hooks
 // yarn ver
 $ yarn add firebase firebase-tools react-firebase-hooks
 ```
+
+<br>
 
 ```js
 firebase.ts 
@@ -139,6 +149,111 @@ export default app;
 
 <br>
 
+## 🌳 Project Directory
+```
+palette
+|
+|-  /public
+|           - mockServiceWorker.js (MSW)
+|
+|-  /src
+|   |
+|   |- /api
+|   |       - client.ts
+|   |       - server.js (MSW)
+|   |  
+|   |- /app
+|   |       - store.ts
+|   |
+|   |- /components
+|   |   |
+|   |   |- /common
+|   |   |       - Navbar.tsx
+|   |   |       - PostAuthor.tsx
+|   |   |       - ReactionButtons.tsx
+|   |   |       - RootLayout.tsx
+|   |   |       - Spinner.tsx
+|   |   |       - TimeAgo.tsx
+|   |   |
+|   |   |- /home 
+|   |   |       - Home.tsx
+|   |   |       - PostExcerpt.tsx
+|   |   |       
+|   |   |- /news 
+|   |   |       - NewsCategories.tsx
+|   |   |       - NewsItem.tsx
+|   |   |       - NewsList.tsx
+|   |   |       - NewsPage.tsx
+|   |   |       - NewsRootLayout.tsx
+|   |   |
+|   |   |- /notifications
+|   |   |       - NotificationsList.tsx
+|   |   |       - NotificationsRootLayout.tsx
+|   |   |
+|   |   |- /post 
+|   |   |       - AddPostForm.tsx
+|   |   |       - Editor.tsx
+|   |   |       - EditPostForm.tsx
+|   |   |       - EditPostLayout.tsx
+|   |   |       - PostRootLayout.tsx
+|   |   |       - SinglePostPage.tsx
+|   |   |
+|   |   |- /users
+|   |           - SearchUser.tsx
+|   |           - UserList.tsx
+|   |           - UserPage.tsx
+|   |           - UserRootLayout.tsx
+|   |
+|   |
+|   |- /container
+|   |   |
+|   |   |- /common
+|   |   |       - FixedWindow.tsx
+|   |   |       - NavContainer.tsx
+|   |   |       - PostAuthorContainer.tsx
+|   |   |       - ReactionButtonContainer.tsx
+|   |   |       - ResponsiveWindow.ts
+|   |   |
+|   |   |- /home 
+|   |   |       - HomeContainer.tsx      
+|   |   |
+|   |   |- /news
+|   |   |       - NewsListContainer.tsx
+|   |   |       - usePromise.ts
+|   |   |
+|   |   |- /post 
+|   |   |       - AddPostFormContainer.tsx
+|   |   |       - EditPostFormContainer.tsx
+|   |   |       - setSanitize.ts
+|   |   |       - SinglePostPageContainer.tsx
+|   |   |
+|   |   |- /users
+|   |           - SearchUserContainer.tsx
+|   |           - UserPageContainer.tsx
+|   |           - UserListContainer.tsx
+|   |
+|   |- /features
+|   |           - notificationsSlice.ts
+|   |           - postsSlice.ts
+|   |           - usersSlice.ts
+|   |
+|   |- /type
+|   |           - apiType.ts
+|   |           - commonType.ts
+|   |           - newsType.ts
+|   |           - notificationsType.ts
+|   |           - postType.ts
+|   |           - userTyle.ts
+|   |
+|   |- App.tsx
+|   |- index.css
+|   |- main.tsx
+|
+|- ...
+```
+
+<br>
+
 ## ⭐️ 주요 기능
 
 
@@ -150,7 +265,7 @@ export default app;
 
 ### 📌 게시글 작성 기능 
 - React quill을 이용한 게시글 작성 
-- base64 기반의 이미지 경로를 firebase를 이용하여 원본 파일양식으로 변환 후 posting 
+- base64 기반의 이미지 경로를 firebase를 이용하여 원본 파일양식으로 변환 후 게시
 
 <br>
 
