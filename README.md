@@ -9,8 +9,11 @@
 - <a href="https://pa1ette.netlify.app/" target="_blank" rel="noopener noreferrer">Palette</a>
   
 <br>
-<mark>News API의 development 버전의 배포 이슈로 인해 News 카테고리는 영상으로 대체하였습니다.</mark>
-<p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/08098f0b-b779-45a4-b4d0-eeb29f95c58c
+
+**News API의 development 버전의 배포 이슈로 인해 News 카테고리는 영상으로 대체하였습니다.**
+<br>
+
+<p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/d1e57ea2-6175-4e3e-8c48-5276d8627b7e
 " width="300px" height="300px"></p>
 <br>
 
