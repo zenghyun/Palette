@@ -7,7 +7,6 @@ const RootBlock = styled.main`
   display: grid;
   grid-template-columns: 1fr 6fr;
   section {
-    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     padding: 0 1.5rem;
@@ -33,6 +32,12 @@ const RootBlock = styled.main`
 
   .button:hover {
     background-color: rgba(183, 137, 235, 0.527);
+  }
+
+   /* 화면 너비 0 ~ 768px */
+   @media (max-width: 768px) {
+    display: flex; 
+    flex-direction: column;
   }
 `;
 

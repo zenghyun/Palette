@@ -4,4 +4,5 @@ export type NewsListComponentType = {
     articles: INewsApiArticle[];
     error?: unknown;
     noNews?: string;
+    width?: number;
   };

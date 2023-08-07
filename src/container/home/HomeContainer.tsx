@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { PostStateType } from "../../type/postType";
 import { RootStateType } from "../../app/store";
@@ -7,7 +7,7 @@ import { useAppDispatch } from "../../app/store";
 import { selectAllPosts, fetchPosts } from "../../features/postsSlice";
 import { fetchUsers } from "../../features/usersSlice";
 import PostExcerpt from "../../components/home/PostExcerpt";
-
+import { debounce, setWidth } from "../common/ResponsiveWindow";
 import Home from "../../components/home/Home";
 import FixedWindow from "../common/FixedWindow";
 
@@ -17,19 +17,33 @@ const HomeContainer = () => {
   const postStatus = useSelector((state: RootStateType) => state.posts.status);
   const error = useSelector((state: RootStateType) => state.posts.error);
 
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+
   useEffect(() => {
     if (postStatus === "idle") {
       dispatch(fetchPosts());
       dispatch(fetchUsers());
     }
+    // window resize debounce 시킴
+    const handleResize = debounce(() => {
+      setWindowWidth(window.innerWidth);
+    }, 250); // 250ms 지연
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [postStatus, dispatch]);
+
+  const width = setWidth(windowWidth, "POST");
 
   let content;
 
   if (postStatus === "loading") {
     content = <Spinner />;
   } else if (postStatus === "succeeded") {
-    // Sort posts in reverse chronological order by dateTime string
     const orderedPosts = posts
       .slice()
       .sort((a: PostStateType, b: PostStateType) =>
@@ -56,7 +70,7 @@ const HomeContainer = () => {
     content = (
       <FixedWindow
         height={1000} // 보여줄 전체 높이
-        width={800} // 보여줄 넓이
+        width={width} // 보여줄 넓이
         itemCount={orderedPosts} // post 개수
         itemSize={350} // 개별적 post의 높이
         renderedItem={renderItem}

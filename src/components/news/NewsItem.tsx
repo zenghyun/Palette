@@ -3,6 +3,9 @@ import { INewsApiArticle } from "../../type/apiType";
 
 const NewsItemBlock = styled.div`
   display: flex;
+  overflow-x: hidden;
+  transition:  all 0.3s ease;
+
   .thumbnail {
     margin-right: 1rem;
     img {
@@ -34,6 +37,52 @@ const NewsItemBlock = styled.div`
   & + & {
     margin-top: 3rem;
   }
+
+  @media screen and (max-width: 1200px) {
+    .thumbnail {
+      img {
+        width: 140px;
+        height: 80px;
+      }
+    }
+    .contents {
+      h2 {
+        width: 390px;
+        font-size: 1rem;
+      }
+      p {
+        width: 390px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .contents {
+      h2 {
+        width: 360px;
+      }
+      p {
+        width: 360px;
+      }
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .thumbnail {
+      img {
+        width: 100px;
+        height: 80px;
+      }
+    }
+    .contents {
+      h2 {
+        width: 200px;
+      }
+      p {
+        display: none;
+      }
+    }
+  }
+
 `;
 const NewsItem = ({ article }: { article: INewsApiArticle }) => {
   const { title, description, url, urlToImage } = article;
@@ -55,7 +104,7 @@ const NewsItem = ({ article }: { article: INewsApiArticle }) => {
             {title}
           </a>
         </h2>
-        <p>{description}</p>
+        <p>{description?.substring(0, 150)}...</p>
       </div>
     </NewsItemBlock>
   );

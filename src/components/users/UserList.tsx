@@ -10,6 +10,9 @@ const UserListBlock = styled.section`
   margin-top: 20px;
   border-radius: 10px;
   padding: 0;
+  width: 750px;
+  height: 870px;
+  transition:  all 0.3s ease;
 
   h2 {
     padding: 20px;
@@ -30,19 +33,13 @@ const UserListBlock = styled.section`
   .userList {
     font-weight: bold;
     display: flex;
-    font-size: 2rem;
+    font-size: 1.5rem;
     height: 200px;
     align-items: center;
     text-decoration: none;
     color: black;
     position: relative;
     overflow: hidden auto;
-  }
-
-  .hide {
-    width: 0;
-    height: 0;
-    display: none;
   }
 
   /* 사용자 리스트에 그라데이션 효과를 적용합니다. */
@@ -111,19 +108,76 @@ const UserListBlock = styled.section`
   .userList:hover .name {
     color: #926bcf;
   }
+
+  /* 화면 너비 0 ~ 1200px */
+  @media (max-width: 1200px) {
+    width: 510px;
+    .userList {
+      font-size: 1rem;
+      & .profile {
+        width: 120px;
+        height: 120px;
+        margin: 0;
+      }
+      & .name {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  /* 화면 너비 0 ~ 768px */
+  @media (max-width: 768px) {
+    width: 510px;
+  }
+
+  /* 화면 너비 0 ~ 576px */
+  @media (max-width: 576px) {
+    width: 310px;
+    .userList {
+      & .name {
+        font-size: 1.2rem;
+      }
+      & .profile {
+        width: 70px;
+        height: 70px;
+
+      }
+      & .introduce {
+        font-size: 14px;
+      }
+      & .newPost {
+        font-size: 14px;
+      }
+    }
+  }
+
+  /* 화면 너비 0 ~ 390px */
+  @media (max-width: 390px) {
+    width: 270px;
+    .userList {
+      & .profile {
+        margin: 0;
+      }
+    }
+  }
 `;
 
-const UsersList = ({handleSearch, filteredUsers, renderedUsers} : UserListComponentType ) => {
+const UsersList = ({
+  handleSearch,
+  filteredUsers,
+  renderedUsers,
+  width,
+}: UserListComponentType) => {
   return (
     <UserListBlock>
       <h2>Paletter</h2>
       <SearchUserContainer onSearch={handleSearch} />
       <FixedWindow
-       height={700}
-       width={800}
-       itemCount={filteredUsers}
-       itemSize={200}
-       renderedItem={renderedUsers}
+        height={680}
+        width={width}
+        itemCount={filteredUsers}
+        itemSize={200}
+        renderedItem={renderedUsers}
       />
     </UserListBlock>
   );

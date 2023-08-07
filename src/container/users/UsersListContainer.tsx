@@ -1,16 +1,18 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectAllUsers } from "../../features/usersSlice";
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { selectAllPosts } from "../../features/postsSlice";
 import { PostStateType } from "../../type/postType";
 import { UserStateType } from "../../type/userType";
+import { debounce, setWidth } from "../common/ResponsiveWindow";
 import UsersList from "../../components/users/UserList";
 
 const UsersListContainer = () => {
   const posts = useSelector(selectAllPosts);
   const users = useSelector(selectAllUsers);
   const [filteredUsers, setFilteredUsers] = useState<UserStateType[]>(users);
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
   let timeoutId: NodeJS.Timeout;
 
@@ -55,11 +57,9 @@ const UsersListContainer = () => {
         className="userList"
         data-name={user.name}
         style={style}
-        to={`/users/${user.id}`} 
+        to={`/users/${user.id}`}
       >
-        <div className="profile">
-          profile
-        </div>
+        <div className="profile">profile</div>
         <span>
           <p className="name">{user.name}</p>
           <p className="introduce">안녕하세요 {user.name}입니다.</p>
@@ -73,11 +73,30 @@ const UsersListContainer = () => {
     );
   };
 
-  return <UsersList 
-    handleSearch={handleSearch}
-    filteredUsers={filteredUsers}
-    renderedUsers={renderedUsers}
-  />;
+  useEffect(() => {
+    // window resize debounce 시킴
+    const handleResize = debounce(() => {
+      setWindowWidth(window.innerWidth);
+    }, 250); // 250ms 지연
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const width = setWidth(windowWidth, "USER");
+
+  return (
+    <UsersList
+      handleSearch={handleSearch}
+      filteredUsers={filteredUsers}
+      renderedUsers={renderedUsers}
+      width={width}
+    />
+  );
 };
 
 export default UsersListContainer;

@@ -7,19 +7,10 @@ const NavbarBlock = styled.nav`
   display: flex;
   padding: 0;
   background: var(--redux-color);
-
+  transition: all 0.3s ease;
   .banner {
     cursor: pointer;
     margin: 30px;
-  }
-
-  .notifiButton {
-    font-size: 18px;
-    background-color: inherit;
-  }
-
-  .notifiButton .notifiLogo {
-    font-size: 24px;
   }
 
   & section {
@@ -74,6 +65,79 @@ const NavbarBlock = styled.nav`
     position: relative;
     color: white;
   }
+
+  /* 화면 너비 0 ~ 1200px */
+  @media (max-width: 1200px) {
+    width: 270px;
+    .banner {
+      font-size: 36px;
+    }
+    .navLinks a{
+      font-size: 18px;
+    }
+  }
+
+  /* 화면 너비 0 ~ 930px */
+  @media (max-width: 930px) {
+    width: 200px;
+    .banner {
+      margin: 30px 0;
+    }
+    .navLinks a{
+      font-size: 14px;
+      padding-left: 0px;
+      margin: 0;
+    }
+
+  }
+
+  /* 화면 너비 0 ~ 768px */
+  @media (max-width: 768px) {
+    height: 15vh;
+    width: 100%;
+    .banner {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .navLinks {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-around; /* 수평 가운데 정렬 해제 */
+      align-items: center; /* 수직 가운데 정렬 */
+    }
+  }
+
+
+  /* 화면 너비 0 ~ 576px */
+  @media (max-width: 576px) {
+    section {
+      padding: 0 1rem;
+    }
+   .navLInk {
+    text-align: center;
+   }
+
+   & a {
+    width: 60px;
+    text-align: center;
+    font-size: 100px;
+   }
+
+   & a,
+  & a:active  {
+    padding: 0;
+  }
+  & a:hover {
+    scale: 1.2;
+  }
+    .navLinks a {
+      font-size: 20px;
+    }
+    .navLinks a .logoName{
+      display: none;
+    }
+
+  }
 `;
 
 const Navbar = ({
@@ -91,11 +155,11 @@ const Navbar = ({
         </h1>
         <div className="navContent">
           <div className="navLinks">
-            <Link to="/">📌 Feed</Link>
-            <Link to="/posts">📚 Add Post</Link>
-            <Link to="/users">🎨 Paletter</Link>
-            <Link to="/news/all">📰 News</Link>
-            <Link to="/notifications">💜 Notifications {badge}</Link>
+            <Link to="/">📌 <span className="logoName">Feed</span></Link>
+            <Link to="/posts">📚 <span className="logoName">Add Post</span></Link>
+            <Link to="/users">🎨 <span className="logoName">Paletter</span></Link>
+            <Link to="/news/all">📰 <span className="logoName">News</span></Link>
+            <Link to="/notifications">💜 <span className="logoName">Notifications</span> {badge}</Link>
           </div>
         </div>
       </section>

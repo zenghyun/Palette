@@ -1,7 +1,13 @@
 import { FixedSizeList } from "react-window";
 import { FixedWindowType } from "../../type/commonType";
 
-const FixedWindow = ({height, width, itemCount, itemSize, renderedItem}: FixedWindowType) => {
+const FixedWindow = ({
+  height,
+  width,
+  itemCount,
+  itemSize,
+  renderedItem,
+}: FixedWindowType) => {
   return (
     <FixedSizeList
       height={height}
@@ -11,7 +17,7 @@ const FixedWindow = ({height, width, itemCount, itemSize, renderedItem}: FixedWi
     >
       {renderedItem}
     </FixedSizeList>
-  )
-}
+  );
+};
 
 export default FixedWindow;

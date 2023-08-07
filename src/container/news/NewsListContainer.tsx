@@ -1,11 +1,28 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import usePromise from "../../container/news/usePromise";
 import NewsList from "../../components/news/NewsList";
 import Spinner from "../../components/common/Spinner";
+import { debounce, setWidth } from "../common/ResponsiveWindow";
 
 const NewsListContainer = () => {
   const params = useParams();
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+
+  useEffect(() => {
+    // window resize debounce 시킴
+    const handleResize = debounce(() => {
+      setWindowWidth(window.innerWidth);
+    }, 250); // 250ms 지연
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const [loading, response, error] = usePromise({
     promiseCreator: () => {
@@ -40,7 +57,11 @@ const NewsListContainer = () => {
     return <NewsList articles={[]} noNews={text} />;
   }
 
-  return <NewsList articles={articles} />;
+  
+
+  const width = setWidth(windowWidth, "NEWS");
+
+  return <NewsList articles={articles} width={width}/>;
 };
 
 export default NewsListContainer;

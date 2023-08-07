@@ -25,10 +25,10 @@ export type UserListComponentType = {
     index: number;
     style: CSSProperties;
   }) => JSX.Element;
+  width: number;
 };
 
-
 export type UserPageType = {
-  user: UserStateType; 
+  user: UserStateType;
   postTitles: JSX.Element[];
-}
+};
