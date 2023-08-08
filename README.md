@@ -11,7 +11,7 @@
 <br>
 <br>
 
-## 배포 주소 
+## 📇 배포 주소 
 - <a href="https://pa1ette.netlify.app/" target="_blank" rel="noopener noreferrer">Palette</a>
   
 <br>
@@ -153,6 +153,9 @@ export default app;
 <br>
 
 ## 🌳 Project Directory
+<details>
+<summary>Root 보기</summary>
+
 ```
 palette
 |
@@ -251,36 +254,69 @@ palette
 |   |- App.tsx
 |   |- index.css
 |   |- main.tsx
+|   |- vite-env.d.ts
 |
-|- ...
+|- .eslintrc.cjs
+|- .gitignore
+|- .README.md
+|- firebase.json
+|- index.html
+|- package-lock.json
+|- package.json
+|- storage.rules
+|- tsconfig.json
+|- tsconfig.node.json
+|- vite.config.ts
+|- yarn.lock
 ```
+</details>
+
 
 <br>
 
 ## ⭐️ 주요 기능
 
 
-### 📌 PostList 
-- React quill을 이용한 게시글 작성 
-- base64 기반의 이미지 경로를 firebase를 이용하여 원본 파일양식으로 변환 후 posting 
+### 📌 게시글 목록 렌더링 
+- dangerouslySetInnerHTML를 통한 XSS(Cross-Site Scripting) 공격을 방지하고 React 애플리케이션의 보안성을 높이기 위해 **sanitize-html** 사용 
+
+- React.window를 사용하여 **25%** 의 렌더링 속도 개선 (Redux Profiler 기준)<br>
+[계속되는 list 최적화하기](https://despiteallthat.tistory.com/289) 
 
 <br>
 
-### 📌 게시글 작성 기능 
-- React quill을 이용한 게시글 작성 
-- base64 기반의 이미지 경로를 firebase를 이용하여 원본 파일양식으로 변환 후 게시
+### 📌 게시글 작성 및 수정 
+- **React quill** 기반의 게시글 작성 및 수정 
+
+- **React Persist**를 통한 nanoid로 부여된 게시글 id 
+
+- **base64** 기반의 이미지 경로를 **firebase**를 이용하여 원본 파일양식으로 변환 후 게시 <br>
+[링크달아라]()
+
 
 <br>
 
-### 📌 게시글 수정 및 삭제 기능 
-- 내가 작성한 게시글만 수정 및 삭제 가능 
+### 📌 유저 검색 및 해당 유저 게시글 확인 
+- 유저 검색시 0.5s의 delay를 통한 리소스 절약 및 성능 향상
+  
+- React.window를 이용한 렌더링 최적화 
+
+- 유저 클릭시 유저별 게시글 렌더링 
+  
+<br>
+
+### 📌 News API를 이용한 news 렌더링 
+- 카테고리 별 뉴스 렌더링 
+
+- React.window를 이용한 렌더링 최적화 
+  
+<br>
+
+### 📌 리액션 버튼 클릭 및 게시글 작성시 알림 기능  
+- MSW가 아닌 DB 연결 시 동작할 수 있는 기능 모의 구현  
 
 <br>
 
-### 📌 아이디를 통하여 해당 유저가 작성한 게시글만 보는 기능 
-- 게시글 리스트에서 아이디 클릭 시 해당 유저가 작성한 글만 보여줌 
-
-<br>
-
-### 📌 태그를 통하여 해당 태그가 적힌 게시글만 보는 기능 
-- 게시글 리스트에서 태그 클릭 시 해당 태그가 포함된 게시글만 보여줌 
+### 📌 페이지 별 반응형 디자인 
+- delay를 이용하여 windowWidth 변경시 widthBreakpoints를 통하여 이벤트를 debounce하여 렌더링 <br>
+[responsiveWindow](https://github.com/zenghyun/Palette/blob/main/src/container/common/responsiveWindow.ts)

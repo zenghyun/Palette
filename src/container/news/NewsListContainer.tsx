@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import usePromise from "../../container/news/usePromise";
 import NewsList from "../../components/news/NewsList";
-import { usePromise } from "../../container/news/usePromise";
 import Spinner from "../../components/common/Spinner";
 import { debounce, setWidth } from "../common/responsiveWindow";
 const NewsListContainer = () => {
@@ -56,9 +56,11 @@ const NewsListContainer = () => {
     return <NewsList articles={[]} noNews={text} />;
   }
 
+  
+
   const width = setWidth(windowWidth, "NEWS");
 
-  return <NewsList articles={articles} width={width} />;
+  return <NewsList articles={articles} width={width}/>;
 };
 
 export default NewsListContainer;
