@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-types */
-
 // debounce timer 설정
-export const debounce = (func: Function, delay: number) => {
+export const debounce = (func: (...args: unknown[]) => void, delay: number) => {
   let timeoutId: NodeJS.Timeout | undefined;
   return (...args: unknown[]) => {
     clearTimeout(timeoutId);
