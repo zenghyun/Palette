@@ -276,7 +276,6 @@ palette
 
 ## ⭐️ 주요 기능
 
-
 ### 📌 게시글 목록 렌더링 
 - dangerouslySetInnerHTML를 통한 XSS(Cross-Site Scripting) 공격을 방지하고 React 애플리케이션의 보안성을 높이기 위해 **sanitize-html** 사용 
 
@@ -286,12 +285,12 @@ palette
 <br>
 
 ### 📌 게시글 작성 및 수정 
-- **React quill** 기반의 게시글 작성 및 수정 
+- **React Quill Editor** 기반의 게시글 작성 및 수정 
 
 - **React Persist**를 통한 nanoid로 부여된 게시글 id 
 
-- **base64** 기반의 이미지 경로를 **firebase**를 이용하여 원본 파일양식으로 변환 후 게시 <br>
-[링크달아라]()
+- Firebase를 이용한 React Quill Editor 이미지 처리 (base64 => URL) <br>
+[ Firebase를 이용한 React Quill Editor 이미지 처리하기 ( + firebase CORS 에러 )](https://despiteallthat.tistory.com/291)
 
 
 <br>
