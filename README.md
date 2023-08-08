@@ -287,7 +287,7 @@ palette
 ### 📌 게시글 작성 및 수정 
 - **React Quill Editor** 기반의 게시글 작성 및 수정 
 
-- **React Persist**를 통한 nanoid로 부여된 게시글 id 
+- **React Persist**를 통하여 페이지 새로고침시 nanoid로 부여된 게시글 id가 바뀌어 페이지가 안나오는 현상 해결
 
 - Firebase를 이용한 React Quill Editor 이미지 처리 (base64 => URL) <br>
 [ Firebase를 이용한 React Quill Editor 이미지 처리하기 ( + firebase CORS 에러 )](https://despiteallthat.tistory.com/291)
