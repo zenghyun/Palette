@@ -154,7 +154,7 @@ const Editor = ({
           [{ header: [3, 4, 5, 6, false] }],
           [{ font: [] }],
           ["bold", "italic", "underline", "strike", "blockquote", "code-block"],
-          [{ list: "ordered" }, { list: "bullet" }],
+          [{ list: "ordered" }, { list: "bullet" }, { 'align': [] }],
           [{ color: [] }, { background: [] }],
           ["link", "image", "video"],
           ["clean"],
@@ -173,6 +173,7 @@ const Editor = ({
           "code-block",
           "list",
           "bullet",
+          "align",
           "color",
           "background",
           "link",
@@ -181,7 +182,6 @@ const Editor = ({
         ],
       },
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
@@ -211,6 +211,7 @@ const Editor = ({
             onContentChanged(value);
           }}
           modules={modules}
+          placeholder={"작성하고 싶은 글의 내용을 입력해주세요"}
         />
       </QuillWrapper>
     </>
