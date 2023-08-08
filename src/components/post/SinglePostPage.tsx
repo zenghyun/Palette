@@ -15,6 +15,7 @@ const SinglePostPageBlock = styled.article`
   }
 
   .post-content {
+    width: 100%;
     display: flex;
     flex-direction: column;
     min-height: min-content; /* 최소 높이 min-content */
@@ -50,6 +51,16 @@ const SinglePostPageBlock = styled.article`
   .post-content img {
     width: 600px;
     height: 600px;
+  }
+
+  .post-content .ql-align-justify {
+    text-align: justify;
+  }
+  .post-content .ql-align-center {
+    text-align: center;
+  }
+  .post-content .ql-align-right {
+    text-align: right;
   }
 
   /* 화면 너비 0 ~ 768px */
