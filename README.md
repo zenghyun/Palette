@@ -68,7 +68,7 @@ $ yarn start
 <br>
 
 ### Firebase 
-React quill에 image를 등록할 때 src를 base64기반으로 받아오는 것을 원본 파일 양식으로 받아오기 위해 Firebase Storage가 필요합니다.
+Quill Editor에 이미지 첨부 이벤트가 발생하게 되면 서버(firebase)에 API 요청을 보내 응답 값으로 URL을 돌려받고, 이미지 태그의 src에 base64 대신 URL을 넣어줘야하기 때문에, Firebase Storage가 필요합니다.
 
 ```js
 // npm ver
