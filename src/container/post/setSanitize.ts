@@ -35,7 +35,7 @@ const setSanitize = (post: string) => {
     ol: ["style", "color", "background-color"],
     li: ["style", "color", "background-color"],
     ul: ["style", "color", "background-color"],
-    p: ["style", "color", "background-color"],
+    p: ["style", "color", "background-color", "class"],
     input: ["style", "color", "background-color"],
     a: ["style", "color", "background-color", "rel", "target", "href"],
   };
