@@ -40,8 +40,8 @@ const setSanitize = (post: string) => {
     a: ["style", "color", "background-color", "rel", "target", "href"],
   };
   const sanitizedContent = sanitizeHtml(post, {
-    allowedTags: allowedTags,
-    allowedAttributes: allowedAttributes,
+    allowedTags,
+    allowedAttributes,
   });
 
   return sanitizedContent;
