@@ -75,6 +75,19 @@ $ yarn start
 
 const API_KEY = "";
 
+...
+
+const [loading, response, error] = usePromise({
+    promiseCreator: () => {
+      const query =
+        params.category === "all" ? "" : `&category=${params.category}`;
+      return axios.get(
+        `https://newsapi.org/v2/top-headlines?country=kr${query}&apikey=${API_KEY}`
+      );
+    },
+    deps: [params.category],
+  });
+
 ```
 
 <br>
