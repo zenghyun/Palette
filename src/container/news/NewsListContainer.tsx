@@ -5,6 +5,9 @@ import usePromise from "../../container/news/usePromise";
 import NewsList from "../../components/news/NewsList";
 import Spinner from "../../components/common/Spinner";
 import { debounce, setWidth } from "../common/responsiveWindow";
+
+const API_KEY = "";
+
 const NewsListContainer = () => {
   const params = useParams();
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
@@ -28,7 +31,7 @@ const NewsListContainer = () => {
       const query =
         params.category === "all" ? "" : `&category=${params.category}`;
       return axios.get(
-        `https://newsapi.org/v2/top-headlines?country=kr${query}&apikey=69a43346d69f4551b991f84d01a97b0a`
+        `https://newsapi.org/v2/top-headlines?country=kr${query}&apikey=${API_KEY}`
       );
     },
     deps: [params.category],
