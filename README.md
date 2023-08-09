@@ -67,6 +67,18 @@ $ yarn start
 
 <br>
 
+### NewsApi 
+#### 📌 NewsListContainer.tsx
+[News API Key 발급 받기](https://newsapi.org/)
+```js
+// NewsListContainer.tsx 
+
+const API_KEY = "";
+
+```
+
+<br>
+
 ### Firebase 
 Quill Editor에 이미지 첨부 이벤트가 발생하게 되면 서버(firebase)에 API 요청을 보내 응답 값으로 URL을 돌려받고, 이미지 태그의 src에 base64 대신 URL을 넣어줘야하기 때문에, Firebase Storage가 필요합니다.
 
