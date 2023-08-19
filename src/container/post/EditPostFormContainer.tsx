@@ -5,7 +5,8 @@ import { selectPostById, postUpdated } from "../../features/postsSlice";
 import { PostStateType } from "../../type/postType";
 import { RootStateType } from "../../app/store";
 import { useAppDispatch } from "../../app/store";
-import EditPostForm from "../../components/post/EditPostForm";
+import PostForm from "../../components/post/PostForm";
+
 const EditPostFormContainer = () => {
   const params = useParams();
   const navigate = useNavigate();
@@ -40,7 +41,8 @@ const EditPostFormContainer = () => {
     }
   };
   return (
-    <EditPostForm
+    <PostForm
+      type={"EditPost"}
       title={title}
       content={content}
       onTitleChanged={onTitleChanged}

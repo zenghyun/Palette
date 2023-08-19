@@ -6,8 +6,7 @@ import { useAppDispatch } from "../../app/store";
 import { selectAllUsers } from "../../features/usersSlice";
 import { useNavigate } from "react-router-dom";
 import { fetchNotifications } from "../../features/notificationsSlice";
-
-import AddPostForm from "../../components/post/AddPostForm";
+import PostForm from "../../components/post/PostForm";
 
 const AddPostFormContainer = () => {
   const [title, setTitle] = useState<string>("");
@@ -21,14 +20,14 @@ const AddPostFormContainer = () => {
 
   const onTitleChanged = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-  
+
     if (inputValue.length >= 20) {
       alert("글의 제목은 20글자를 넘길 수 없습니다.");
     } else {
       setTitle(inputValue);
     }
   }, []);
-  
+
   const onContentChanged = useCallback(
     (content: string) => setContent(content),
     []
@@ -43,7 +42,7 @@ const AddPostFormContainer = () => {
       dispatch(postAdded(title, content, userId));
       dispatch(fetchNotifications());
       navigate("/");
-    } 
+    }
   };
 
   const canSave = [title, content, userId].every(Boolean);
@@ -54,7 +53,8 @@ const AddPostFormContainer = () => {
     </option>
   ));
   return (
-    <AddPostForm
+    <PostForm
+      type={"AddPost"}
       title={title}
       onTitleChanged={onTitleChanged}
       onContentChanged={onContentChanged}

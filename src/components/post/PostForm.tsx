@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { PostFormType } from "../../type/postType";
 import Editor from "./Editor";
 
-const AddPostFormBlock = styled.form`
+const PostFormBlock = styled.form`
   display: flex;
   flex-direction: column;
 `;
@@ -13,25 +13,40 @@ export const SaveButton = styled.button`
   width: 200px;
 `;
 
-const AddPostForm = ({
+const textMap = {
+  AddPost: {
+    title: "Add a New Post",
+    buttonText: "Save Post",
+  },
+  EditPost: {
+    title: "Edit Post",
+    buttonText: "Posting",
+  },
+};
+
+const PostForm = ({
+  type,
   title,
   onTitleChanged,
   onContentChanged,
   user,
+  content,
   onAuthorChanged,
   usersOptions,
   onSavePostClicked,
   canSave,
 }: PostFormType) => {
+  const text = textMap[type as keyof typeof textMap];
   return (
     <section>
-      <h2>Add a New Post</h2>
-      <AddPostFormBlock>
+      <h2>{text.title}</h2>
+      <PostFormBlock>
         <Editor
           title={title}
           onTitleChanged={onTitleChanged}
           onContentChanged={onContentChanged}
           user={user}
+          postContent={content}
           onAuthorChanged={onAuthorChanged}
           usersOptions={usersOptions}
         />
@@ -39,13 +54,13 @@ const AddPostForm = ({
           className="button"
           type="button"
           onClick={onSavePostClicked}
-          disabled={!canSave}
+          disabled={text.buttonText === "Save Post" ? !canSave : false}
         >
-          Save Post
+          {text.buttonText}
         </SaveButton>
-      </AddPostFormBlock>
+      </PostFormBlock>
     </section>
   );
 };
 
-export default AddPostForm;
+export default PostForm;

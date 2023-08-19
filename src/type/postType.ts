@@ -26,6 +26,7 @@ export type PostListsType = {
 };
 
 export type PostFormType = {
+  type?: string;
   title: string;
   onTitleChanged: (e: ChangeEvent<HTMLInputElement>) => void;
   postContent?: string;

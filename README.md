@@ -152,27 +152,27 @@ export default app;
 ## 📷 페이지 사진
 <br>
 
-| 메인 페이지                                                                                                                                             | 메인페이지 - 글 자세히 보기                                                                                                                                                |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 메인 페이지                                                                                                                                               | 메인페이지 - 글 자세히 보기                                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/806d9e40-1825-46ed-a619-09b1783a59d8" width="1000px" height="300px"></p> | <p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/5b77b6e7-6f22-4b8f-b99e-e026141bc019" width="1000px" height="300px"></p> |
 
 <br>
 
-| 글 작성 페이지                                                                                                                                            | 글 편집 페이지                                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 글 작성 페이지                                                                                                                                            | 글 편집 페이지                                                                                                                                            |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/0246983c-157b-4ba3-a1bf-b30340fa00e5" width="1000px" height="300px"></p> | <p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/4480497d-53c7-4286-be45-798f6f34ae3b" width="1000px" height="300px"></p> |
 
 <br>
 
-| 유저 검색 페이지                                                                                                                                               | 개인 유저 글 목록 페이지                                                                                                                                              |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 유저 검색 페이지                                                                                                                                          | 개인 유저 글 목록 페이지                                                                                                                                  |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/b621905f-7c9d-470d-8c23-feb296c34742" width="1000px" height="300px"></p> | <p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/3c5acee1-7f83-4efd-b3b3-e5801c936905" width="1000px" height="300px"></p> |
 
 <br>
 
 
-| 뉴스 페이지                                                                                                                                             | 알림 페이지                                                                                                                         |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 뉴스 페이지                                                                                                                                               | 알림 페이지                                                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/d0038de2-1e98-483c-acbf-c73b558a78ce" width="1000px" height="300px"></p> | <p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/c22b187a-a2be-48de-9934-d62b53541055" width="1000px" height="300px"></p> |
 
 <br>
@@ -227,9 +227,8 @@ palette
 |   |   |       - NotificationsList.tsx
 |   |   |
 |   |   |- /post 
-|   |   |       - AddPostForm.tsx
+|   |   |       - PostForm.tsx
 |   |   |       - Editor.tsx
-|   |   |       - EditPostForm.tsx
 |   |   |       - SinglePostPage.tsx
 |   |   |
 |   |   |- /users
@@ -346,3 +345,209 @@ palette
 ### 📌 페이지 별 반응형 디자인 
 - delay를 이용하여 windowWidth 변경시 widthBreakpoints를 통하여 이벤트를 debounce하여 렌더링 <br>
 [responsiveWindow](https://github.com/zenghyun/Palette/blob/main/src/container/common/responsiveWindow.ts)
+
+<br>
+
+## 🛠️ Refactoring 
+
+### AddPostForm, EditPostForm component 공통 component화  
+
+#### 📌 AddPostForm.tsx
+```js
+import { styled } from "styled-components";
+import { PostFormType } from "../../type/postType";
+import Editor from "./Editor";
+
+const AddPostFormBlock = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const SaveButton = styled.button`
+  font-family: "Gowun Batang", serif;
+  margin-top: 10px;
+  width: 200px;
+`;
+
+const AddPostForm = ({
+  title,
+  onTitleChanged,
+  onContentChanged,
+  user,
+  onAuthorChanged,
+  usersOptions,
+  onSavePostClicked,
+  canSave,
+}: PostFormType) => {
+  return (
+    <section>
+      <h2>Add a New Post</h2>
+      <AddPostFormBlock>
+        <Editor
+          title={title}
+          onTitleChanged={onTitleChanged}
+          onContentChanged={onContentChanged}
+          user={user}
+          onAuthorChanged={onAuthorChanged}
+          usersOptions={usersOptions}
+        />
+        <SaveButton
+          className="button"
+          type="button"
+          onClick={onSavePostClicked}
+          disabled={!canSave}
+        >
+          Save Post
+        </SaveButton>
+      </AddPostFormBlock>
+    </section>
+  );
+};
+
+export default AddPostForm;
+
+```
+
+<br>
+
+#### 📌 EditPostForm.tsx
+```js
+import { PostFormType } from "../../type/postType";
+import { SaveButton } from "./AddPostForm";
+import Editor from "./Editor";
+
+const EditPostForm = ({
+  title,
+  content,
+  onTitleChanged,
+  onContentChanged,
+  onSavePostClicked,
+}: PostFormType) => {
+  return (
+    <section>
+      <h2>Edit Post</h2>
+      <form>
+        <Editor
+          title={title}
+          postContent={content}
+          onTitleChanged={onTitleChanged}
+          onContentChanged={onContentChanged}
+        />
+      </form>
+      <SaveButton
+        type="button"
+        className="button"
+        onClick={onSavePostClicked}
+      >
+        Posting
+      </SaveButton>
+    </section>
+  );
+};
+
+export default EditPostForm;
+```
+
+### 두 component를 하나의 component로 변경 
+
+#### 📌 PostForm.tsx 
+```js
+import { styled } from "styled-components";
+import { PostFormType } from "../../type/postType";
+import Editor from "./Editor";
+
+const PostFormBlock = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const SaveButton = styled.button`
+  font-family: "Gowun Batang", serif;
+  margin-top: 10px;
+  width: 200px;
+`;
+
+const textMap = {
+  AddPost: {
+    title: "Add a New Post",
+    buttonText: "Save Post",
+  },
+  EditPost: {
+    title: "Edit Post",
+    buttonText: "Posting",
+  },
+};
+
+const PostForm = ({
+  type,
+  title,
+  onTitleChanged,
+  onContentChanged,
+  user,
+  content,
+  onAuthorChanged,
+  usersOptions,
+  onSavePostClicked,
+  canSave,
+}: PostFormType) => {
+  const text = textMap[type as keyof typeof textMap];
+  return (
+    <section>
+      <h2>{text.title}</h2>
+      <PostFormBlock>
+        <Editor
+          title={title}
+          onTitleChanged={onTitleChanged}
+          onContentChanged={onContentChanged}
+          user={user}
+          postContent={content}
+          onAuthorChanged={onAuthorChanged}
+          usersOptions={usersOptions}
+        />
+        <SaveButton
+          className="button"
+          type="button"
+          onClick={onSavePostClicked}
+          disabled={text.buttonText === "Save Post" ? !canSave : false} // AddPost 일때만 활성화 
+        >
+          {text.buttonText}
+        </SaveButton>
+      </PostFormBlock>
+    </section>
+  );
+};
+
+export default PostForm;
+
+```
+
+#### 📌 postType.ts 
+```js
+export type PostFormType = {
+  type?: string; // type 부분 추가
+  title: string;
+  onTitleChanged: (e: ChangeEvent<HTMLInputElement>) => void;
+  postContent?: string;
+  content?: string;
+  onContentChanged: (content: string) => void;
+  user?: string;
+  onAuthorChanged?: (e: ChangeEvent<HTMLSelectElement>) => void;
+  usersOptions?: JSX.Element[];
+  onSavePostClicked?: () => void;
+  canSave?: boolean;
+};
+```
+#### 📌 AddPostFormContainer & EditPostFormContainer 
+```js
+// AddPostFormContainer.tsx 
+    <PostForm
+      type={"AddPost"} // type 추가
+      // ...
+    />
+
+// EditPostFormContainer.tsx     
+    <PostForm
+      type={"EditPost"} // type 추가 
+      // ...
+    />
+```
