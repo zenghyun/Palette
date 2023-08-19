@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import NewsCategories from "./NewsCategories";
+import NewsCategories from "../news/NewsCategories";
 import { styled } from "styled-components";
 
 const NewsRootBlock = styled.div`

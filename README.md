@@ -202,38 +202,40 @@ palette
 |   |   |       - Navbar.tsx
 |   |   |       - PostAuthor.tsx
 |   |   |       - ReactionButtons.tsx
-|   |   |       - RootLayout.tsx
 |   |   |       - Spinner.tsx
 |   |   |       - TimeAgo.tsx
 |   |   |
 |   |   |- /home 
 |   |   |       - Home.tsx
 |   |   |       - PostExcerpt.tsx
-|   |   |       
+|   |   |
+|   |   |- /layout
+|   |   |       - EditPostLayout.tsx
+|   |   |       - NewsRootLayout.tsx
+|   |   |       - NotificationsRootLayout.tsx
+|   |   |       - PostRootLayout.tsx
+|   |   |       - RootLayout.tsx
+|   |   |       - UserRootLayout.tsx
+|   |   |
 |   |   |- /news 
 |   |   |       - NewsCategories.tsx
 |   |   |       - NewsItem.tsx
 |   |   |       - NewsList.tsx
 |   |   |       - NewsPage.tsx
-|   |   |       - NewsRootLayout.tsx
 |   |   |
 |   |   |- /notifications
 |   |   |       - NotificationsList.tsx
-|   |   |       - NotificationsRootLayout.tsx
 |   |   |
 |   |   |- /post 
 |   |   |       - AddPostForm.tsx
 |   |   |       - Editor.tsx
 |   |   |       - EditPostForm.tsx
-|   |   |       - EditPostLayout.tsx
-|   |   |       - PostRootLayout.tsx
 |   |   |       - SinglePostPage.tsx
 |   |   |
 |   |   |- /users
 |   |           - SearchUser.tsx
 |   |           - UserList.tsx
 |   |           - UserPage.tsx
-|   |           - UserRootLayout.tsx
 |   |
 |   |
 |   |- /container

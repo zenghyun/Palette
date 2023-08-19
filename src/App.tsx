@@ -1,15 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-import RootLayout from "./components/common/RootLayout";
-import PostRootLayout from "./components/post/PostRootLayout";
-import EditPostLayout from "./components/post/EditPostLayout";
-import UserRootLayout from "./components/users/UserRootLayout";
-import NotificationsRootLayout from "./components/notifications/NotificationsRootLayout";
+import RootLayout from "./components/layout/RootLayout";
+import PostRootLayout from "./components/layout/PostRootLayout";
+import EditPostLayout from "./components/layout/EditPostLayout";
+import UserRootLayout from "./components/layout/UserRootLayout";
+import NotificationsRootLayout from "./components/layout/NotificationsRootLayout";
 import SinglePostPageContainer from "./container/post/SinglePostPageContainer";
 import UserListContainer from "./container/users/UserListContainer";
 import UserPageContainer from "./container/users/UserPageContainer";
-import NewsRootLayout from "./components/news/NewsRootLayout";
+import NewsRootLayout from "./components/layout/NewsRootLayout";
 import NewsPage from "./components/news/NewsPage";
 import HomeContainer from "./container/home/HomeContainer";
 import NewsListContainer from "./container/news/NewsListContainer";
