@@ -62,7 +62,7 @@ $ cd palette
 ```js
 $ cd palette
 $ yarn install
-$ yarn start 
+$ yarn run dev
 ```
 
 <br>
