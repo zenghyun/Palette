@@ -314,9 +314,6 @@ const socketServer = new MockSocketServer("ws://localhost");
 
 let currentSocket;
 
-const sendMessage = (socket, obj) => {
-  socket.send(JSON.stringify(obj));
-};
 
 // Allow our UI to fake the server pushing out some notifications over the websocket,
 // as if other users were interacting with the system.
@@ -330,6 +327,10 @@ const sendRandomNotifications = (socket, since) => {
   );
 
   sendMessage(socket, { type: "notifications", payload: notifications });
+};
+
+const sendMessage = (socket, obj) => {
+  socket.send(JSON.stringify(obj));
 };
 
 export const forceGenerateNotifications = (since) => {
