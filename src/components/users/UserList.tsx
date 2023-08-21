@@ -3,7 +3,6 @@ import SearchUserContainer from "../../container/users/SearchUserContainer";
 import { UserListComponentType } from "../../type/userType";
 import FixedWindow from "../../container/common/FixedWindow";
 
-// 스타일드 컴포넌트로 UserList 스타일을 정의합니다.
 const UserListBlock = styled.section`
   background-color: #d2e3fcb9;
   border: 3px solid black;
@@ -29,7 +28,6 @@ const UserListBlock = styled.section`
     font-size: 1.1rem;
   }
 
-  /* 스크롤 가능한 사용자 리스트의 스타일을 정의합니다. */
   .userList {
     font-weight: bold;
     display: flex;
@@ -42,7 +40,6 @@ const UserListBlock = styled.section`
     overflow: hidden auto;
   }
 
-  /* 사용자 리스트에 그라데이션 효과를 적용합니다. */
   .userList::before {
     position: absolute;
     top: 0;
@@ -66,7 +63,6 @@ const UserListBlock = styled.section`
     transform: skewX(-25deg);
   }
 
-  /* 마우스 오버 시 그라데이션 애니메이션 효과를 적용합니다. */
   .userList:hover::before {
     -webkit-animation: shine 0.75s;
     animation: shine 1s;
@@ -83,7 +79,6 @@ const UserListBlock = styled.section`
     }
   }
 
-  /* 프로필 이미지를 포함하는 박스 스타일을 정의합니다. */
   .userList .profile {
     width: 150px;
     height: 150px;
@@ -109,7 +104,6 @@ const UserListBlock = styled.section`
     color: #926bcf;
   }
 
-  /* 화면 너비 0 ~ 1200px */
   @media (max-width: 1200px) {
     width: 480px;
     .userList {
@@ -125,12 +119,10 @@ const UserListBlock = styled.section`
     }
   }
 
-  /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {
     width: 510px;
   }
 
-  /* 화면 너비 0 ~ 576px */
   @media (max-width: 576px) {
     width: 310px;
     .userList {
@@ -150,7 +142,6 @@ const UserListBlock = styled.section`
     }
   }
 
-  /* 화면 너비 0 ~ 390px */
   @media (max-width: 390px) {
     width: 270px;
     .userList {

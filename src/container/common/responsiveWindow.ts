@@ -1,4 +1,3 @@
-// debounce timer 설정
 export const debounce = (func: (...args: unknown[]) => void, delay: number) => {
   let timeoutId: NodeJS.Timeout | undefined;
   return (...args: unknown[]) => {
@@ -7,7 +6,6 @@ export const debounce = (func: (...args: unknown[]) => void, delay: number) => {
   };
 };
 
-// 반응형 넓이 정의
 export const widthBreakpoints = {
   desktop: 1200,
   tablet: 768,

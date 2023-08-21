@@ -14,15 +14,8 @@ const NUM_USERS = 20;
 // const POSTS_PER_USER = line 194
 const RECENT_NOTIFICATIONS_DAYS = 7;
 
-// Add an extra delay to all endpoints, so loading spinners show up.
 const ARTIFICIAL_DELAY_MS = 2000;
 
-/* RNG setup */
-
-// Set up a seeded random number generator, so that we get
-// a consistent set of users / entries each time the page loads.
-// This can be reset by deleting this localStorage value,
-// or turned off by setting `useSeededRNG` to false.
 const useSeededRNG = true;
 let rng = seedrandom();
 
@@ -306,17 +299,11 @@ export const handlers = [
 ];
 
 export const worker = setupWorker(...handlers);
-// worker.printHandlers() // Optional: nice for debugging to see all available route handlers that will be intercepted
-
-/* Mock Websocket Setup */
 
 const socketServer = new MockSocketServer("ws://localhost");
 
 let currentSocket;
 
-
-// Allow our UI to fake the server pushing out some notifications over the websocket,
-// as if other users were interacting with the system.
 const sendRandomNotifications = (socket, since) => {
   const numNotifications = getRandomInt(1, 5);
 
@@ -355,8 +342,6 @@ socketServer.on("connection", (socket) => {
   });
 });
 
-/* Random Notifications Generation */
-
 const notificationTemplates = [
   "님이 게시글을 좋아합니다.",
   "님이 게시글을 남겼습니다.",
@@ -374,8 +359,6 @@ function generateRandomNotifications(since, numNotifications, db) {
     pastDate.setMinutes(pastDate.getMinutes() - 15);
   }
 
-  // Create N random notifications. We won't bother saving these
-  // in the DB - just generate a new batch and return them.
   const notifications = [...Array(numNotifications)].map(() => {
     const user = randomFromArray(db.user.getAll());
     const template = randomFromArray(notificationTemplates);

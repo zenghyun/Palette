@@ -13,17 +13,14 @@ const ReactionButton = styled.button`
     background-color: rgb(211, 208, 208);
   }
 
-  /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {
     padding: 5px 0px;
   }
 
-  /* 화면 너비 0 ~ 576px */
   @media (max-width: 576px) {
     padding: 5px 3px;
   }
 
-  /* 화면 너비 0 ~ 390px */
   @media (max-width: 576px) {
     padding: 5px 0px;
   }

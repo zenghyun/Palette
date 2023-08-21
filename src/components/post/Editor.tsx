@@ -17,7 +17,6 @@ const TitleInput = styled.input`
   width: 100%;
   transition: all 0.3s ease;
 
-  /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {
     width: 90%;
     font-size: 2rem;
@@ -41,7 +40,6 @@ const Userbox = styled.div`
   #postAuthor option {
   }
 
-  /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {
     #postAuthor {
       font-size: 1.5rem;
@@ -50,7 +48,6 @@ const Userbox = styled.div`
 `;
 
 const QuillWrapper = styled.div`
-  /* 최소 크기 지정 및 padding 제거 */
   .ql-container {
     overflow: hidden auto;
   }
@@ -70,15 +67,13 @@ const QuillWrapper = styled.div`
     margin-left: 150px;
   }
 
-  /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {
     .ql-editor {
       height: 300px;
     }
   }
 
-  /* 화면 너비 0 ~ 576px */
-  @media (max-width: 768px) {
+  @media (max-width: 576px) {
     .ql-editor {
       height: 200px;
     }

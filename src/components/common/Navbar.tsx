@@ -66,7 +66,6 @@ const NavbarBlock = styled.nav`
     color: white;
   }
 
-  /* 화면 너비 0 ~ 1200px */
   @media (max-width: 1200px) {
     width: 270px;
     .banner {
@@ -77,7 +76,6 @@ const NavbarBlock = styled.nav`
     }
   }
 
-  /* 화면 너비 0 ~ 930px */
   @media (max-width: 930px) {
     width: 220px;
     .banner {
@@ -89,7 +87,6 @@ const NavbarBlock = styled.nav`
     }
   }
 
-  /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {
     height: 16vh;
     width: 100%;
@@ -102,8 +99,8 @@ const NavbarBlock = styled.nav`
       padding-top: 5px;
       width: 100%;
       flex-direction: row;
-      justify-content: space-around; /* 수평 가운데 정렬 해제 */
-      align-items: center; /* 수직 가운데 정렬 */
+      justify-content: space-around; 
+      align-items: center;
 
       & a {
         font-size: 14px;
@@ -111,7 +108,6 @@ const NavbarBlock = styled.nav`
     }
   }
 
-  /* 화면 너비 0 ~ 660px */
   @media (max-width: 660px) {
     section {
       padding: 0 1rem;

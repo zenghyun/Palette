@@ -19,7 +19,6 @@ const NotificationsListBlock = styled.section`
     background-color: rgba(29, 161, 242, 0.1);
   }
 
-  /* 화면 너비 0 ~ 576px */
   @media (max-width: 576px) {
     .notifiList {
       height: 400px;

@@ -10,11 +10,9 @@ const SpinnerBlock = styled.div`
     margin: 5px;
   }
 
-  /* https://projects.lukehaas.me/css-loaders/ , Loader #3 */
   .loader {
     font-size: 10px;
     margin: 10px;
-    /* text-indent: -9999em; */
     width: 5em;
     height: 5em;
     border-radius: 50%;

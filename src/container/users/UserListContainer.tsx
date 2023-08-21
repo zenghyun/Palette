@@ -17,13 +17,10 @@ const UserListContainer = () => {
   let timeoutId: NodeJS.Timeout;
 
   const handleSearch = (searchWord: string) => {
-    // 딜레이 시간 (밀리초 단위)
-    const delayTime = 500; // 예시로 0.5초(500밀리초) 딜레이를 줍니다.
+    const delayTime = 500; 
 
-    // 이전에 스케줄링된 딜레이 작업을 취소합니다.
     clearTimeout(timeoutId);
 
-    // 새로운 딜레이 작업을 스케줄링합니다.
     timeoutId = setTimeout(() => {
       const filtered = users.filter((user) =>
         user.name.toLowerCase().includes(searchWord.toLowerCase())
@@ -81,7 +78,6 @@ const UserListContainer = () => {
 
     window.addEventListener("resize", handleResize);
 
-    // Clean up
     return () => {
       window.removeEventListener("resize", handleResize);
     };

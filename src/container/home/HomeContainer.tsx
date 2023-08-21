@@ -31,7 +31,6 @@ const HomeContainer = () => {
 
     window.addEventListener("resize", handleResize);
 
-    // Clean up
     return () => {
       window.removeEventListener("resize", handleResize);
     };

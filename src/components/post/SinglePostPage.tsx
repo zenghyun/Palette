@@ -18,8 +18,8 @@ const SinglePostPageBlock = styled.article`
     width: 100%;
     display: flex;
     flex-direction: column;
-    min-height: min-content; /* 최소 높이 min-content */
-    max-height: 550px; /* 최대 높이 500px */
+    min-height: min-content;
+    max-height: 550px; 
     overflow: hidden auto;
   }
   .post-content blockquote {
@@ -63,7 +63,6 @@ const SinglePostPageBlock = styled.article`
     text-align: right;
   }
 
-  /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {
     width: 500px;
 
@@ -79,7 +78,6 @@ const SinglePostPageBlock = styled.article`
     }
   }
 
-  /* 화면 너비 0 ~ 576px */
   @media (max-width: 576px) {
     width: 300px;
     h2 {

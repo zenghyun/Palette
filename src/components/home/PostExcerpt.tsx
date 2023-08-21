@@ -33,7 +33,6 @@ const PostExcerptBlock = styled.article`
     flex-direction: column;
   }
 
-  /* 화면 너비 0 ~ 1200px */
   @media (max-width:1200px) {
         width: 500px;
         .middleSection {
@@ -41,7 +40,6 @@ const PostExcerptBlock = styled.article`
         }
     }
 
-  /* 화면 너비 0 ~ 768px */
   @media (max-width:768px) {
         width: 370px;
         h3 {
@@ -59,7 +57,6 @@ const PostExcerptBlock = styled.article`
         }
     }
 
-  /* 화면 너비 0 ~ 576px */
   @media (max-width:576px) {
     h3 {
       font-size: 1rem;
@@ -71,7 +68,6 @@ const PostExcerptBlock = styled.article`
         width: 300px;
     }
 
-  /* 화면 너비 0 ~ 390px */
   @media (max-width:390px) {
         width: 260px;
     }

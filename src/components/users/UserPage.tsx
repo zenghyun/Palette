@@ -16,7 +16,6 @@ const UserPageBlock = styled.section`
     color: #926bcf;
   }
 
-  /* 화면 너비 0 ~ 576px */
   @media (max-width: 576px) {
     .postList {
       font-size: 1.2rem;

@@ -20,7 +20,6 @@ const NewsListContainer = () => {
 
     window.addEventListener("resize", handleResize);
 
-    // Clean up
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -37,29 +36,23 @@ const NewsListContainer = () => {
     deps: [params.category],
   });
 
-  // 대기 중일 때
   if (loading) {
     return <Spinner />;
   }
 
-  // 아직 response 값이 설정되지 않았을 때
   if (!response) {
     return null;
   }
 
-  // 에러가 발생했을 때
   if (error) {
     return <NewsList articles={[]} error />;
   }
 
-  // response 값이 유효할 때
   const articles = response.data.articles;
   if (!articles || articles.length === 0) {
     const text = "뉴스가 없습니다.";
     return <NewsList articles={[]} noNews={text} />;
   }
-
-  
 
   const width = setWidth(windowWidth, "NEWS");
 
