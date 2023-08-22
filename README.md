@@ -353,6 +353,10 @@ palette
 
 ### AddPostForm, EditPostForm component 공통 component화  
 
+AddPostForm과 EditPostForm의 경우 중복되는 코드가 대부분이기 때문에, 하나의 component로 바꾸면 좋겠다고 생각하게 되었습니다.
+
+ EditPostForm의 경우 기존의 작성한 내용을 Redux store를 이용하여 가져오는 부분만 유의하면 되기 때문에 기존에 props의 타입으로 지정된 **PostFormType**을 사용 목적에 맞게 수정하였습니다. 
+
 #### 📌 AddPostForm.tsx
 ```js
 import { styled } from "styled-components";
