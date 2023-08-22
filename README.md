@@ -143,6 +143,10 @@ export default app;
 <img src="https://img.shields.io/badge/yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white">
    <br>
 
+### Cloud Service
+<img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white">
+<br>
+
    ### Frontend
    <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
    <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=JavaScript&logoColor=white">
@@ -196,6 +200,11 @@ components의 경우 주로 UI를 그리는 데 필요한 JSX와 스타일을 �
 
 container의 경우 주로 상태 관리(State Management)와 비즈니스 로직을 처리합니다. 이 프로젝트의 경우 Redux를 이용하여 상태를 관리하거나 API 호출 등을 담당하고 있습니다. 
 
+components와 container 모두 내부에서는 크게 공통으로 사용될 부분을 제외하면 각 페이지 별로 세분화하여 파일을 구분하였습니다. 
+
+/src/features : Redux Toolkit을 사용하여 Redux 상태 관리를 구현하는 파일을 모아놓은 폴더입니다.
+
+/src/type : Typescript 기반의 프로젝트에서 변수 및 props 등을 관리하기 위해 페이지 별로 type을 구분해 놓은 파일을 모아놓은 폴더입니다.
 
 
 ```
