@@ -182,6 +182,22 @@ export default app;
 <details>
 <summary>Root 보기</summary>
 
+### Project의 구성은 아래와 같습니다.
+
+/public : MSW 통신을 위한 자동 생성된 파일입니다.  
+
+/src/api : MSW 통신을 위한 코드 입니다. mock API을 기반으로 하여 가짜 데이터를 생성하기 위한 목적을 가진 폴더 및 파일입니다.
+
+/src/app : 애플리케이션 내의 상태 관리 및 상태 업데이트 등을 관리하기 위한 파일입니다. 또한 React Persist 사용을 위한 sessionStorage 내에 데이터를 저장하는 역할을 수행합니다.  
+
+components와 container를 나누는 기준은 UI 로직과 상태 관리 및 비즈니스 로직을 기준으로 나눈 것 입니다. 
+
+components의 경우 주로 UI를 그리는 데 필요한 JSX와 스타일을 포함하며, 상태를 직접 변경하지 않고, 부모로부터 전달받은 props를 이용하여 UI를 표시합니다. 또한, components는 상태나 데이터를 관리하지 않습니다. 
+
+container의 경우 주로 상태 관리(State Management)와 비즈니스 로직을 처리합니다. 이 프로젝트의 경우 Redux를 이용하여 상태를 관리하거나 API 호출 등을 담당하고 있습니다. 
+
+
+
 ```
 palette
 |
