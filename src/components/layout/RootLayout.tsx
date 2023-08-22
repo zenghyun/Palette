@@ -35,7 +35,6 @@ const RootBlock = styled.main`
     background-color: rgba(183, 137, 235, 0.527);
   }
 
-  /* 화면 너비 0 ~ 768px */
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
