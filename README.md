@@ -1,7 +1,7 @@
 # Palette
 <br>
 
- <p align="center"><img src="https://github.com/zenghyun/Palette/assets/114131063/b2e93054-ddf7-4a91-9a6a-91b35fc37eae" width="300px" height="300px"></p> 
+ <p align="center"><img src="https://github.com/zenghyun/ClothesForYou/assets/114131063/103b1707-4ddd-466d-8e6d-c782650a1f53" width="300px" height="300px"></p> 
 <br>
 <br>
 
@@ -148,9 +148,7 @@ export default app;
 <br>
 
    ### Frontend
-   <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
-   <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=JavaScript&logoColor=white">
-   <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"><img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=react&logoColor=white">
+   <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"><img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=JavaScript&logoColor=white"><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"><img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=react&logoColor=white">
 <br>
 
 
@@ -383,6 +381,7 @@ AddPostForm과 EditPostForm의 경우 중복되는 코드가 대부분이기 때
  EditPostForm의 경우 기존의 작성한 내용을 Redux store를 이용하여 가져오는 부분만 유의하면 되기 때문에 기존에 props의 타입으로 지정된 **PostFormType**을 사용 목적에 맞게 수정하였습니다. 
 
 #### 📌 AddPostForm.tsx
+ 
 ```js
 import { styled } from "styled-components";
 import { PostFormType } from "../../type/postType";
