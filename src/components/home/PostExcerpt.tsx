@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import TimeAgo from "../common/TimeAgo";
 import ReactionButtonContainer from "../../container/common/ReactionButtonContainer";
 import setSanitize from "../../container/post/setSanitize";
 import { PostStateType } from "../../type/postType";
 import { styled } from "styled-components";
 import PostAuthorContainer from "../../container/common/PostAuthorContainer";
+import LinkButton from "../common/LinkButton";
 
 const PostExcerptBlock = styled.article`
   padding: 0.25rem 0.25rem;
@@ -15,7 +15,7 @@ const PostExcerptBlock = styled.article`
   margin: 0 auto;
   margin-bottom: 10px;
   width: 760px;
-  transition:  all 0.3s ease;
+  transition: all 0.3s ease;
   h3 {
     margin: 0;
     font-size: 1.5rem;
@@ -33,44 +33,44 @@ const PostExcerptBlock = styled.article`
     flex-direction: column;
   }
 
-  @media (max-width:1200px) {
-        width: 500px;
-        .middleSection {
-          font-size: 14px;
-        }
+  @media (max-width: 1200px) {
+    width: 500px;
+    .middleSection {
+      font-size: 14px;
     }
+  }
 
-  @media (max-width:768px) {
-        width: 370px;
-        h3 {
-          font-size: 1.2rem;
-        }
-        .middleSection {
-          font-size: 14px;
-          height: 100px;
-          width: 240px;
-          margin-bottom: 10px;
-        }
-        .feed-button {
-          padding: 0.75rem 1rem;
-          font-size: 1px;
-        }
+  @media (max-width: 768px) {
+    width: 370px;
+    h3 {
+      font-size: 1.2rem;
     }
+    .middleSection {
+      font-size: 14px;
+      height: 100px;
+      width: 240px;
+      margin-bottom: 10px;
+    }
+    .feed-button {
+      padding: 0.75rem 1rem;
+      font-size: 1px;
+    }
+  }
 
-  @media (max-width:576px) {
+  @media (max-width: 576px) {
     h3 {
       font-size: 1rem;
     }
     .middleSection {
-          width: 200px;
-          height: 100px;
-        }
-        width: 300px;
+      width: 200px;
+      height: 100px;
     }
+    width: 300px;
+  }
 
-  @media (max-width:390px) {
-        width: 260px;
-    }
+  @media (max-width: 390px) {
+    width: 260px;
+  }
 `;
 
 const PostExcerpt = React.memo(({ post }: { post: PostStateType }) => {
@@ -89,9 +89,7 @@ const PostExcerpt = React.memo(({ post }: { post: PostStateType }) => {
       />
       <section className="bottomSection">
         <ReactionButtonContainer post={post} />
-        <Link to={`/posts/${post.id}`} className="button feed-button">
-          View Palette
-        </Link>
+        <LinkButton link={`/posts/${post.id}`} title={"View Palette"} />
       </section>
     </PostExcerptBlock>
   );

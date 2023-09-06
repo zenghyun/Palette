@@ -223,6 +223,7 @@ palette
 |   |- /components
 |   |   |
 |   |   |- /common
+|   |   |       - LinkButton.tsx
 |   |   |       - Navbar.tsx
 |   |   |       - PostAuthor.tsx
 |   |   |       - ReactionButtons.tsx
