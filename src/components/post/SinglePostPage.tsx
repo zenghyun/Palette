@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import LinkButton from "../common/LinkButton";
 import TimeAgo from "../common/TimeAgo";
 import ReactionButtonContainer from "../../container/common/ReactionButtonContainer";
 import { styled } from "styled-components";
@@ -19,7 +19,7 @@ const SinglePostPageBlock = styled.article`
     display: flex;
     flex-direction: column;
     min-height: min-content;
-    max-height: 550px; 
+    max-height: 550px;
     overflow: hidden auto;
   }
   .post-content blockquote {
@@ -116,9 +116,7 @@ const SinglePostPage = ({
           dangerouslySetInnerHTML={{ __html: sanitizedContent }}
         />
         <ReactionButtonContainer post={post} />
-        <Link to={`/editPost/${post.id}`} className="button">
-          Edit Post
-        </Link>
+        <LinkButton link={`/editPost/${post.id}`} title={"Edit Post"} />
       </SinglePostPageBlock>
     </section>
   );
