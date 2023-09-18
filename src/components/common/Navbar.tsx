@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 
 const NavbarBlock = styled.nav`
@@ -153,21 +153,21 @@ const Navbar = ({
         </h1>
         <div className="navContent">
           <div className="navLinks">
-            <Link to="/">
+            <NavLink to="/">
               📌 <span className="logoName">Feed</span>
-            </Link>
-            <Link to="/posts">
+            </NavLink>
+            <NavLink to="/posts">
               📚 <span className="logoName">Add Post</span>
-            </Link>
-            <Link to="/users">
+            </NavLink>
+            <NavLink to="/users">
               🎨 <span className="logoName">Paletter</span>
-            </Link>
-            <Link to="/news/all">
+            </NavLink>
+            <NavLink to="/news/all">
               📰 <span className="logoName">News</span>
-            </Link>
-            <Link to="/notifications">
+            </NavLink>
+            <NavLink to="/notifications">
               💜 <span className="logoName">Notifications</span> {badge}
-            </Link>
+            </NavLink>
           </div>
         </div>
       </section>
