@@ -94,10 +94,14 @@ export const PostResponsive = (width: number) => {
   let windowItem;
 
   switch (true) {
-    case width < 540:
+    case width > 410 && width < 540:
       windowHeight = 700;
       windowItem = 330;
       break;
+    case width <= 410 : 
+    windowHeight = 450;
+    windowItem = 330;
+    break;
     default:
       windowHeight = 800;
       windowItem = 330;
