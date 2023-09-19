@@ -6,7 +6,7 @@ import NewsList from "../../components/news/NewsList";
 import Spinner from "../../components/common/Spinner";
 import { debounce, setWidth } from "../common/responsiveWindow";
 
-const API_KEY = "";
+const API_KEY = "69a43346d69f4551b991f84d01a97b0a";
 
 const NewsListContainer = () => {
   const params = useParams();
@@ -20,6 +20,7 @@ const NewsListContainer = () => {
 
     window.addEventListener("resize", handleResize);
 
+    // Clean up
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -41,11 +42,17 @@ const NewsListContainer = () => {
   }
 
   if (!response) {
-    return null;
+    return (
+      <NewsList
+        articles={[]}
+        error
+        text={"NewsAPI의 정책으로 인하여 localhost외의 모든 요청은 거부되어 data를 가져올 수 없습니다. (426 Error)"}
+      />
+    );
   }
 
   if (error) {
-    return <NewsList articles={[]} error />;
+    return <NewsList articles={[]} error text={"에러 발생!"} />;
   }
 
   const articles = response.data.articles;
@@ -56,7 +63,7 @@ const NewsListContainer = () => {
 
   const width = setWidth(windowWidth, "NEWS");
 
-  return <NewsList articles={articles} width={width}/>;
+  return <NewsList articles={articles} width={width} />;
 };
 
 export default NewsListContainer;
