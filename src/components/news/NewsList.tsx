@@ -34,6 +34,7 @@ const NewsListBlock = styled.div`
 
 const ErrorMessage = styled.div`
   color: red;
+  padding: 20px;
   text-align: center;
   margin-top: 1rem;
 `;
@@ -43,10 +44,11 @@ const NoNewsMessage = styled.div`
   margin-top: 1rem;
 `;
 
-const NewsList = ({ articles, error, noNews, width }: NewsListComponentType) => {
+const NewsList = ({ articles, error, text, noNews, width }: NewsListComponentType) => {
   if (error) {
-    return <ErrorMessage>에러 발생!</ErrorMessage>;
+    return <ErrorMessage>{text}</ErrorMessage>;
   }
+
 
   if (noNews) {
     return <NoNewsMessage>{noNews}</NoNewsMessage>;
