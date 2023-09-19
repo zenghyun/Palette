@@ -7,6 +7,7 @@ export type DependencyType = string | undefined;
 export type NewsListComponentType = {
   articles: INewsApiArticle[];
   error?: unknown;
+  text? : string;
   noNews?: string;
   width?: number;
 };
