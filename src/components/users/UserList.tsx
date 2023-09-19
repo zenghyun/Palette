@@ -2,13 +2,13 @@ import styled from "styled-components";
 import SearchUserContainer from "../../container/users/SearchUserContainer";
 import { UserListComponentType } from "../../type/userType";
 import FixedWindow from "../../container/common/FixedWindow";
-
+import { UserListResponsive } from "../../container/common/responsiveWindow";
 const UserListBlock = styled.section`
   background-color: #d2e3fcb9;
   border: 3px solid black;
+  padding: 0;
   margin-top: 20px;
   border-radius: 10px;
-  padding: 0;
   width: 750px;
   height: 870px;
   transition: all 0.3s ease;
@@ -105,7 +105,7 @@ const UserListBlock = styled.section`
   }
 
   @media (max-width: 1200px) {
-    width: 480px;
+    width: 500px;
     .userList {
       font-size: 1rem;
       & .profile {
@@ -121,33 +121,66 @@ const UserListBlock = styled.section`
 
   @media (max-width: 768px) {
     width: 510px;
-  }
-
-  @media (max-width: 576px) {
-    width: 310px;
+    height: 750px;
     .userList {
       & .name {
         font-size: 1.2rem;
       }
       & .profile {
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
       }
       & .introduce {
-        font-size: 14px;
+        font-size: 0.875rem;
       }
       & .newPost {
-        font-size: 14px;
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    width: 310px;
+    height: 510px;
+
+    h2 {
+      padding: 10px;
+      font-size: 1.5rem;
+    }
+
+    .userList {
+      & .name {
+        font-size: 0.8rem;
+      }
+      & .profile {
+        width: 30px;
+        height: 30px;
+        font-size: 0.5rem;
+      }
+      & .introduce {
+        font-size: 0.6rem;
+        display: inline;
+      }
+      & .newPost {
+        font-size: 0.6rem;
+        display: inline;
+        color: #55a2c9;
       }
     }
   }
 
   @media (max-width: 390px) {
-    width: 270px;
-    .userList {
-      & .profile {
-        margin: 0;
-      }
+    height: 450px;
+    & .profile {
+      margin: 0;
+      width: 45px;
+      height: 45px;
+    }
+    & .introduce {
+      font-size: 10px;
+    }
+    & .newPost {
+      font-size: 10px;
     }
   }
 `;
@@ -158,15 +191,17 @@ const UsersList = ({
   renderedUsers,
   width,
 }: UserListComponentType) => {
+  const [windowHeight, windowItem] = UserListResponsive(width);
+  
   return (
     <UserListBlock>
       <h2>Paletter</h2>
       <SearchUserContainer onSearch={handleSearch} />
       <FixedWindow
-        height={680}
+        height={windowHeight}
         width={width}
         itemCount={filteredUsers}
-        itemSize={200}
+        itemSize={windowItem}
         renderedItem={renderedUsers}
       />
     </UserListBlock>

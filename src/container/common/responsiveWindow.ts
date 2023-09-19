@@ -28,8 +28,8 @@ export const setWidth = (
     },
     USER: {
       desktop: 795,
-      tablet: 520,
-      phone: 550,
+      tablet: 550,
+      phone: 520,
       smallPhone: 350,
       default: 310,
     },
@@ -62,4 +62,29 @@ export const setWidth = (
       : "default";
 
   return widthConfig[breakpoint];
+};
+
+export const UserListResponsive = (width: number) => {
+  let windowHeight;
+  let windowItem;
+  
+  switch (true) {
+    case (width > 350 && width <= 520):
+      windowHeight = 550;
+      windowItem = 150;
+      break;
+    case (width > 310 && width <= 350):
+      windowHeight = 350;
+      windowItem = 100;
+      break;
+    case (width <= 310):
+      windowHeight = 300;
+      windowItem = 90;
+      break;
+    default:
+      windowHeight = 680;
+      windowItem = 200;
+  }
+
+  return [windowHeight, windowItem];
 };
