@@ -34,6 +34,7 @@ export type INewsApiSource = {
 };
 
 export type ResponseData = {
+  status: number;
   data: {
     articles: INewsApiArticle[];
   };
