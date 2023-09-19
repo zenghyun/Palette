@@ -7,7 +7,7 @@ import { useAppDispatch } from "../../app/store";
 import { selectAllPosts, fetchPosts } from "../../features/postsSlice";
 import { fetchUsers } from "../../features/usersSlice";
 import PostExcerpt from "../../components/home/PostExcerpt";
-import { debounce, setWidth } from "../common/responsiveWindow";
+import { PostResponsive, debounce, setWidth } from "../common/responsiveWindow";
 import Home from "../../components/home/Home";
 import FixedWindow from "../common/FixedWindow";
 
@@ -66,12 +66,14 @@ const HomeContainer = () => {
       );
     };
 
+    const [windowHeight, windowItem] = PostResponsive(width);
+
     content = (
       <FixedWindow
-        height={1000} // 보여줄 전체 높이
+        height={windowHeight} // 보여줄 전체 높이
         width={width} // 보여줄 넓이
         itemCount={orderedPosts} // post 개수
-        itemSize={350} // 개별적 post의 높이
+        itemSize={windowItem} // 개별적 post의 높이
         renderedItem={renderItem}
       />
     );
