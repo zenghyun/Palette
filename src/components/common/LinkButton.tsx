@@ -8,8 +8,9 @@ const ButtonBlock = styled.div`
     color: white;
     color: rgb(30, 30, 30);
     border-radius: 4px;
-    font-weight: 700;
-    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
     text-decoration: none;
     border: none;
     cursor: pointer;
@@ -25,7 +26,7 @@ const ButtonBlock = styled.div`
   }
 `;
 
-const LinkButton = ({ link, title }: { link: string; title: string; }) => {
+const LinkButton = ({ link, title }: { link: string; title: string }) => {
   return (
     <ButtonBlock>
       <Link to={link} className="button">
