@@ -11,7 +11,7 @@ const PostExcerptBlock = styled.article`
   padding: 0.25rem 0.25rem;
   border: 1px solid rgb(177, 174, 174);
   border-radius: 7px;
-  height: 330px;
+  height: 300px;
   margin: 0 auto;
   margin-bottom: 10px;
   width: 760px;
@@ -26,8 +26,7 @@ const PostExcerptBlock = styled.article`
 
   .middleSection {
     margin-top: 10px;
-    margin-bottom: 20px;
-    height: 120px;
+    height: 100px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -35,20 +34,26 @@ const PostExcerptBlock = styled.article`
 
   @media (max-width: 1200px) {
     width: 500px;
+    h3 {
+      font-size: 1rem;
+    }
+    .topSection {
+      font-size: 0.8rem;
+    }
     .middleSection {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 
   @media (max-width: 768px) {
     width: 370px;
-    h3 {
-      font-size: 1.2rem;
+    .topSection {
+      font-size: 0.8rem;
     }
     .middleSection {
       font-size: 14px;
       height: 100px;
-      width: 240px;
+      width: 260px;
       margin-bottom: 10px;
     }
     .feed-button {
@@ -58,23 +63,25 @@ const PostExcerptBlock = styled.article`
   }
 
   @media (max-width: 576px) {
+    width: 300px;
     h3 {
       font-size: 1rem;
     }
     .middleSection {
-      width: 200px;
-      height: 100px;
     }
-    width: 300px;
   }
 
   @media (max-width: 390px) {
     width: 260px;
+    .middleSection {
+      width: 230px;
+    }
+    
   }
 `;
 
 const PostExcerpt = React.memo(({ post }: { post: PostStateType }) => {
-  const sanitizedContent = setSanitize(`${post.content.substring(0, 150)}...`);
+  const sanitizedContent = setSanitize(`${post.content.substring(0, 100)}...`);
 
   return (
     <PostExcerptBlock className="post-excerpt">
