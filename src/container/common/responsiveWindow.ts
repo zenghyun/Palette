@@ -67,23 +67,40 @@ export const setWidth = (
 export const UserListResponsive = (width: number) => {
   let windowHeight;
   let windowItem;
-  
+
   switch (true) {
-    case (width > 350 && width <= 520):
+    case width > 350 && width <= 520:
       windowHeight = 550;
       windowItem = 150;
       break;
-    case (width > 310 && width <= 350):
+    case width > 310 && width <= 350:
       windowHeight = 350;
       windowItem = 100;
       break;
-    case (width <= 310):
+    case width <= 310:
       windowHeight = 300;
       windowItem = 90;
       break;
     default:
       windowHeight = 680;
       windowItem = 200;
+  }
+
+  return [windowHeight, windowItem];
+};
+
+export const PostResponsive = (width: number) => {
+  let windowHeight;
+  let windowItem;
+
+  switch (true) {
+    case width < 540:
+      windowHeight = 700;
+      windowItem = 330;
+      break;
+    default:
+      windowHeight = 800;
+      windowItem = 330;
   }
 
   return [windowHeight, windowItem];
