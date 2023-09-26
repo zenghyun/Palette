@@ -17,7 +17,7 @@ const UserListContainer = () => {
   let timeoutId: NodeJS.Timeout;
 
   const handleSearch = (searchWord: string) => {
-    const delayTime = 500; 
+    const DELAY_TIME = 500; 
 
     clearTimeout(timeoutId);
 
@@ -27,7 +27,7 @@ const UserListContainer = () => {
       );
 
       setFilteredUsers(filtered);
-    }, delayTime);
+    }, DELAY_TIME);
   };
 
   const postsByUser = (user: UserStateType) => {
