@@ -2,7 +2,6 @@ import { CSSProperties, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { PostStateType } from "../../type/postType";
 import { RootStateType } from "../../app/store";
-import Spinner from "../../components/common/Spinner";
 import { useAppDispatch } from "../../app/store";
 import { selectAllPosts, fetchPosts } from "../../features/postsSlice";
 import { fetchUsers } from "../../features/usersSlice";
@@ -40,9 +39,7 @@ const HomeContainer = () => {
 
   let content;
 
-  if (postStatus === "loading") {
-    content = <Spinner />;
-  } else if (postStatus === "succeeded") {
+  if (postStatus === "succeeded") {
     const orderedPosts = posts
       .slice()
       .sort((a: PostStateType, b: PostStateType) =>
