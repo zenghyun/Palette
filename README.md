@@ -257,10 +257,10 @@ palette
 |   |   |       - SinglePostPage.tsx
 |   |   |
 |   |   |- /users
-|   |           - SearchUser.tsx
-|   |           - UserList.tsx
-|   |           - UserPage.tsx
-|   |
+|   |   |       - SearchUser.tsx
+|   |   |       - UserList.tsx
+|   |   |       - UserPage.tsx
+|   |   |- NotFound.tsx
 |   |
 |   |- /container
 |   |   |
