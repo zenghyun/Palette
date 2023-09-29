@@ -13,6 +13,10 @@ export type PostStateType = {
   user: string;
 };
 
+export type PostIdParamType = {
+  postId? : string | undefined;
+}
+
 export type InitialPostType = {
   title: string;
   content: string;

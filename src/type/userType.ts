@@ -9,6 +9,10 @@ export type UserListType = {
   users: Array<UserStateType>;
 };
 
+export type UserIdParamType = {
+  userId?: string | undefined;
+}
+
 export type SearchUserType = {
   searchWord: string;
   handleSearch: (event: ChangeEvent<HTMLInputElement>) => void;

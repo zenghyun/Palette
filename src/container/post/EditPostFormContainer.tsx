@@ -2,13 +2,13 @@ import { ChangeEvent, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { selectPostById, postUpdated } from "../../features/postsSlice";
-import { PostStateType } from "../../type/postType";
+import { PostStateType, PostIdParamType } from "../../type/postType";
 import { RootStateType } from "../../app/store";
 import { useAppDispatch } from "../../app/store";
 import PostForm from "../../components/post/PostForm";
 
 const EditPostFormContainer = () => {
-  const params = useParams();
+  const params = useParams<PostIdParamType>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
