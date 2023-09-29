@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import usePromise from "../../container/news/usePromise";
 import NewsList from "../../components/news/NewsList";
-import Spinner from "../../components/common/Spinner";
+import Loading from "../../components/common/Loading";
 import { debounce, setWidth } from "../common/responsiveWindow";
 import { NewsListCategoryType } from "../../type/newsType";
 
@@ -39,7 +39,7 @@ const NewsListContainer = () => {
   });
 
   if (loading) {
-    return <Spinner />;
+    return <Loading />;
   }
 
   if (!response) {

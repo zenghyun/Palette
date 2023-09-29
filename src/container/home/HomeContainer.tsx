@@ -9,6 +9,7 @@ import PostExcerpt from "../../components/home/PostExcerpt";
 import { PostResponsive, debounce, setWidth } from "../common/responsiveWindow";
 import Home from "../../components/home/Home";
 import FixedWindow from "../common/FixedWindow";
+import Loading from "../../components/common/Loading";
 
 const HomeContainer = () => {
   const dispatch = useAppDispatch();
@@ -39,7 +40,9 @@ const HomeContainer = () => {
 
   let content;
 
-  if (postStatus === "succeeded") {
+  if (postStatus === "loading") {
+    content = <Loading />;
+  } else if (postStatus === "succeeded") {
     const orderedPosts = posts
       .slice()
       .sort((a: PostStateType, b: PostStateType) =>
