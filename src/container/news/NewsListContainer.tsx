@@ -5,11 +5,12 @@ import usePromise from "../../container/news/usePromise";
 import NewsList from "../../components/news/NewsList";
 import Spinner from "../../components/common/Spinner";
 import { debounce, setWidth } from "../common/responsiveWindow";
+import { NewsListCategoryType } from "../../type/newsType";
 
 const API_KEY = "69a43346d69f4551b991f84d01a97b0a";
 
 const NewsListContainer = () => {
-  const params = useParams();
+  const params = useParams<NewsListCategoryType>();
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
   useEffect(() => {
