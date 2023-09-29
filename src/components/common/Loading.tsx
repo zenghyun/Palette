@@ -1,10 +1,11 @@
 import { styled } from "styled-components";
 
-const SpinnerBlock = styled.div`
+const LoadingBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 30%;
 
   h4 {
     margin: 5px;
@@ -98,12 +99,13 @@ const SpinnerBlock = styled.div`
   }
 `;
 
-const Spinner = () => {
+const Loading = () => {
   return (
-    <SpinnerBlock className="spinner">
+    <LoadingBlock className="spinner">
+      <h3>로딩중</h3>
       <div className="loader" />
-    </SpinnerBlock>
+    </LoadingBlock>
   );
 };
 
-export default Spinner;
+export default Loading;
