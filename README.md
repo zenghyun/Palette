@@ -227,7 +227,7 @@ palette
 |   |   |       - Navbar.tsx
 |   |   |       - PostAuthor.tsx
 |   |   |       - ReactionButtons.tsx
-|   |   |       - Spinner.tsx
+|   |   |       - Loading.tsx
 |   |   |       - TimeAgo.tsx
 |   |   |
 |   |   |- /home 
