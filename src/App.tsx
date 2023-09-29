@@ -16,6 +16,7 @@ import NewsListContainer from "./container/news/NewsListContainer";
 import NotificationsListContainer from "./container/notifications/NotificationsListContainer";
 import AddPostFormContainer from "./container/post/AddPostFormContainer";
 import EditPostFormContainer from "./container/post/EditPostFormContainer";
+import NotFound from "./components/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "*",
+        element: <NotFound />,
+      }
     ],
   },
 ]);
