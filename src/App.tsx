@@ -1,21 +1,25 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-
+import { lazy } from "react";
 import RootLayout from "./components/layout/RootLayout";
 import PostRootLayout from "./components/layout/PostRootLayout";
 import EditPostLayout from "./components/layout/EditPostLayout";
 import UserRootLayout from "./components/layout/UserRootLayout";
 import NotificationsRootLayout from "./components/layout/NotificationsRootLayout";
-import SinglePostPageContainer from "./container/post/SinglePostPageContainer";
-import UserListContainer from "./container/users/UserListContainer";
-import UserPageContainer from "./container/users/UserPageContainer";
 import NewsRootLayout from "./components/layout/NewsRootLayout";
 import NewsPage from "./components/news/NewsPage";
-import HomeContainer from "./container/home/HomeContainer";
-import NewsListContainer from "./container/news/NewsListContainer";
-import NotificationsListContainer from "./container/notifications/NotificationsListContainer";
-import AddPostFormContainer from "./container/post/AddPostFormContainer";
-import EditPostFormContainer from "./container/post/EditPostFormContainer";
+const Home = lazy(() => import("./container/home/HomeContainer"));
+const AddPost = lazy(() => import("./container/post/AddPostFormContainer"));
+const SinglePost = lazy(
+  () => import("./container/post/SinglePostPageContainer")
+);
+const EditPost = lazy(() => import("./container/post/EditPostFormContainer"));
+const UserList = lazy(() => import("./container/users/UserListContainer"));
+const UserPage = lazy(() => import("./container/users/UserPageContainer"));
+const NewsList = lazy(() => import("./container/news/NewsListContainer"));
+const NotificationList = lazy(
+  () => import("./container/notifications/NotificationsListContainer")
+);
 import NotFound from "./components/NotFound";
 
 const router = createBrowserRouter([
@@ -23,18 +27,18 @@ const router = createBrowserRouter([
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <HomeContainer /> },
+      { index: true, element: <Home /> },
       {
         path: "posts",
         element: <PostRootLayout />,
         children: [
           {
             index: true,
-            element: <AddPostFormContainer />,
+            element: <AddPost />,
           },
           {
             path: ":postId",
-            element: <SinglePostPageContainer />,
+            element: <SinglePost />,
           },
         ],
       },
@@ -44,7 +48,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: ":postId",
-            element: <EditPostFormContainer />,
+            element: <EditPost />,
           },
         ],
       },
@@ -54,21 +58,11 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <UserListContainer />,
+            element: <UserList />,
           },
           {
             path: ":userId",
-            element: <UserPageContainer />,
-          },
-        ],
-      },
-      {
-        path: "notifications",
-        element: <NotificationsRootLayout />,
-        children: [
-          {
-            index: true,
-            element: <NotificationsListContainer />,
+            element: <UserPage />,
           },
         ],
       },
@@ -82,14 +76,24 @@ const router = createBrowserRouter([
           },
           {
             path: ":category",
-            element: <NewsListContainer />,
+            element: <NewsList />,
+          },
+        ],
+      },
+      {
+        path: "notifications",
+        element: <NotificationsRootLayout />,
+        children: [
+          {
+            index: true,
+            element: <NotificationList />,
           },
         ],
       },
       {
         path: "*",
         element: <NotFound />,
-      }
+      },
     ],
   },
 ]);

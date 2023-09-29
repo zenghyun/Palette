@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { styled } from "styled-components";
 import NavContainer from "../../container/common/NavContainer";
+import Loading from "../common/Loading";
 
 const RootBlock = styled.main`
   width: 100%;
@@ -24,7 +26,9 @@ const RootLayout = () => {
     <>
       <RootBlock>
         <NavContainer />
+      <Suspense fallback={<Loading />}>
         <Outlet />
+      </Suspense>
       </RootBlock>
     </>
   );
