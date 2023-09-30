@@ -1,11 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { lazy } from "react";
-import { Suspense } from "react";
 
-import Loading from "./components/common/Loading";
+import RootLayout from "./components/layout/RootLayout";
 
-const RootLayout = lazy(() => import ("./components/layout/RootLayout"));
 const PostRootLayout = lazy(() => import("./components/layout/PostRootLayout"));
 const EditPostLayout = lazy(() => import("./components/layout/EditPostLayout"));
 const UserRootLayout = lazy(() => import("./components/layout/UserRootLayout"));
@@ -31,7 +29,7 @@ const NotFound = lazy(() => import("./components/NotFound"));
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: < RootLayout />,
     children: [
       { index: true, element: <Home /> },
       {
@@ -110,9 +108,7 @@ function App() {
       <Helmet>
         <title>Palette</title>
       </Helmet>
-      <Suspense fallback={<Loading />}>
       <RouterProvider router={router} />
-      </Suspense>
     </>
   );
 }
