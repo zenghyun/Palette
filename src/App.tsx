@@ -1,13 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { lazy } from "react";
-import RootLayout from "./components/layout/RootLayout";
-import PostRootLayout from "./components/layout/PostRootLayout";
-import EditPostLayout from "./components/layout/EditPostLayout";
-import UserRootLayout from "./components/layout/UserRootLayout";
-import NotificationsRootLayout from "./components/layout/NotificationsRootLayout";
-import NewsRootLayout from "./components/layout/NewsRootLayout";
-import NewsPage from "./components/news/NewsPage";
+import { Suspense } from "react";
+
+import Loading from "./components/common/Loading";
+
+const RootLayout = lazy(() => import ("./components/layout/RootLayout"));
+const PostRootLayout = lazy(() => import("./components/layout/PostRootLayout"));
+const EditPostLayout = lazy(() => import("./components/layout/EditPostLayout"));
+const UserRootLayout = lazy(() => import("./components/layout/UserRootLayout"));
+const NotificationsRootLayout = lazy(
+  () => import("./components/layout/NotificationsRootLayout")
+);
+const NewsRootLayout = lazy(() => import("./components/layout/NewsRootLayout"));
 const Home = lazy(() => import("./container/home/HomeContainer"));
 const AddPost = lazy(() => import("./container/post/AddPostFormContainer"));
 const SinglePost = lazy(
@@ -17,10 +22,11 @@ const EditPost = lazy(() => import("./container/post/EditPostFormContainer"));
 const UserList = lazy(() => import("./container/users/UserListContainer"));
 const UserPage = lazy(() => import("./container/users/UserPageContainer"));
 const NewsList = lazy(() => import("./container/news/NewsListContainer"));
+const NewsPage = lazy(() => import("./components/news/NewsPage"));
 const NotificationList = lazy(
   () => import("./container/notifications/NotificationsListContainer")
 );
-import NotFound from "./components/NotFound";
+const NotFound = lazy(() => import("./components/NotFound"));
 
 const router = createBrowserRouter([
   {
@@ -104,7 +110,9 @@ function App() {
       <Helmet>
         <title>Palette</title>
       </Helmet>
+      <Suspense fallback={<Loading />}>
       <RouterProvider router={router} />
+      </Suspense>
     </>
   );
 }
