@@ -5,8 +5,7 @@ const LoadingBlock = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 30%;
-
+  
   h4 {
     margin: 5px;
   }
