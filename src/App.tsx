@@ -29,7 +29,7 @@ const NotFound = lazy(() => import("./components/NotFound"));
 const router = createBrowserRouter([
   {
     path: "/",
-    element: < RootLayout />,
+    element: <RootLayout />,
     children: [
       { index: true, element: <Home /> },
       {
