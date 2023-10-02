@@ -9,6 +9,7 @@ import PostForm from "../../components/post/PostForm";
 
 const EditPostFormContainer = () => {
   const params = useParams<PostIdParamType>();
+  const postId = params.postId as string;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -36,7 +37,7 @@ const EditPostFormContainer = () => {
 
   const onSavePostClicked = () => {
     if (title && content) {
-      dispatch(postUpdated({ id: params.postId, title, content }));
+      dispatch(postUpdated({ id: postId, title, content }));
       navigate(`/posts/${params.postId}`);
     }
   };
