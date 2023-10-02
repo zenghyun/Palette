@@ -48,6 +48,7 @@ const UserListContainer = () => {
     style: CSSProperties;
   }) => {
     const user = filteredUsers[index];
+    const postCount = postsByUser(user);
     return (
       <Link
         key={user.id}
@@ -61,7 +62,7 @@ const UserListContainer = () => {
           <p className="name">{user.name}</p>
           <p className="introduce">안녕하세요 {user.name}입니다.</p>
           {postsByUser(user) ? (
-            <p className="newPost"> 게시물 {postsByUser(user)}개 </p>
+            <p className="newPost"> 게시물 {postCount}개 </p>
           ) : (
             <p className="newPost"></p>
           )}
