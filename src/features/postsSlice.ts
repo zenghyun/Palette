@@ -7,7 +7,7 @@ import {
 } from "@reduxjs/toolkit";
 import { client } from "../api/client";
 import { RootStateType } from "../app/store";
-import { PostListsType, PostStateType } from "../type/postType";
+import { PostListsType, PostStateType, ReactionAddType, PostUpdateType } from "../type/postType";
 
 const initialState: PostListsType = {
   posts: [],
@@ -33,7 +33,7 @@ const postsSlice = createSlice({
   initialState,
   reducers: {
     postAdded: {
-      reducer(state, action: PayloadAction<PostStateType>) {
+      reducer(state: PostListsType, action: PayloadAction<PostStateType>) {
         state.posts.push(action.payload);
       },
       prepare(title: string, content: string, userId: string) {
@@ -55,7 +55,7 @@ const postsSlice = createSlice({
         };
       },
     },
-    postUpdated(state, action) {
+    postUpdated(state: PostListsType, action: PayloadAction<PostUpdateType>) {
       const { id, title, content } = action.payload;
       const existingPost = state.posts.find(
         (post: PostStateType) => post.id === id
@@ -65,7 +65,7 @@ const postsSlice = createSlice({
         existingPost.content = content;
       }
     },
-    reactionAdded(state, action) {
+    reactionAdded(state: PostListsType, action: PayloadAction<ReactionAddType>) {
       const { postId, reaction } = action.payload;
       const existingPost = state.posts.find(
         (post: PostStateType) => post.id === postId
