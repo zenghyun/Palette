@@ -43,6 +43,17 @@ export type PostFormType = {
   canSave?: boolean;
 };
 
+export type ReactionAddType = {
+  postId: string;
+  reaction: string;
+}
+
+export type PostUpdateType = {
+  id : string;
+  title: string;
+  content: string;
+}
+
 export type ReactionEmojiType = {
   thumbsUp: string;
   hooray: string;
