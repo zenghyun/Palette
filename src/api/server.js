@@ -96,6 +96,7 @@ const customFirstName = [
   "유",
   "임",
 ];
+
 const customLastName = [
   "정현",
   "시온",
