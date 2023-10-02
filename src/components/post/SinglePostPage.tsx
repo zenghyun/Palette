@@ -4,6 +4,7 @@ import ReactionButtonContainer from "../../container/common/ReactionButtonContai
 import { styled } from "styled-components";
 import PostAuthorContainer from "../../container/common/PostAuthorContainer";
 import { PostStateType } from "../../type/postType";
+import HTMLReactParser from "html-react-parser";
 
 const SinglePostPageBlock = styled.article`
   width: 800px;
@@ -21,6 +22,7 @@ const SinglePostPageBlock = styled.article`
     min-height: min-content;
     max-height: 550px;
     overflow: hidden auto;
+    padding: 1rem 0 1rem 0;
   }
   .post-content blockquote {
     border-left: 4px solid #ccc;
@@ -111,10 +113,11 @@ const SinglePostPage = ({
           <PostAuthorContainer userId={post.user} />
           <TimeAgo timestamp={post.date} />
         </div>
-        <p
+        <div
           className="post-content"
-          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-        />
+        >
+          {HTMLReactParser(sanitizedContent)}
+        </div>
         <ReactionButtonContainer post={post} />
         <LinkButton link={`/editPost/${post.id}`} title={"Edit Post"} />
       </SinglePostPageBlock>

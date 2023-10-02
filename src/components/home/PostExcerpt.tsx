@@ -2,6 +2,7 @@ import React from "react";
 import TimeAgo from "../common/TimeAgo";
 import ReactionButtonContainer from "../../container/common/ReactionButtonContainer";
 import setSanitize from "../../container/post/setSanitize";
+import ReactHtmlParser from "html-react-parser";
 import { PostStateType } from "../../type/postType";
 import { styled } from "styled-components";
 import PostAuthorContainer from "../../container/common/PostAuthorContainer";
@@ -92,8 +93,9 @@ const PostExcerpt = React.memo(({ post }: { post: PostStateType }) => {
       </section>
       <section
         className="middleSection"
-        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-      />
+      >
+        {ReactHtmlParser(sanitizedContent)}
+      </section>
       <section className="bottomSection">
         <ReactionButtonContainer post={post} />
         <LinkButton link={`/posts/${post.id}`} title={"View Palette"} />
