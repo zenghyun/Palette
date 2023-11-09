@@ -8,7 +8,7 @@ const NavbarBlock = styled.nav`
   padding: 0;
   background: var(--redux-color);
   transition: all 0.3s ease;
-  .banner {
+  #banner {
     cursor: pointer;
     margin: 30px;
   }
@@ -42,14 +42,10 @@ const NavbarBlock = styled.nav`
     transition: all 0.5s;
   }
 
-  .navContent {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .navLinks {
     width: 100%;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
   }
 
@@ -99,7 +95,7 @@ const NavbarBlock = styled.nav`
       padding-top: 5px;
       width: 100%;
       flex-direction: row;
-      justify-content: space-around; 
+      justify-content: space-around;
       align-items: center;
 
       & a {
@@ -148,27 +144,25 @@ const Navbar = ({
   return (
     <NavbarBlock>
       <section>
-        <h1 className="banner" onClick={() => navigate("/")}>
+        <h1 id="banner" onClick={() => navigate("/")}>
           Palette
         </h1>
-        <div className="navContent">
-          <div className="navLinks">
-            <NavLink to="/">
-              📌 <span className="logoName">Feed</span>
-            </NavLink>
-            <NavLink to="/posts">
-              📚 <span className="logoName">Add Post</span>
-            </NavLink>
-            <NavLink to="/users">
-              🎨 <span className="logoName">Paletter</span>
-            </NavLink>
-            <NavLink to="/news/all">
-              📰 <span className="logoName">News</span>
-            </NavLink>
-            <NavLink to="/notifications">
-              💜 <span className="logoName">Notifications</span> {badge}
-            </NavLink>
-          </div>
+        <div className="navLinks">
+          <NavLink to="/">
+            📌 <span className="logoName">Feed</span>
+          </NavLink>
+          <NavLink to="/posts">
+            📚 <span className="logoName">Add Post</span>
+          </NavLink>
+          <NavLink to="/users">
+            🎨 <span className="logoName">Paletter</span>
+          </NavLink>
+          <NavLink to="/news/all">
+            📰 <span className="logoName">News</span>
+          </NavLink>
+          <NavLink to="/notifications">
+            💜 <span className="logoName">Notifications</span> {badge}
+          </NavLink>
         </div>
       </section>
     </NavbarBlock>
