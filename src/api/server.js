@@ -1,7 +1,8 @@
 import { rest, setupWorker } from "msw";
 import { factory, oneOf, manyOf, primaryKey } from "@mswjs/data";
 import { nanoid } from "@reduxjs/toolkit";
-import faker from "faker";
+import { faker } from "@faker-js/faker";
+
 import seedrandom from "seedrandom";
 import { Server as MockSocketServer } from "mock-socket";
 import { setRandom } from "txtgen";
@@ -114,8 +115,8 @@ const customLastName = [
 ];
 
 const createUserData = () => {
-  const firstName = faker.random.arrayElement(customFirstName);
-  const lastName = faker.random.arrayElement(customLastName);
+  const firstName = faker.random?.arrayElement(customFirstName);
+  const lastName = faker.random?.arrayElement(customLastName);
 
   return {
     firstName,
@@ -180,12 +181,12 @@ const customPost = {
 
 const createPostData = (user) => {
   const customPostArray = Object.values(customPost);
-  const randomPost = faker.random.arrayElement(customPostArray);
+  const randomPost = faker.random?.arrayElement(customPostArray);
   return {
-    title: randomPost.title,
+    title: randomPost?.title,
     date: faker.date.recent(RECENT_NOTIFICATIONS_DAYS).toISOString(),
     user,
-    content: randomPost.content,
+    content: randomPost?.content,
     reactions: db.reaction.create(),
   };
 };

@@ -3,8 +3,8 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Snow 테마에 대한 CSS 파일을 임포트
 import { styled } from "styled-components";
 import { PostFormType } from "../../type/postType";
-import { storage } from "../../api/firebase";
-import { uploadBytes, getDownloadURL, ref } from "firebase/storage";
+// import {  } from "../../api/firebase";
+import { uploadBytes, getDownloadURL, ref, getStorage } from "firebase/storage";
 
 const TitleInput = styled.input`
   font-family: "Gowun Batang", serif;
@@ -127,7 +127,7 @@ const Editor = ({
 
       try {
         // 파일명을 "image/Date.now()"로 저장
-        const storageRef = ref(storage, `image/${Date.now()}`);
+        const storageRef = ref(getStorage(), `image/${Date.now()}`);
         // Firebase Method : uploadBytes, getDownloadURL
         const snapshot = await uploadBytes(storageRef, file);
         // 이미지 URL 에디터에 삽입
@@ -149,7 +149,7 @@ const Editor = ({
           [{ header: [3, 4, 5, 6, false] }],
           [{ font: [] }],
           ["bold", "italic", "underline", "strike", "blockquote", "code-block"],
-          [{ list: "ordered" }, { list: "bullet" }, { 'align': [] }],
+          [{ list: "ordered" }, { list: "bullet" }, { align: [] }],
           [{ color: [] }, { background: [] }],
           ["link", "image", "video"],
           ["clean"],
